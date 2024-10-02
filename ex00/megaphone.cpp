@@ -1,35 +1,33 @@
 #include <iostream>
 #include <ctype.h>
 
-/*
-this shit is needed to print stuff to stdout with tailing newline:
-std::cout << "whatever" << endl;  || how do we get it to print variables....?
-
-std::cout << variableName;  || prints variableName to stdout
-
-std::cout << "Some text here " << variableName << " some more text"; || apparently works too
-
-*/
-
 void	megaphone(int argc, char *argv[])
 {
-	int	arg;
-	int	index;
+	int				arg;
+	int				index;
+	unsigned char	chr;
 
+	if (argc < 2)
+	{
+		std::cout << "Not enough arguments\n";
+		return ;
+	}
 	for (arg = 1; arg < argc; arg++)
 	{
 		for (index = 0; argv[arg][index]; index++)
 		{
-			if (isaplha(argv[arg][index]))
+			chr = argv[arg][index];
+			if (std::isalpha(chr))
 			{
-				
+				chr = std::toupper(chr);
 			}
-			std::cout << argv[index] << "\n";
+			std::cout << chr;
 		}
+		if (arg < argc - 1)
+			std::cout << " ";
 	}
+	std::cout << "\n";
 }
-
-
 
 int	main(int argc, char *argv[])
 {
