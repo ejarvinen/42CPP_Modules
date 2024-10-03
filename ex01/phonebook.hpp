@@ -1,3 +1,6 @@
+#ifndef PHONEBOOK_H
+# define PHONEBOOK_H
+
 #include <string>
 
 class PhoneBook {
@@ -18,3 +21,5 @@ class Contact {
 		unsigned int	phone_number;
 		std::string		darkest_secret;
 };
+
+#endif
