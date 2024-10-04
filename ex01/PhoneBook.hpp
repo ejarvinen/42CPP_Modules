@@ -14,6 +14,9 @@ class PhoneBook {
 
 		PhoneBook(){}
 		~PhoneBook(){}
+
+		void	phoneBook();
+		void	addContact();
 };
 
 #endif

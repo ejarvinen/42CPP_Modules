@@ -4,7 +4,7 @@ CC := g++
 
 FLAGS := -std=c++11 -Wall -Wextra -Werror
 
-SOURCES := phonebook.cpp
+SOURCES := main.cpp phonebook.cpp
 
 all: $(NAME)
 
