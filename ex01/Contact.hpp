@@ -2,35 +2,31 @@
 # define CONTACT_H
 
 # include <string>
+# include <iostream>
+
+# define COL_WIDTH 10
 
 class Contact {
 
 	private:
 
-		unsigned int	contact_id;
-		std::string 	first_name;
-		std::string		last_name;
-		std::string		nickname;
-		unsigned int	phone_number;
-		std::string		darkest_secret;
+		unsigned int	_contactId;
+		std::string 	_firstName;
+		std::string		_lastName;
+		std::string		_nickName;
+		std::string		_phoneNumber;
+		std::string		_darkestSecret;
 
 	public:
 
 		Contact(){}
 		~Contact(){}
 
-		void			setContact_id(unsigned int i);
-		int				getContact_id();
-		void			setFirst_name(std::string firstname);
-		std::string		getFirst_name();
-		void			setLast_name(std::string lastname);
-		std::string		getLast_name();
-		void			setNickname(std::string nickname);
-		std::string		getNickname();
-		void			setPhoneNumber(unsigned int phonenumber);
-		unsigned int	getPhoneNumber();
-		void			setDarkestSecret(std::string secret);
-		std::string		getDarkestSecret();
+		void	createContact(int index);
+		bool	verifyNameField(std::string text);
+		bool	verifyPhoneNumber(std::string text);
+		void	printContact();
+		void	printField(std::string text);
 };
 
 #endif

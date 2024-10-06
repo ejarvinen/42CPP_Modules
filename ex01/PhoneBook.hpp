@@ -1,6 +1,8 @@
 #ifndef PHONEBOOK_H
 # define PHONEBOOK_H
 
+# define MAX_CONTACT 8
+
 # include <string>
 # include "Contact.hpp"
 
@@ -8,15 +10,17 @@ class PhoneBook {
 	
 	private:
 
-		Contact	contacts[8];
+		Contact			_contacts[MAX_CONTACT];
+		unsigned int	_addedContacts;
 
 	public:
 
-		PhoneBook(){}
-		~PhoneBook(){}
-
+		PhoneBook();
+		~PhoneBook();
+		
 		void	phoneBook();
 		void	addContact();
+		void	printAllContacts();
 };
 
 #endif
