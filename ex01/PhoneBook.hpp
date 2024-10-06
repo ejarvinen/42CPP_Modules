@@ -3,7 +3,6 @@
 
 # define MAX_CONTACT 8
 
-# include <string>
 # include "Contact.hpp"
 
 class PhoneBook {
@@ -22,6 +21,8 @@ class PhoneBook {
 		void	addContact();
 		void	printAllContacts();
 		void	searchContacts();
+		bool	isNumeric(std::string searchID);
+		void	findContact(unsigned int searchID);
 };
 
 #endif

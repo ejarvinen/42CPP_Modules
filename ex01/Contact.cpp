@@ -3,6 +3,11 @@
 Contact::Contact(){}
 Contact::~Contact(){}
 
+unsigned int	Contact::getContactID()
+{
+	return (this->_contactId);
+}
+
 bool	Contact::verifyNameField(std::string text)
 {
 	int				index;
@@ -12,7 +17,7 @@ bool	Contact::verifyNameField(std::string text)
 		return (false);
 	for (index = 0; text[index]; index++)
 	{
-		chr = text[index];
+		chr = (unsigned int) text[index];
 		if (!std::isalpha(chr))
 			return (false);
 	}
@@ -28,7 +33,7 @@ bool	Contact::verifyPhoneNumber(std::string text)
 		return (false);
 	for (index = 0; text[index]; index++)
 	{
-		chr = text[index];
+		chr = (unsigned int) text[index];
 		if (!std::isdigit(chr))
 			return (false);
 	}
@@ -39,7 +44,7 @@ bool	Contact::checkForWhiteSpace(std::string text)
 {
 	unsigned int	chr;
 
-	chr = text[0];
+	chr = (unsigned int) text[0];
 	if (text.empty() || std::isspace(chr))
 		return (false);
 	return (true);
@@ -186,4 +191,16 @@ void	Contact::printContact()
 	this->printField(this->_firstName);
 	this->printField(this->_lastName);
 	this->printField(this->_nickName);
+}
+
+void	Contact::printOne()
+{
+	std::cout << std::endl;
+	std::cout << "Contact ID: " << this->_contactId << std::endl;
+	std::cout << "First Name: " << this->_firstName << std::endl;
+	std::cout << "Last Name: " << this->_lastName << std::endl;
+	std::cout << "Nickname: " << this->_nickName << std::endl;
+	std::cout << "Phone Number: " << this->_phoneNumber << std::endl;
+	std::cout << "Darkest Secret: " << this->_darkestSecret << std::endl;
+	std::cout << std::endl;
 }
