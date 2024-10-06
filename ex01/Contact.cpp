@@ -1,5 +1,8 @@
 #include "Contact.hpp"
 
+Contact::Contact(){}
+Contact::~Contact(){}
+
 bool	Contact::verifyNameField(std::string text)
 {
 	int				index;
@@ -32,79 +35,120 @@ bool	Contact::verifyPhoneNumber(std::string text)
 	return (true);
 }
 
+bool	Contact::checkForWhiteSpace(std::string text)
+{
+	unsigned int	chr;
+
+	chr = text[0];
+	if (text.empty() || std::isspace(chr))
+		return (false);
+	return (true);
+}
+
+void	Contact::addFirstName()
+{
+	std::string	*firstname = &this->_firstName;
+
+	std::cout << "Enter first name: ";
+	getline(std::cin, *firstname);
+	while (!verifyNameField(*firstname))
+	{
+		if (std::cin.eof())
+		{
+			std::cout << "Ctrl+D detected. Program exits." << std::endl;
+			std::exit(1);
+		}
+		std::cin.clear();
+		std::cout << "Please enter a valid first name: ";
+		getline(std::cin, *firstname);
+	}
+}
+
+void	Contact::addLastName()
+{
+	std::string	*lastname = &this->_lastName;
+
+	std::cout << "Enter last name: ";
+	getline(std::cin, *lastname);
+	while (!verifyNameField(*lastname))
+	{
+		if (std::cin.eof())
+		{
+			std::cout << "Ctrl+D detected. Program exits." << std::endl;
+			std::exit(1);
+		}
+		std::cin.clear();
+		std::cout << "Please enter a valid last name: ";
+		getline(std::cin, *lastname);
+	}
+}
+
+void	Contact::addNickName()
+{
+	std::string	*nickname = &this->_nickName;
+
+	std::cout << "Enter nickname: ";
+	getline(std::cin, *nickname);
+	while (!checkForWhiteSpace(*nickname))
+	{
+		if (std::cin.eof())
+		{
+			std::cout << "Ctrl+D detected. Program exits." << std::endl;
+			std::exit(1);
+		}
+		std::cin.clear();
+		std::cout << "Please enter a valid nickname: ";
+		getline(std::cin, *nickname);
+	}
+}
+
+void	Contact::addPhoneNumber()
+{
+	std::string	*phonenumber = &this->_phoneNumber;
+
+	std::cout << "Enter phone number: ";
+	getline(std::cin, *phonenumber);
+	while (!verifyPhoneNumber(*phonenumber))
+	{
+		if (std::cin.eof())
+		{
+			std::cout << "Ctrl+D detected. Program exits." << std::endl;
+			std::exit(1);
+		}
+		std::cin.clear();
+		std::cout << "Please enter a valid phone number: ";
+		getline(std::cin, *phonenumber);
+	}
+}
+
+void	Contact::addSecret()
+{
+	std::string	*secret = &this->_darkestSecret;
+
+	std::cout << "Enter darkest secret: ";
+	getline(std::cin, *secret);
+	while (!checkForWhiteSpace(*secret))
+	{
+		if (std::cin.eof())
+		{
+			std::cout << "Ctrl+D detected. Program exits." << std::endl;
+			std::exit(1);
+		}
+		std::cin.clear();
+		std::cout << "Please enter a valid secret: ";
+		getline(std::cin, *secret);
+	}
+}
+
 void	Contact::createContact(int index)
 {
 	this->_contactId = index;
-	std::cout << "Enter first name: ";
-	getline(std::cin, this->_firstName);
-	if (std::cin.eof())
-	{
-		std::cout << "Ctrl+D detected. Program exits." << std::endl;
-		std::exit(1);
-	}
-	while (!verifyNameField(this->_firstName))
-	{
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		std::cout << "Please enter a valid first name: ";
-		std::cin >> this->_firstName;
-	}
-	std::cout << "Enter last name: ";
-	getline(std::cin, this->_lastName);
-	if (std::cin.eof())
-	{
-		std::cout << "Ctrl+D detected. Program exits." << std::endl;
-		std::exit(1);
-	}
-	while (!verifyNameField(this->_lastName))
-	{
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		std::cout << "Please enter a valid last name: ";
-		std::cin >> this->_lastName;
-	}
-	std::cout << "Enter nickname: ";
-	getline(std::cin, this->_nickName);
-	if (std::cin.eof())
-	{
-		std::cout << "Ctrl+D detected. Program exits." << std::endl;
-		std::exit(1);
-	}
-	while (this->_nickName.empty())
-	{
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		std::cout << "Please enter a valid nickname: ";
-		std::cin >> this->_nickName;
-	}
-	std::cout << "Enter phone number: ";
-	getline(std::cin, this->_phoneNumber);
-	if (std::cin.eof())
-	{
-		std::cout << "Ctrl+D detected. Program exits." << std::endl;
-		std::exit(1);
-	}
-	while (!verifyPhoneNumber(this->_phoneNumber))
-	{
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		std::cout << "Please enter a valid phone number: ";
-		std::cin >> this->_phoneNumber;
-	}
-	std::cout << "Enter darkest secret: ";
-	getline(std::cin, this->_darkestSecret);
-	if (std::cin.eof())
-	{
-		std::cout << "Ctrl+D detected. Program exits." << std::endl;
-		std::exit(1);
-	}
-	while (this->_darkestSecret.empty())
-	{
-		std::cin.clear();
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-		std::cout << "Please enter a valid secret: ";
-		std::cin >> this->_darkestSecret;
-	}
+
+	this->addFirstName();
+	this->addLastName();
+	this->addNickName();
+	this->addPhoneNumber();
+	this->addSecret();
 }
 
 void	Contact::printField(std::string text)
@@ -138,8 +182,8 @@ void	Contact::printContact()
 	std::string	id;
 
 	id = std::to_string(this->_contactId);
-	Contact::printField(id);
-	Contact::printField(this->_firstName);
-	Contact::printField(this->_lastName);
-	Contact::printField(this->_nickName);
+	this->printField(id);
+	this->printField(this->_firstName);
+	this->printField(this->_lastName);
+	this->printField(this->_nickName);
 }

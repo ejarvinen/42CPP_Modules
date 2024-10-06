@@ -13,17 +13,30 @@ void	PhoneBook::addContact()
 void	PhoneBook::printAllContacts()
 {
 	int		index;
+	int		max_contact;
 
 	std::cout << "|" << "        ID" << "|" << "First Name" << "|" << " Last Name" << "|" << "  Nickname" << "|" << std::endl;
 	for (index = 0; index < 45; index++)
 		std::cout << "=";
 	std::cout << std::endl;
-	for (index = 0; index < 8; index++)
+	if (this->_addedContacts < 8)
+		max_contact = _addedContacts;
+	else
+		max_contact = 8;
+	for (index = 0; index < max_contact; index++)
 	{
 		this->_contacts[index].printContact();
 		std::cout << "|" << std::endl;
 	}
 }
+
+/* void	PhoneBook::searchContacts()
+{
+	unsigned int	searchID;
+
+	std::cout << "Enter contact ID or type -1 to exit SEARCH: ";
+
+} */
 
 void	PhoneBook::phoneBook()
 {
@@ -42,12 +55,13 @@ void	PhoneBook::phoneBook()
 		}
 		else if (input.compare("ADD") == 0)
 		{
-			PhoneBook::addContact();
-			std::cout << "Added new contact " << std::endl;
+			this->addContact();
+			std::cout << "Added new contact" << std::endl;
 		}
 		else if (input.compare("SEARCH") == 0)
 		{
-			PhoneBook::printAllContacts();
+			this->printAllContacts();
+			//this->searchContacts();
 		}
 		std::cout << "Type ADD, SEARCH or EXIT: ";
 		getline(std::cin, input);

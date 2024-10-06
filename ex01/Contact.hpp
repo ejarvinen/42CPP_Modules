@@ -19,12 +19,18 @@ class Contact {
 
 	public:
 
-		Contact(){}
-		~Contact(){}
+		Contact();
+		~Contact();
 
 		void	createContact(int index);
 		bool	verifyNameField(std::string text);
 		bool	verifyPhoneNumber(std::string text);
+		bool	checkForWhiteSpace(std::string text);
+		void	addFirstName();
+		void	addLastName();
+		void	addNickName();
+		void	addPhoneNumber();
+		void	addSecret();
 		void	printContact();
 		void	printField(std::string text);
 };
