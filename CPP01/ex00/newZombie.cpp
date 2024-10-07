@@ -5,7 +5,7 @@ Zombie	*newZombie(std::string name)
 	Zombie	*newZombie = new Zombie;
 
 	if (!newZombie)
-		return (NULL);
+		return (nullptr);
 	newZombie->setName(name);
 	return (newZombie);
 }
