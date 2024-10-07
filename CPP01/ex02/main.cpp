@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 14:02:26 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/07 14:02:29 by emansoor         ###   ########.fr       */
+/*   Created: 2024/10/07 14:02:04 by emansoor          #+#    #+#             */
+/*   Updated: 2024/10/07 14:02:12 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <iostream>
+#include <string>
 
-Zombie::Zombie(){};
-
-Zombie::~Zombie()
+int	main(void)
 {
-	std::cout << "Deconstructor for zombie " << this->_name << " called" << std::endl;
-}
-
-void	Zombie::setName(std::string name)
-{
-	this->_name = name;
-}
-
-void	Zombie::announce(void)
-{
-	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	
+	return (0);
 }
