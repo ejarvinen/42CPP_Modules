@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 14:19:36 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/07 16:43:49 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/08 16:27:57 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Weapon::Weapon(std::string type)
 };
 Weapon::~Weapon(){};
 
-const std::string	&Weapon::getType()
+const std::string	&Weapon::getType() const
 {
 	return (this->_type);
 }
