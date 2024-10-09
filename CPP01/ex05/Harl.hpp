@@ -1,29 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 14:19:36 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/09 12:26:01 by emansoor         ###   ########.fr       */
+/*   Created: 2024/10/09 12:21:39 by emansoor          #+#    #+#             */
+/*   Updated: 2024/10/09 15:46:11 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
+#ifndef HARL_H
+# define HARL_H
 
-Weapon::Weapon(std::string type)
-{
-	this->_type = type;
-}
-Weapon::~Weapon(){};
+# include <string>
+# include <iostream>
 
-const std::string	&Weapon::getType() const
+class Harl
 {
-	return (this->_type);
-}
+	private:
+		
+		void	debug(void);
+		void	info(void);
+		void	warning(void);
+		void	error(void);
 
-void	Weapon::setType(std::string type)
-{
-	this->_type = type;
-}
+		enum	Level {
+				DEBUG,
+				INFO,
+				WARNING,
+				ERROR,
+				FAIL
+		};
+
+	public:
+
+		Harl();
+		~Harl();
+
+		void		complain(std::string level);
+		Harl::Level	convertLevel(std::string level);
+};
+
+
+
+
+#endif

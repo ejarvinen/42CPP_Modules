@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/07 14:19:36 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/09 12:26:01 by emansoor         ###   ########.fr       */
+/*   Created: 2024/10/09 12:21:44 by emansoor          #+#    #+#             */
+/*   Updated: 2024/10/09 12:46:39 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
+#include "Harl.hpp"
 
-Weapon::Weapon(std::string type)
+int	main(int argc, char *argv[])
 {
-	this->_type = type;
-}
-Weapon::~Weapon(){};
+	Harl		Harl;
+	std::string	level;
 
-const std::string	&Weapon::getType() const
-{
-	return (this->_type);
-}
-
-void	Weapon::setType(std::string type)
-{
-	this->_type = type;
+	if (argc != 2)
+	{
+		std::cout << "Invalid arguments" << std::endl;
+		return (1);
+	}
+	level = argv[1];
+	Harl.complain(level);
+	return (0);
 }
