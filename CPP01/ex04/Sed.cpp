@@ -6,41 +6,47 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 11:19:35 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/08 17:57:30 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/09 11:55:04 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Sed.hpp"
 
-void	replace(std::string *line, std::string original, std::string replacement)
+void	replace(std::string *line, std::string s1, std::string s2)
 {
 	size_t	pos;
 
-	pos = (*line).find(original);
+	pos = (*line).find(s1);
 	while (pos != std::string::npos)
 	{
-		(*line).erase(pos, original.length());
-		(*line).insert(pos, replacement);
-		pos = (*line).find(original);
+		(*line).erase(pos, s1.length());
+		(*line).insert(pos, s2);
+		pos = (*line).find(s1);
 	}
 }
 
 int	sed(char *argv[])
 {
-	std::ifstream	inFile(argv[1]);
-	std::string		outfileName = argv[1];
-	std::ofstream	outFile(outfileName.append(".replace"));
 	std::string		line;
+	std::string		s1;
+	std::string		s2;
+	std::string		outfileName = argv[1];
+	std::ifstream	inFile(argv[1]);
+	std::ofstream	outFile(outfileName.append(".replace"));
 
 	if (!inFile.is_open() || !outFile.is_open())
 	{
 		std::cout << "Error opening files" << std::endl;
 		return (1);
 	}
+	s1 = argv[2];
+	s2 = argv[3];
 	while (getline(inFile, line))
 	{
-		replace(&line, argv[2], argv[3]);
+		if (!s1.empty() && s1.compare(s2) != 0)
+			replace(&line, s1, s2);
 		outFile << line;
+		outFile << std::endl;
 	}
 	inFile.close();
 	outFile.close();
