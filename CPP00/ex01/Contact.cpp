@@ -52,11 +52,9 @@ bool	Contact::checkForWhiteSpace(std::string text)
 
 void	Contact::addFirstName()
 {
-	std::string	*firstname = &this->_firstName;
-
 	std::cout << "Enter first name: ";
-	getline(std::cin, *firstname);
-	while (!verifyNameField(*firstname))
+	getline(std::cin, this->_firstName);
+	while (!verifyNameField(this->_firstName))
 	{
 		if (std::cin.eof())
 		{
@@ -65,17 +63,15 @@ void	Contact::addFirstName()
 		}
 		std::cin.clear();
 		std::cout << "Please enter a valid first name: ";
-		getline(std::cin, *firstname);
+		getline(std::cin, this->_firstName);
 	}
 }
 
 void	Contact::addLastName()
 {
-	std::string	*lastname = &this->_lastName;
-
 	std::cout << "Enter last name: ";
-	getline(std::cin, *lastname);
-	while (!verifyNameField(*lastname))
+	getline(std::cin, this->_lastName);
+	while (!verifyNameField(this->_lastName))
 	{
 		if (std::cin.eof())
 		{
@@ -84,17 +80,15 @@ void	Contact::addLastName()
 		}
 		std::cin.clear();
 		std::cout << "Please enter a valid last name: ";
-		getline(std::cin, *lastname);
+		getline(std::cin, this->_lastName);
 	}
 }
 
 void	Contact::addNickName()
 {
-	std::string	*nickname = &this->_nickName;
-
 	std::cout << "Enter nickname: ";
-	getline(std::cin, *nickname);
-	while (!checkForWhiteSpace(*nickname))
+	getline(std::cin, this->_nickName);
+	while (!checkForWhiteSpace(this->_nickName))
 	{
 		if (std::cin.eof())
 		{
@@ -103,17 +97,15 @@ void	Contact::addNickName()
 		}
 		std::cin.clear();
 		std::cout << "Please enter a valid nickname: ";
-		getline(std::cin, *nickname);
+		getline(std::cin, this->_nickName);
 	}
 }
 
 void	Contact::addPhoneNumber()
 {
-	std::string	*phonenumber = &this->_phoneNumber;
-
 	std::cout << "Enter phone number: ";
-	getline(std::cin, *phonenumber);
-	while (!verifyPhoneNumber(*phonenumber))
+	getline(std::cin, this->_phoneNumber);
+	while (!verifyPhoneNumber(this->_phoneNumber))
 	{
 		if (std::cin.eof())
 		{
@@ -122,17 +114,15 @@ void	Contact::addPhoneNumber()
 		}
 		std::cin.clear();
 		std::cout << "Please enter a valid phone number: ";
-		getline(std::cin, *phonenumber);
+		getline(std::cin, this->_phoneNumber);
 	}
 }
 
 void	Contact::addSecret()
 {
-	std::string	*secret = &this->_darkestSecret;
-
 	std::cout << "Enter darkest secret: ";
-	getline(std::cin, *secret);
-	while (!checkForWhiteSpace(*secret))
+	getline(std::cin, this->_darkestSecret);
+	while (!checkForWhiteSpace(this->_darkestSecret))
 	{
 		if (std::cin.eof())
 		{
@@ -141,7 +131,7 @@ void	Contact::addSecret()
 		}
 		std::cin.clear();
 		std::cout << "Please enter a valid secret: ";
-		getline(std::cin, *secret);
+		getline(std::cin, this->_darkestSecret);
 	}
 }
 

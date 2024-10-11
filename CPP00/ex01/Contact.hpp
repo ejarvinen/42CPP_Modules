@@ -17,12 +17,6 @@ class Contact {
 		std::string		_phoneNumber;
 		std::string		_darkestSecret;
 
-	public:
-
-		Contact();
-		~Contact();
-
-		void			createContact(int index);
 		bool			verifyNameField(std::string text);
 		bool			verifyPhoneNumber(std::string text);
 		bool			checkForWhiteSpace(std::string text);
@@ -31,10 +25,18 @@ class Contact {
 		void			addNickName();
 		void			addPhoneNumber();
 		void			addSecret();
-		void			printContact();
-		void			printOne();
 		void			printField(std::string text);
+
+	public:
+
+		Contact();
+		~Contact();
+
+		void			createContact(int index);
+		void			printContact();
 		unsigned int	getContactID();
+		void			printOne();
+		
 };
 
 #endif

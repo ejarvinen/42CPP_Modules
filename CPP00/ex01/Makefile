@@ -2,9 +2,9 @@ NAME := phonebook
 
 CC := g++
 
-FLAGS := -std=c++11 -Wall -Wextra -Werror
+FLAGS := -Wall -Wextra -Werror
 
-SOURCES := main.cpp Phonebook.cpp Contact.cpp
+SOURCES := main.cpp PhoneBook.cpp Contact.cpp
 
 all: $(NAME)
 

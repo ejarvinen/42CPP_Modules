@@ -86,7 +86,7 @@ void	PhoneBook::searchContacts()
 				else
 					std::cout << "No contacts matching this ID. Please try again." << std::endl;
 			}
-			catch (const std::out_of_range &e)
+			catch (...)
 			{
 				std::cout << "No contacts matching this ID. Please try again." << std::endl;
 			}
