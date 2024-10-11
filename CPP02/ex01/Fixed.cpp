@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 10:45:04 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/11 16:55:26 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/11 17:24:55 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,17 @@ Fixed::Fixed(const Fixed &copy)
 {
 	std::cout << "Copy constructor called" << std::endl;
 	value = copy.getRawBits();
+}
+
+Fixed::Fixed(const int param)
+{
+	std::cout << "Int constructor called" << std::endl;
+	this->value = param << this->fbits;
+}
+
+Fixed::Fixed(const float param)
+{
+	std::cout << "Float constructor called" << std::endl;
 }
 
 Fixed::~Fixed()
@@ -49,4 +60,14 @@ void	Fixed::setRawBits(int const raw)
 {
 	std::cout << "setRawBits member function called" << std::endl;
 	this->value = raw;
+}
+
+float	Fixed::toFloat(void) const
+{
+	
+}
+
+int	Fixed::toInt(void) const
+{
+	
 }
