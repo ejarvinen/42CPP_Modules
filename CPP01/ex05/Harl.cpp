@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 12:21:41 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/09 16:03:19 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/11 09:45:37 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,25 +51,26 @@ Harl::Level	Harl::convertLevel(std::string level)
 
 void	Harl::complain(std::string level)
 {
-	enum	Level newVar = convertLevel(level);
+	enum	Level levelIndex = convertLevel(level);
+	void	(Harl::*functionPtr[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	
-	switch (newVar)
+	switch (levelIndex)
 	{
 		case 0:
 		{
-			return (this->debug());
+			return ((this->*functionPtr[levelIndex])());
 		}
 		case 1:
 		{
-			return (this->info());
+			return ((this->*functionPtr[levelIndex])());
 		}
 		case 2:
 		{
-			return (this->warning());
+			return ((this->*functionPtr[levelIndex])());
 		}
 		case 3:
 		{
-			return (this->error());
+			return ((this->*functionPtr[levelIndex])());
 		}
 		default :
 			std::cout << "Invalid complaint" << std::endl;

@@ -2,7 +2,7 @@ NAME := brainz
 
 CC := g++
 
-FLAGS := -std=c++11 -Wall -Wextra -Werror
+FLAGS := -Wall -Wextra -Werror
 
 SOURCES := main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 

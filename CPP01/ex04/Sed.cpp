@@ -6,13 +6,13 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 11:19:35 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/09 11:55:04 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/11 09:49:20 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Sed.hpp"
 
-void	replace(std::string *line, std::string s1, std::string s2)
+void	moc_replace(std::string *line, std::string s1, std::string s2)
 {
 	size_t	pos;
 
@@ -44,7 +44,7 @@ int	sed(char *argv[])
 	while (getline(inFile, line))
 	{
 		if (!s1.empty() && s1.compare(s2) != 0)
-			replace(&line, s1, s2);
+			moc_replace(&line, s1, s2);
 		outFile << line;
 		outFile << std::endl;
 	}

@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 12:21:39 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/09 15:46:11 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/11 09:35:24 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,14 @@ class Harl
 				FAIL
 		};
 
+		Harl::Level	convertLevel(std::string level);
+
 	public:
 
 		Harl();
 		~Harl();
 
 		void		complain(std::string level);
-		Harl::Level	convertLevel(std::string level);
 };
-
-
-
 
 #endif

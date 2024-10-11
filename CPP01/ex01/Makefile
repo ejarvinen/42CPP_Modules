@@ -2,7 +2,7 @@ NAME := horde
 
 CC := g++
 
-FLAGS := -std=c++11 -Wall -Wextra -Werror
+FLAGS := -Wall -Wextra -Werror
 
 SOURCES := main.cpp Zombie.cpp zombieHorde.cpp
 

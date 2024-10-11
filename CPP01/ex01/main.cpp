@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 14:02:31 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/07 14:02:36 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/11 10:10:52 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(void)
 	std::cout << "Let's call all the " << hordeSize << " cadets to announce themselves:" << std::endl;
 	for (zombie = 0; zombie < hordeSize; zombie++)
 		horde[zombie].announce();
-	std::cout << "********************" << std::endl;
+	std::cout << std::endl;
 	std::cout << "Bye bye zombies:" << std::endl;
 	delete[] horde;
 	return (0);

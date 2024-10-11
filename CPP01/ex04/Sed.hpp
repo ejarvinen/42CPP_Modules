@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 11:17:20 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/08 17:54:04 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/11 09:46:32 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@
 # include <string>
 
 int		sed(char *argv[]);
-void	replace(std::string line, std::string original, std::string replacement);
+void	moc_replace(std::string line, std::string original, std::string replacement);
 
 #endif
