@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 14:02:04 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/07 14:14:57 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/11 15:09:44 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(void)
 	std::string	&stringREF = str;
 
 	std::cout << "Memory address held by str: " << &str << std::endl;
-	std::cout << "Memory address held by stringPTR: " << &*stringPTR << std::endl;
+	std::cout << "Memory address held by stringPTR: " << stringPTR << std::endl;
 	std::cout << "Memory address held by stringREF: " << &stringREF << std::endl;
 
 	std::cout << std::endl;

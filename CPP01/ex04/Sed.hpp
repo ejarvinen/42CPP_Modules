@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 11:17:20 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/11 09:46:32 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/11 15:38:41 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <fstream>
+# include <istream>
 # include <string>
 
 int		sed(char *argv[]);
