@@ -1,6 +1,6 @@
 NAME := brainz
 
-CC := g++
+CC := c++
 
 FLAGS := -Wall -Wextra -Werror
 

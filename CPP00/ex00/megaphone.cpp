@@ -23,8 +23,6 @@ void	megaphone(int argc, char *argv[])
 			}
 			std::cout << chr;
 		}
-		if (arg < argc - 1)
-			std::cout << " ";
 	}
 	std::cout << "\n";
 }

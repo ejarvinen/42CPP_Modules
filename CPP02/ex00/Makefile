@@ -1,10 +1,10 @@
-NAME := horde
+NAME := fixed
 
 CC := c++
 
 FLAGS := -Wall -Wextra -Werror
 
-SOURCES := main.cpp Zombie.cpp zombieHorde.cpp
+SOURCES := main.cpp Fixed.cpp
 
 all: $(NAME)
 
