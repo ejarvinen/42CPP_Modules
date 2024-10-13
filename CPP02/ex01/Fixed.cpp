@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 10:45:04 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/12 17:27:17 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/13 11:01:47 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,11 @@ Fixed	&Fixed::operator=(const Fixed &overloadCopy)
 
 int	Fixed::getRawBits(void) const
 {
-	//std::cout << "getRawBits member function called" << std::endl;
 	return (this->value);
 }
 
 void	Fixed::setRawBits(int const raw)
 {
-	//std::cout << "setRawBits member function called" << std::endl;
 	this->value = raw;
 }
 
@@ -81,5 +79,6 @@ int	Fixed::toInt(void) const
 
 std::ostream&	operator<<(std::ostream &out, const Fixed &obj)
 {
-	return (out << obj.toFloat());
+	out << obj.toFloat();
+	return (out);
 }

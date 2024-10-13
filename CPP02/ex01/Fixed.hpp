@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 10:38:42 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/12 11:10:17 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/13 10:52:08 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ class Fixed {
 		int		toInt(void) const;
 };
 
-std::ostream&	operator<<(std::ostream out, const Fixed &obj);
+std::ostream&	operator<<(std::ostream &out, const Fixed &obj);
 
 #endif
