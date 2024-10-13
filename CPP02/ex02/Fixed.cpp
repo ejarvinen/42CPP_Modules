@@ -1,0 +1,230 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/11 10:45:04 by emansoor          #+#    #+#             */
+/*   Updated: 2024/10/13 15:13:50 by emansoor         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Fixed.hpp"
+
+Fixed::Fixed()
+{
+	std::cout << "Default constructor called" << std::endl;
+	this->value = 0;
+}
+
+Fixed::Fixed(const Fixed &copy)
+{
+	std::cout << "Copy constructor called" << std::endl;
+	*this = copy;
+}
+
+Fixed::Fixed(const int param)
+{
+	std::cout << "Int constructor called" << std::endl;
+	this->value = param << this->fbits;
+}
+
+Fixed::Fixed(const float param)
+{
+	std::cout << "Float constructor called" << std::endl;
+	this->value = param * (float)(1 << this->fbits);
+}
+
+Fixed::~Fixed()
+{
+	std::cout << "Destructor called" << std::endl;
+}
+
+Fixed	&Fixed::operator=(const Fixed &overloadCopy)
+{
+	std::cout << "Copy assignment operator called" << std::endl;
+	if (this != &overloadCopy)
+	{
+		value = overloadCopy.getRawBits();
+	}
+	return (*this);
+}
+
+int	Fixed::getRawBits(void) const
+{
+	return (this->value);
+}
+
+void	Fixed::setRawBits(int const raw)
+{
+	this->value = raw;
+}
+
+float	Fixed::toFloat(void) const
+{
+	float	temp;
+
+	temp = (float)this->value / (float)(1 << this->fbits);
+	return (temp);
+}
+
+int	Fixed::toInt(void) const
+{
+	float	temp;
+
+	temp = (float)this->value / (float)(1 << this->fbits);
+	return ((int)roundf(temp));
+}
+
+/********************COMPARISON OVERLOADS********************/
+
+bool	Fixed::operator==(Fixed &other)
+{
+	if (this->getRawBits() == other.getRawBits())
+		return (true);
+	return (false);
+}
+
+bool	Fixed::operator!=(Fixed &other)
+{
+	return (!(*this == other));
+}
+
+bool	Fixed::operator<(Fixed &other)
+{
+	if (this->getRawBits() < other.getRawBits())
+		return (true);
+	return (false);
+}
+
+bool	Fixed::operator>(Fixed &other)
+{
+	return (!(*this < other));
+}
+
+bool	Fixed::operator<=(Fixed &other)
+{
+	if (this->getRawBits() <= other.getRawBits())
+		return (true);
+	return (false);
+}
+
+bool	Fixed::operator>=(Fixed &other)
+{
+	return (!(*this <= other));
+}
+
+/********************ARITHMETIC OVERLOADS********************/
+
+int	Fixed::operator+(Fixed other)
+{
+	int	result;
+
+	result = this->getRawBits() + other.getRawBits();
+	return (result);
+}
+
+int	Fixed::operator-(Fixed other)
+{
+	int	result;
+
+	result = this->getRawBits() - other.getRawBits();
+	return (result);
+}
+
+int	Fixed::operator*(Fixed other)
+{
+	int	result;
+
+	result = this->getRawBits() * other.getRawBits();
+	return (result);
+}
+
+float	Fixed::operator/(Fixed other)
+{
+	float	result;
+
+	result = this->getRawBits() * other.getRawBits();
+	return (result);
+}
+
+/********************INCREMENT/DECREMENT OVERLOADS********************/
+
+Fixed	Fixed::operator++()
+{
+	float	res;
+
+	res = this->getRawBits() + 1 / (1 << this->fbits * 3);
+	this->value = res;
+	return (*this);
+}
+
+Fixed	Fixed::operator++(int) // this doesn't do shit?
+{
+	float	res;
+	Fixed	temp;
+
+	temp = *this;
+	res = this->getRawBits() + 1 / (1 << this->fbits * 3);
+	this->value = res;
+	return (temp);
+}
+
+Fixed	Fixed::operator--()
+{
+	float	res;
+
+	res = this->getRawBits() - 1 / (1 << this->fbits * 3);
+	this->value = res;
+	return (*this);
+}
+
+Fixed	Fixed::operator--(int)
+{
+	float	res;
+	Fixed	temp;
+
+	temp = *this;
+	res = this->getRawBits() - 1 / (1 << this->fbits * 3);
+	this->value = res;
+	return (temp);
+}
+
+/********************MIN/MAX OVERLOADS********************/
+
+Fixed		&Fixed::min(Fixed &f1, Fixed &f2)
+{
+	if (f1.getRawBits() > f2.getRawBits())
+		return (f2);
+	return (f1);
+}
+
+const Fixed	&Fixed::min(const Fixed &f1, const Fixed &f2)
+{
+	if (f1.getRawBits() > f2.getRawBits())
+		return (f2);
+	return (f1);
+}
+
+Fixed		&Fixed::max(Fixed &f1, Fixed &f2)
+{
+	if (f1.getRawBits() >= f2.getRawBits())
+		return (f1);
+	return (f2);
+}
+
+const Fixed	&Fixed::max(const Fixed &f1, const Fixed &f2)
+{
+	if (f1.getRawBits() >= f2.getRawBits())
+		return (f1);
+	return (f2);
+}
+
+/********************INSERTION OPERATOR OVERLOAD********************/
+
+std::ostream&	operator<<(std::ostream &out, const Fixed &obj)
+{
+	out << obj.toFloat();
+	return (out);
+}
