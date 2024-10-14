@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 10:38:42 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/13 15:13:57 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/14 14:47:35 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ class Fixed {
 		bool	operator<=(Fixed &other);
 		bool	operator>=(Fixed &other);
 
-		int		operator+(Fixed other);
-		int		operator-(Fixed other);
-		int		operator*(Fixed other);
+		float	operator+(Fixed other);
+		float	operator-(Fixed other);
+		float	operator*(Fixed other);
 		float	operator/(Fixed other);
 
 		Fixed	operator++();

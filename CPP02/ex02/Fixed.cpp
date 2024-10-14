@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 10:45:04 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/13 15:13:50 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/14 15:13:57 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,13 @@ float	Fixed::toFloat(void) const
 {
 	float	temp;
 
-	temp = (float)this->value / (float)(1 << this->fbits);
+	temp = this->value / (float)(1 << this->fbits);
 	return (temp);
 }
 
 int	Fixed::toInt(void) const
 {
-	float	temp;
-
-	temp = (float)this->value / (float)(1 << this->fbits);
-	return ((int)roundf(temp));
+	return (this->value >> this->fbits);
 }
 
 /********************COMPARISON OVERLOADS********************/
@@ -112,32 +109,34 @@ bool	Fixed::operator<=(Fixed &other)
 
 bool	Fixed::operator>=(Fixed &other)
 {
-	return (!(*this <= other));
+	if (this->getRawBits() >= other.getRawBits())
+		return (true);
+	return (false);
 }
 
 /********************ARITHMETIC OVERLOADS********************/
 
-int	Fixed::operator+(Fixed other)
+float	Fixed::operator+(Fixed other)
 {
-	int	result;
+	float	result;
 
-	result = this->getRawBits() + other.getRawBits();
+	result = this->toFloat() + other.toFloat();
 	return (result);
 }
 
-int	Fixed::operator-(Fixed other)
+float	Fixed::operator-(Fixed other)
 {
-	int	result;
+	float	result;
 
-	result = this->getRawBits() - other.getRawBits();
+	result = this->toFloat() - other.toFloat();
 	return (result);
 }
 
-int	Fixed::operator*(Fixed other)
+float	Fixed::operator*(Fixed other)
 {
-	int	result;
+	float	result;
 
-	result = this->getRawBits() * other.getRawBits();
+	result = this->toFloat() * other.toFloat();
 	return (result);
 }
 
@@ -145,7 +144,7 @@ float	Fixed::operator/(Fixed other)
 {
 	float	result;
 
-	result = this->getRawBits() * other.getRawBits();
+	result = this->toFloat() / other.toFloat();
 	return (result);
 }
 
@@ -155,18 +154,18 @@ Fixed	Fixed::operator++()
 {
 	float	res;
 
-	res = this->getRawBits() + 1 / (1 << this->fbits * 3);
+	res = this->getRawBits() + 1;
 	this->value = res;
 	return (*this);
 }
 
-Fixed	Fixed::operator++(int) // this doesn't do shit?
+Fixed	Fixed::operator++(int)
 {
 	float	res;
 	Fixed	temp;
 
 	temp = *this;
-	res = this->getRawBits() + 1 / (1 << this->fbits * 3);
+	res = this->getRawBits() + 1;
 	this->value = res;
 	return (temp);
 }
@@ -175,7 +174,7 @@ Fixed	Fixed::operator--()
 {
 	float	res;
 
-	res = this->getRawBits() - 1 / (1 << this->fbits * 3);
+	res = this->getRawBits() - 1;
 	this->value = res;
 	return (*this);
 }
@@ -186,7 +185,7 @@ Fixed	Fixed::operator--(int)
 	Fixed	temp;
 
 	temp = *this;
-	res = this->getRawBits() - 1 / (1 << this->fbits * 3);
+	res = this->getRawBits() - 1;
 	this->value = res;
 	return (temp);
 }
