@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 10:45:04 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/13 11:01:47 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/14 15:28:35 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,13 @@ float	Fixed::toFloat(void) const
 {
 	float	temp;
 
-	temp = (float)this->value / (float)(1 << this->fbits);
+	temp = this->value / (float)(1 << this->fbits);
 	return (temp);
 }
 
 int	Fixed::toInt(void) const
 {
-	float	temp;
-
-	temp = (float)this->value / (float)(1 << this->fbits);
-	return ((int)roundf(temp));
+	return (this->value >> this->fbits);
 }
 
 std::ostream&	operator<<(std::ostream &out, const Fixed &obj)
