@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 14:02:43 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/11 10:06:58 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/14 17:39:53 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ int	main(void)
 
 	allocatedZombie1 = newZombie("Albert");
 	if (!allocatedZombie1)
+	{
 		std::cout << "Whoopsie, allocating Albert failed" << std::endl;
+		return (1);
+	}
 	std::cout << "This is Albert the allocated Zombie announcing himself:" << std::endl;
 	allocatedZombie1->announce();
 
@@ -30,7 +33,10 @@ int	main(void)
 	std::cout << std::endl;
 	allocatedZombie2 = newZombie("Clement");
 	if (!allocatedZombie1)
+	{
 		std::cout << "Whoopsie, allocating Clement failed" << std::endl;
+		return (1);
+	}
 	std::cout << "This is Clement the allocated Zombie announcing himself:" << std::endl;
 	allocatedZombie2->announce();
 

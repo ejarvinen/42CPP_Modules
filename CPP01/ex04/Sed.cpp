@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 11:19:35 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/11 15:46:08 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/14 17:56:00 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ void	moc_replace(std::string *buffer, std::string s1, std::string s2)
 	{
 		(*buffer).erase(pos, s1.length());
 		(*buffer).insert(pos, s2);
-		pos = (*buffer).find(s1);
+		pos = (*buffer).find(s1, pos + s2.length());
 	}
 }
 
 int	sed(char *argv[])
 {
-	char		chr;
+	char			chr;
 	std::string		buffer;
 	std::string		s1;
 	std::string		s2;
