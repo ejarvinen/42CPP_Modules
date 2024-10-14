@@ -8,7 +8,7 @@ SOURCES := main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(SOURCES)
 	$(CC) $(FLAGS) $(SOURCES) -o $(NAME)
 
 fclean:

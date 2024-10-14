@@ -8,7 +8,7 @@ SOURCES := main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(SOURCES)
 	$(CC) $(FLAGS) $(SOURCES) -o $(NAME)
 
 fclean:
