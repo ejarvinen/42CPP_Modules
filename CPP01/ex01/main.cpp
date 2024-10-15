@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 14:02:31 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/14 17:47:16 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/15 10:33:36 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(void)
 	int			zombie;
 	std::string	name;
 
-	hordeSize = 0;
+	hordeSize = 10;
 	name = "Edmund";
 	horde = zombieHorde(hordeSize, name);
 	if (!horde)
