@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:50:15 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/15 12:04:20 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/15 14:45:15 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CLAPTRAP_H
 
 # include <string>
+# include <iostream>
 
 class ClapTrap {
 
