@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 10:38:42 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/14 14:47:35 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/15 11:55:24 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class Fixed {
 		Fixed(const int param);
 		Fixed(const float param);
 		~Fixed();
-		Fixed&	operator=(const Fixed &overloadCopy);
+		Fixed&	operator=(const Fixed &other);
 
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);

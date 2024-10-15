@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 10:45:04 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/15 11:16:44 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/15 11:55:53 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ Fixed::Fixed(const float param)
 Fixed::~Fixed()
 {}
 
-Fixed	&Fixed::operator=(const Fixed &overloadCopy)
+Fixed	&Fixed::operator=(const Fixed &other)
 {
-	if (this != &overloadCopy)
+	if (this != &other)
 	{
-		value = overloadCopy.getRawBits();
+		value = other.getRawBits();
 	}
 	return (*this);
 }
