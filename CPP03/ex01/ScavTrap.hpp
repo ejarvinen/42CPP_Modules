@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 16:02:48 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/15 16:23:06 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/15 17:26:56 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "ClapTrap.hpp"
 
-class ScavTrap: public ClapTrap
+class ScavTrap: ClapTrap
 {
 	private:
 		/* data */
