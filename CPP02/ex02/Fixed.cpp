@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 10:45:04 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/14 15:13:57 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/15 11:16:44 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,29 @@
 
 Fixed::Fixed()
 {
-	std::cout << "Default constructor called" << std::endl;
 	this->value = 0;
 }
 
 Fixed::Fixed(const Fixed &copy)
 {
-	std::cout << "Copy constructor called" << std::endl;
 	*this = copy;
 }
 
 Fixed::Fixed(const int param)
 {
-	std::cout << "Int constructor called" << std::endl;
 	this->value = param << this->fbits;
 }
 
 Fixed::Fixed(const float param)
 {
-	std::cout << "Float constructor called" << std::endl;
-	this->value = param * (float)(1 << this->fbits);
+	this->value = roundf(param * (float)(1 << this->fbits));
 }
 
 Fixed::~Fixed()
-{
-	std::cout << "Destructor called" << std::endl;
-}
+{}
 
 Fixed	&Fixed::operator=(const Fixed &overloadCopy)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &overloadCopy)
 	{
 		value = overloadCopy.getRawBits();
@@ -78,9 +71,7 @@ int	Fixed::toInt(void) const
 
 bool	Fixed::operator==(Fixed &other)
 {
-	if (this->getRawBits() == other.getRawBits())
-		return (true);
-	return (false);
+	return (this->getRawBits() == other.getRawBits());
 }
 
 bool	Fixed::operator!=(Fixed &other)
@@ -90,9 +81,7 @@ bool	Fixed::operator!=(Fixed &other)
 
 bool	Fixed::operator<(Fixed &other)
 {
-	if (this->getRawBits() < other.getRawBits())
-		return (true);
-	return (false);
+	return (this->getRawBits() < other.getRawBits());
 }
 
 bool	Fixed::operator>(Fixed &other)
@@ -102,16 +91,12 @@ bool	Fixed::operator>(Fixed &other)
 
 bool	Fixed::operator<=(Fixed &other)
 {
-	if (this->getRawBits() <= other.getRawBits())
-		return (true);
-	return (false);
+	return (this->getRawBits() <= other.getRawBits());
 }
 
 bool	Fixed::operator>=(Fixed &other)
 {
-	if (this->getRawBits() >= other.getRawBits())
-		return (true);
-	return (false);
+	return (this->getRawBits() >= other.getRawBits());
 }
 
 /********************ARITHMETIC OVERLOADS********************/

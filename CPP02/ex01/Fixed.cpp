@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 10:45:04 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/14 15:28:35 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/15 11:14:14 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ Fixed::Fixed(const int param)
 Fixed::Fixed(const float param)
 {
 	std::cout << "Float constructor called" << std::endl;
-	this->value = param * (float)(1 << this->fbits);
+	this->value = roundf(param * (float)(1 << this->fbits));
 }
 
 Fixed::~Fixed()
