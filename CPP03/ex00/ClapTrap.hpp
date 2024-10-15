@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:50:15 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/15 10:55:55 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/15 12:04:20 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ class ClapTrap {
 		int			_attackDamage;
 
 	public:
+
+		ClapTrap();
+		ClapTrap(std::string name);
+		ClapTrap(const ClapTrap &copy);
+		~ClapTrap();
+		ClapTrap&	operator=(const ClapTrap &other);
 
 		void	attack(const std::string& target);
 		void	takeDamage(unsigned int amount);
