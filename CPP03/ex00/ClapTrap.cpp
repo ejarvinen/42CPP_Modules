@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:50:18 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/15 15:53:59 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/16 14:30:18 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	if (this->_energyPoints - 1 >= 0)
 	{
 		std::cout << "ClapTrap " << this->_name << " got repaired for the worth of " << amount << " Hit Points" << std::endl;
+		this->_hitPoints = this->_hitPoints + amount;
 		this->_energyPoints--;
 	}
 	else
