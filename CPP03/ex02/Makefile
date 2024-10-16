@@ -1,12 +1,12 @@
-NAME := scavtrap
+NAME := fragtrap
 
 CC := c++
 
 FLAGS := -Wall -Wextra -Werror
 
-HEADERS := ClapTrap.hpp ScavTrap.hpp
+HEADERS := ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
 
-SOURCES := main.cpp ClapTrap.cpp ScavTrap.cpp
+SOURCES := main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 
 OBJECTS := $(SOURCES:.cpp=.o)
 
