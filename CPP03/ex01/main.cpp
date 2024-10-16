@@ -6,34 +6,37 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:50:12 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/15 16:00:34 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/16 14:48:32 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int	main(void)
 {
-	/* ClapTrap	Fielding;
-	ClapTrap	Gower("Gower");
-	ClapTrap	FakeGower(Gower);
+	ScavTrap	Herbert;
+	ScavTrap	Isaac("Isaac");
+	ScavTrap	FakeIsaac(Isaac);
 	int			punch;
 
-	std::cout << "Mr. Fielding (who doesn't have a name) attacks poor Mr. Gower:" << std::endl;
-	Fielding.attack("Gower");
-	Gower.takeDamage(5);
+	std::cout << "Mr. Herbert (who doesn't have a name) attacks poor Mr. Isaac:" << std::endl;
+	Herbert.attack("Isaac");
+	Isaac.takeDamage(5);
 	
 	std::cout << std::endl;
-	std::cout << "Mr. Gower's evil cousin attacks Mr. Fielding, however, Mr. Fielding suffers no damages:" << std::endl;
-	FakeGower.attack("Fielding");
-	Fielding.takeDamage(0);
+	std::cout << "Mr. Isaac's evil cousin attacks Mr. Herbert, however, Mr. Herbert suffers no damages:" << std::endl;
+	FakeIsaac.attack("Herbert");
+	Herbert.takeDamage(0);
 	
 	std::cout << std::endl;
-	std::cout << "Mr. Fielding goes livid due to this atrocity and decides to show Mr. Gover's evil cousin who's da boss:" << std::endl;
-	for (punch = 0; punch < 12; punch++)
-		Fielding.attack("FakeGower");
+	std::cout << "Mr. Herbert goes livid due to this atrocity and decides to show Mr. Isaac's evil cousin who's da boss:" << std::endl;
+	for (punch = 0; punch < 10; punch++)
+		Herbert.attack("FakeIsaac");
 
-	Fielding.beRepaired(12); */
+	std::cout << std::endl;
+	FakeIsaac.guardGate();
+	std::cout << "Mr. Herbert (who still doesn't know his name) drinks Kool-Aid to calm down:" << std::endl;
+	Herbert.beRepaired(10);
 	
 	return (0);
 }
