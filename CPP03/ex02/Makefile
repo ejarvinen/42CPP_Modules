@@ -4,9 +4,9 @@ CC := c++
 
 FLAGS := -Wall -Wextra -Werror
 
-HEADERS := ClapTrap.hpp ScavTrap.hpp FragTrap.hpp
+HEADERS := ClapTrap.hpp FragTrap.hpp
 
-SOURCES := main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
+SOURCES := main.cpp ClapTrap.cpp FragTrap.cpp
 
 OBJECTS := $(SOURCES:.cpp=.o)
 
