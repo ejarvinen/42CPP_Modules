@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 14:19:09 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/15 18:40:50 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/17 12:31:51 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 HumanB::HumanB(std::string name) : _name(name)
 {
-	this->_name = name;
 	this->_weapon = nullptr;
 }
 HumanB::~HumanB(){};
