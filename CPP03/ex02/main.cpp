@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:50:12 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/16 15:52:25 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/18 11:09:44 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	main(void)
 	
 	std::cout << std::endl;
 	std::cout << "Mr. Kirk's evil cousin attacks Mr. Jackson, however, Mr. Jackson suffers no damages:" << std::endl;
-	FakeKirk.attack("Jackson");
+	for (punch = 0; punch < 12; punch++)
+		FakeKirk.attack("Jackson");
 	Jackson.takeDamage(0);
 	
 	std::cout << std::endl;

@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:50:12 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/16 14:48:32 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/18 11:11:05 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(void)
 	
 	std::cout << std::endl;
 	std::cout << "Mr. Herbert goes livid due to this atrocity and decides to show Mr. Isaac's evil cousin who's da boss:" << std::endl;
-	for (punch = 0; punch < 10; punch++)
+	for (punch = 0; punch < 11; punch++)
 		Herbert.attack("FakeIsaac");
 
 	std::cout << std::endl;
