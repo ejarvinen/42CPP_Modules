@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 10:50:18 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/16 14:30:40 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/19 11:31:09 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,14 @@ ClapTrap	&ClapTrap::operator=(const ClapTrap &other)
 
 void	ClapTrap::attack(const std::string& target)
 {
-	if (this->_energyPoints - 1 >= 0)
+	if (this->_energyPoints - 1 >= 0 && this->_hitPoints > 0)
 	{
 		std::cout << "ClapTrap " << this->_name << " attacks " << target << ", causing " << this->_attackDamage << " points of damage" << std::endl;
 		this->_energyPoints--;
 	}
 	else
 	{
-		std::cout << "ClapTrap " << this->_name << " doesn't have enough Energy Points to attack!" << std::endl;
+		std::cout << "ClapTrap " << this->_name << " doesn't have enough points to attack!" << std::endl;
 	}
 }
 
@@ -66,7 +66,7 @@ void	ClapTrap::takeDamage(unsigned int amount)
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	if (this->_energyPoints - 1 >= 0)
+	if (this->_energyPoints - 1 >= 0 && this->_hitPoints > 0)
 	{
 		std::cout << "ClapTrap " << this->_name << " got repaired for the worth of " << amount << " Hit Points" << std::endl;
 		this->_hitPoints = this->_hitPoints + amount;
@@ -74,6 +74,6 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	}
 	else
 	{
-		std::cout << "ClapTrap " << this->_name << " doesn't have enough Energy Points to be repaired!" << std::endl;
+		std::cout << "ClapTrap " << this->_name << " doesn't have enough points to be repaired!" << std::endl;
 	}
 }
