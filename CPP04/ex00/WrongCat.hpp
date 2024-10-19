@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 12:50:37 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/19 13:48:10 by emansoor         ###   ########.fr       */
+/*   Created: 2024/10/19 14:00:47 by emansoor          #+#    #+#             */
+/*   Updated: 2024/10/19 14:25:18 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_H
-# define CAT_H
+#ifndef WRONGCAT_H
+# define WRONGCAT_H
 
-# include "Animal.hpp"
+# include "WrongAnimal.hpp"
 
-class Cat : public Animal {
+class WrongCat : public WrongAnimal {
 
 	public:
 
-		Cat();
-		Cat(std::string type);
-		Cat(const Cat &copy);
-		~Cat();
-		Cat&	operator=(const Cat &other);
+		WrongCat();
+		WrongCat(std::string type);
+		WrongCat(const WrongCat &copy);
+		~WrongCat();
+		WrongCat&	operator=(const WrongCat &other);
 
-		void			makeSound() const override;
+		void			makeSound() const;
 		std::string	getType() const override;
 };
 
