@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:50:40 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/19 16:23:06 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/20 14:02:29 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ Dog::Dog() : Animal()
 	try
 	{
 		ideas = new Brain;
-		if (ideas)
-		{}
 	}
 	catch(...)
 	{
@@ -37,8 +35,6 @@ Dog::Dog(std::string type) : Animal()
 	try
 	{
 		ideas = new Brain;
-		if (ideas)
-		{}
 	}
 	catch(...)
 	{
@@ -50,12 +46,25 @@ Dog::Dog(std::string type) : Animal()
 Dog::Dog(const Dog &copy)
 {
 	std::cout << "Dog copy constructor called" << std::endl;
-	*this = copy;
+	try
+	{
+		ideas = new Brain;
+		if (ideas)
+		{
+			*ideas = *(copy.ideas);
+		}
+	}
+	catch(...)
+	{
+		std::cout << "Failed to allocate a Brain copy for Dog" << std::endl;
+	}
+	type = copy.type;
 }
 
 Dog::~Dog()
 {
 	std::cout << "Dog destructor called" << std::endl;
+	delete(ideas);
 }
 
 Dog	&Dog::operator=(const Dog &other)
@@ -63,6 +72,7 @@ Dog	&Dog::operator=(const Dog &other)
 	if (this != &other)
 	{
 		type = other.type;
+		*ideas = *(other.ideas);
 	}
 	return (*this);
 }
@@ -75,4 +85,9 @@ void	Dog::makeSound() const
 std::string	Dog::getType() const
 {
 	return (this->type);
+}
+
+void	Dog::printAddress()
+{
+	std::cout << "Address of this " << type << "'s Brain is: " << this->ideas << std::endl;
 }
