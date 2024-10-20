@@ -6,13 +6,13 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 14:00:37 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/19 14:12:25 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/20 14:57:53 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongAnimal.hpp"
 
-WrongAnimal::WrongAnimal() : type("animal")
+WrongAnimal::WrongAnimal() : type("wronganimal")
 {
 	std::cout << "WrongAnimal default constructor called" << std::endl;
 }

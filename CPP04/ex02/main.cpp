@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:50:49 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/20 14:50:12 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/20 15:00:34 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ int main()
 	i->makeSound(); //will output the cat sound!
 	j->makeSound();
 	//meta->makeSound();
+
+	delete(j);
+	delete(i);
 	
 	return 0;
 }
