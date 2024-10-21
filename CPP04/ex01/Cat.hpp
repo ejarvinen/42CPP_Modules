@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:50:37 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/19 15:37:42 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/21 09:32:15 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ class Cat : public Animal {
 		~Cat();
 		Cat&	operator=(const Cat &other);
 
-		void			makeSound() const override;
+		void		makeSound() const override;
 		std::string	getType() const override;
+		
 };
 
 #endif

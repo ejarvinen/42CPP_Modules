@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:50:31 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/20 14:42:35 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/21 09:31:32 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class Animal {
 
 		virtual void			makeSound() const = 0;
 		virtual std::string		getType() const = 0;
-	
+		
 };
 
 #endif

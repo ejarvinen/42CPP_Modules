@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 15:34:57 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/19 15:45:19 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/21 09:32:12 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Brain {
 		Brain(const Brain &copy);
 		~Brain();
 		Brain&	operator=(const Brain &other);
-
+		
 };
 
 #endif

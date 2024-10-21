@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:50:45 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/19 14:43:27 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/21 09:32:33 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ class Dog : public Animal {
 		~Dog();
 		Dog&	operator=(const Dog &other);
 
-		void			makeSound() const override;
-		std::string		getType() const override;
+		void		makeSound() const override;
+		std::string	getType() const override;
+		
 };
-
 
 #endif
