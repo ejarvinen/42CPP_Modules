@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:50:40 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/20 14:02:29 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/21 12:31:08 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ Dog::Dog(const Dog &copy)
 
 Dog::~Dog()
 {
-	std::cout << "Dog destructor called" << std::endl;
 	delete(ideas);
+	std::cout << "Dog destructor called" << std::endl;
 }
 
 Dog	&Dog::operator=(const Dog &other)
@@ -80,11 +80,6 @@ Dog	&Dog::operator=(const Dog &other)
 void	Dog::makeSound() const
 {
 	std::cout << "Woof woof!" << std::endl;
-}
-
-std::string	Dog::getType() const
-{
-	return (this->type);
 }
 
 void	Dog::printAddress()
