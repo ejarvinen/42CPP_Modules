@@ -1,38 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/17 12:50:45 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/21 12:33:57 by emansoor         ###   ########.fr       */
+/*   Created: 2024/10/19 14:00:40 by emansoor          #+#    #+#             */
+/*   Updated: 2024/10/21 12:17:41 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_H
-# define DOG_H
+#ifndef WRONGANIMAL_H
+# define WRONGANIMAL_H
 
-# include "Animal.hpp"
-# include "Brain.hpp"
+# include <string>
+# include <iostream>
 
-class Dog : public Animal {
+class WrongAnimal {
 
-	private:
+	protected:
 
-		Brain	*ideas;
+		std::string	type;
 
 	public:
 
-		Dog();
-		Dog(std::string type);
-		Dog(const Dog &copy);
-		~Dog();
-		Dog&	operator=(const Dog &other);
+		WrongAnimal();
+		WrongAnimal(std::string type);
+		WrongAnimal(const WrongAnimal &copy);
+		virtual ~WrongAnimal();
+		WrongAnimal&	operator=(const WrongAnimal &other);
 
-		void	makeSound() const override;
-		void	printAddress();
-		
+		void		makeSound() const;
+		std::string	getType() const;
+	
 };
 
 #endif

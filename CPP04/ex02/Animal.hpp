@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:50:31 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/21 09:31:32 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/21 12:34:49 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ class Animal {
 		virtual ~Animal();
 		Animal&	operator=(const Animal &other);
 
-		virtual void			makeSound() const = 0;
-		virtual std::string		getType() const = 0;
+		virtual void	makeSound() const = 0;
+		std::string		getType() const;
 		
 };
 
