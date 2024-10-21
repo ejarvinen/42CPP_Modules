@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:50:49 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/21 12:38:29 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/21 14:33:36 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int main()
 	//const Animal* meta = new Animal(); // comment in to test for abstraction
 	const Animal*	j = new Dog();
 	const Animal*	i = new Cat();
+	//const Animal hello();
 	
 	std::cout << "Type for Dog is: " << j->getType() << std::endl;
 	std::cout << "Type for Cat is: " << i->getType() << std::endl;
