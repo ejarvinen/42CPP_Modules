@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 14:00:43 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/19 14:31:54 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/21 12:17:59 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,4 @@ WrongCat	&WrongCat::operator=(const WrongCat &other)
 void	WrongCat::makeSound() const
 {
 	std::cout << "ROAAAAAAAAR!" << std::endl;
-}
-
-std::string	WrongCat::getType() const
-{
-	return (this->type);
 }

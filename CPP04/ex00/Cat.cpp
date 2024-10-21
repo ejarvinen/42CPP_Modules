@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:50:34 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/19 13:48:19 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/21 12:16:28 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,4 @@ Cat	&Cat::operator=(const Cat &other)
 void	Cat::makeSound() const
 {
 	std::cout << "Meow!" << std::endl;
-}
-
-std::string	Cat::getType() const
-{
-	return (this->type);
 }

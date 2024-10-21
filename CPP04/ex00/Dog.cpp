@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:50:40 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/19 14:43:33 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/21 12:16:47 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,4 @@ Dog	&Dog::operator=(const Dog &other)
 void	Dog::makeSound() const
 {
 	std::cout << "Woof woof!" << std::endl;
-}
-
-std::string	Dog::getType() const
-{
-	return (this->type);
 }

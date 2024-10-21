@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 14:00:47 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/21 09:32:43 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/21 12:18:06 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ class WrongCat : public WrongAnimal {
 		~WrongCat();
 		WrongCat&	operator=(const WrongCat &other);
 
-		void		makeSound() const;
-		std::string	getType() const override;
+		void	makeSound() const;
 		
 };
 

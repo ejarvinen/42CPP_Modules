@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:50:49 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/19 14:49:10 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/21 12:26:24 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,14 @@ int main()
 		const Animal* j = new Dog();
 		const Animal* i = new Cat();
 		
-		std::cout << j->getType() << " " << std::endl;
-		std::cout << i->getType() << " " << std::endl;
+		std::cout << "Type for Dog: " << j->getType() << std::endl;
+		std::cout << "Type for Cat: " << i->getType() << std::endl;
 		
-		i->makeSound(); //will output the cat sound!
+		std::cout << "What does the cat say: " << std::endl;
+		i->makeSound();  //will output the cat sound!
+		std::cout << "What does the dog say: " << std::endl;
 		j->makeSound();
+		std::cout << "What does the animal say: " << std::endl;
 		meta->makeSound();
 
 		delete(meta);
@@ -41,11 +44,14 @@ int main()
 		const Animal* j = new Dog();
 		const WrongAnimal* i = new WrongCat();
 		
-		std::cout << j->getType() << " " << std::endl;
-		std::cout << i->getType() << " " << std::endl;
+		std::cout << "Type for Dog: " << j->getType() << std::endl;
+		std::cout << "Type for WrongCat: " << i->getType() << std::endl;
 		
+		std::cout << "What does the (wrong) cat say: " << std::endl;
 		i->makeSound(); // should output animal sounds
+		std::cout << "What does the dog say: " << std::endl;
 		j->makeSound();
+		std::cout << "What does the (wrong) animal say: " << std::endl;
 		meta->makeSound();
 
 		delete(meta);

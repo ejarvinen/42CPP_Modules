@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:50:28 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/19 14:44:11 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/21 12:17:23 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,3 @@ std::string	Animal::getType() const
 {
 	return (this->type);
 }
-

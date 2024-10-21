@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 14:00:40 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/21 09:27:14 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/21 12:17:41 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ class WrongAnimal {
 		virtual ~WrongAnimal();
 		WrongAnimal&	operator=(const WrongAnimal &other);
 
-		void				makeSound() const;
-		virtual std::string	getType() const;
+		void		makeSound() const;
+		std::string	getType() const;
 	
 };
 
