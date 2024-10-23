@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:50:49 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/21 12:26:24 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/23 09:21:48 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,11 @@ int main()
 		j->makeSound();
 		std::cout << "What does the (wrong) animal say: " << std::endl;
 		meta->makeSound();
+
+		const WrongCat test;
+		const WrongAnimal test1;
+		test.makeSound();
+		test1.makeSound();
 
 		delete(meta);
 		delete(j);

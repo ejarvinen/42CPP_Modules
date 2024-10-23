@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:50:49 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/20 14:10:49 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/23 09:20:13 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,8 @@ int main()
 		dog1->printAddress();
 		dog2->printAddress();
 		std::cout << std::endl;
-		/* Dog *dog3 = new Dog(); // comment in to test for shallow copy
-		dog3 = dog2;
-		dog3->printAddress();
-		dog2->printAddress(); */
 		delete(dog1);
 		delete(dog2);
-		//delete(dog3); // will make program segfault
 	}
 	return 0;
 }
