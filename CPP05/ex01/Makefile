@@ -1,4 +1,4 @@
-NAME := bureaucrat
+NAME := form
 
 CC := c++
 
@@ -6,7 +6,7 @@ FLAGS := -Wall -Wextra -Werror
 
 HEADERS := Bureaucrat.hpp Form.hpp
 
-SOURCES := main.cpp Bureaucrat.cpp
+SOURCES := main.cpp Bureaucrat.cpp Form.cpp
 
 OBJECTS := $(SOURCES:.cpp=.o)
 

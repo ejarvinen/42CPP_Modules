@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 09:38:59 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/23 13:06:07 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/24 12:13:31 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,17 @@ void	Bureaucrat::decreaseGrade()
 		std::cout << tooLow.what() << std::endl;
 		_grade = 150;
 	}
+}
+
+void	Bureaucrat::signForm(Form &form)
+{
+	std::string	reason;
+	
+	reason = form.beSigned(*this);
+	if (form.isSigned())
+		std::cout << _name << " signed " << form.getName() << std::endl;
+	else
+		std::cout << _name << " couldn't sign " << form.getName() << " because " << reason << std::endl;
 }
 
 std::ostream&	operator<<(std::ostream &out, const Bureaucrat &obj)

@@ -6,56 +6,49 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 09:38:54 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/23 13:18:59 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/24 12:07:11 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int	main(void)
 {
-	Bureaucrat	Edgar;
-	Bureaucrat	Fitzherbert("Fitzherbert", 57);
-	Bureaucrat	Eugene(Fitzherbert);
-	Bureaucrat	Barnaby("Barnaby", 1);
-	
-	std::cout << Edgar;
-	std::cout << Fitzherbert;
-	std::cout << Eugene;
-	std::cout << Barnaby;
+	Bureaucrat	Aurora("Aurora", 30);
+	Bureaucrat	Cinderella("Cinderella", 45);
+	Form		BirthAffidavit("Birth Affidavit", 35, 1);
+	Form		SeparationStatement("Separation Statement", 13, 1);
+	Form		MarriageLicense("Marriage License", 125, 1);
+
+	std::cout << BirthAffidavit;
+	std::cout << SeparationStatement;
+	std::cout << MarriageLicense;
+
+	BirthAffidavit.isSigned();
+	SeparationStatement.isSigned();
+	MarriageLicense.isSigned();
 
 	std::cout << std::endl;
 
-	Edgar.decreaseGrade();
-	std::cout << Edgar;
-	Edgar.increaseGrade();
-	std::cout << Edgar;
+	Aurora.signForm(MarriageLicense);
+	std::cout << MarriageLicense;
+	Cinderella.signForm(MarriageLicense);
+	std::cout << MarriageLicense;
 
 	std::cout << std::endl;
 
-	Fitzherbert.decreaseGrade();
-	std::cout << Fitzherbert;
-	Fitzherbert.increaseGrade();
-	std::cout << Fitzherbert;
+	Aurora.signForm(BirthAffidavit);
+	std::cout << BirthAffidavit;
+	Cinderella.signForm(BirthAffidavit);
+	std::cout << BirthAffidavit;
 
 	std::cout << std::endl;
 
-	Eugene.decreaseGrade();
-	std::cout << Eugene;
-	Eugene.increaseGrade();
-	std::cout << Eugene;
-
-	std::cout << std::endl;
-
-	Barnaby.increaseGrade();
-	std::cout << Barnaby;
-	Barnaby.decreaseGrade();
-	std::cout << Barnaby;
-
-	std::cout << std::endl;
-
-	Bureaucrat	Reginald("Reginald", -600);
-	std::cout << Reginald;
+	Cinderella.signForm(SeparationStatement);
+	std::cout << SeparationStatement;
+	Aurora.signForm(SeparationStatement);
+	std::cout << SeparationStatement;
 	
 	return (0);
 }

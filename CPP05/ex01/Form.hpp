@@ -6,14 +6,16 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:20:53 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/23 13:33:36 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/24 12:11:44 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FORM_H
 # define FORM_H
 
-# include <string>
+# include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form : std::exception {
 
@@ -27,7 +29,7 @@ class Form : std::exception {
 	public:
 
 		Form();
-		Form(std::string const name, bool signedFlag, unsigned int const signableGrade, unsigned int const executableGrade);
+		Form(std::string const name, unsigned int const signableGrade, unsigned int const executableGrade);
 		Form(const Form &copy);
 		~Form();
 		Form &operator=(Form const &other);
@@ -47,9 +49,10 @@ class Form : std::exception {
 		};
 
 		std::string const 	&getName() const;
-		unsigned int const	getSignableGrade() const;
-		unsigned int const	getExecutableGrade() const;
+		unsigned int		getSignableGrade() const;
+		unsigned int		getExecutableGrade() const;
 		bool				isSigned() const;
+		const char			*beSigned(Bureaucrat const &bureaucrat);
 		
 };
 
