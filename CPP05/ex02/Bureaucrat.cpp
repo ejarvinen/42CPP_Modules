@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 09:38:59 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/24 12:13:31 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/25 12:54:37 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	Bureaucrat::decreaseGrade()
 	}
 }
 
-void	Bureaucrat::signForm(Form &form)
+void	Bureaucrat::signForm(AForm &form)
 {
 	std::string	reason;
 	
@@ -112,6 +112,17 @@ void	Bureaucrat::signForm(Form &form)
 		std::cout << _name << " signed " << form.getName() << std::endl;
 	else
 		std::cout << _name << " couldn't sign " << form.getName() << " because " << reason << std::endl;
+}
+
+void	Bureaucrat::executeForm(AForm const &form)
+{
+	std::string	reason;
+
+	reason = form.execute(*this);
+	if (reason.compare("0") == 0)
+		std::cout << _name << " executed " << form.getName() << std::endl;
+	else
+		std::cout << _name << " tried to execute " << form.getName() << ", but failed due to " << reason << std::endl;
 }
 
 std::ostream&	operator<<(std::ostream &out, const Bureaucrat &obj)

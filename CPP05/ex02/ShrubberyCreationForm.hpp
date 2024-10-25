@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:33:13 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/24 12:39:44 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/25 13:19:14 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 # define SHRUBBERYCREATIONFORM_H
 
 # include "AForm.hpp"
+# include <fstream>
+# include <cstdlib>
 
 class ShrubberyCreationForm: public AForm {
 
 	private:
 
 		std::string	_target;
+		void		plantTrees(std::ofstream &outFile) const;
 
 	public:
 
@@ -28,6 +31,8 @@ class ShrubberyCreationForm: public AForm {
 		ShrubberyCreationForm(const ShrubberyCreationForm &copy);
 		~ShrubberyCreationForm();
 		ShrubberyCreationForm &operator=(ShrubberyCreationForm const &other);
+
+		void	action() const override;
 
 };
 

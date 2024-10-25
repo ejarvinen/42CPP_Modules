@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:30:22 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/24 12:29:57 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/25 12:49:06 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,22 @@ const char	*AForm::beSigned(Bureaucrat const &bureaucrat)
 			throw AForm::GradeTooLowException();
 	}
 	catch (GradeTooLowException tooLow)
+	{
+		return (tooLow.what());
+	}
+	return ("0");
+}
+
+const char	*AForm::execute(Bureaucrat const &executor) const
+{
+	try
+	{
+		if (this->isSigned() && executor.getGrade() >= this->getExecutableGrade())
+			this->action();
+		else
+			throw AForm::GradeTooLowException();
+	}
+	catch(GradeTooLowException tooLow)
 	{
 		return (tooLow.what());
 	}
