@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:30:22 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/25 12:49:06 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/25 14:57:13 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ const char	*AForm::beSigned(Bureaucrat const &bureaucrat)
 {
 	try
 	{
-		if (bureaucrat.getGrade() >= getSignableGrade())
+		if (bureaucrat.getGrade() <= getSignableGrade())
 			this->_signed = true;
 		else
 			throw AForm::GradeTooLowException();
@@ -101,7 +101,7 @@ const char	*AForm::execute(Bureaucrat const &executor) const
 {
 	try
 	{
-		if (this->isSigned() && executor.getGrade() >= this->getExecutableGrade())
+		if (this->isSigned() && executor.getGrade() <= this->getExecutableGrade())
 			this->action();
 		else
 			throw AForm::GradeTooLowException();
@@ -115,6 +115,6 @@ const char	*AForm::execute(Bureaucrat const &executor) const
 
 std::ostream&	operator<<(std::ostream &out, const AForm &obj)
 {
-	out << "AForm: " << obj.getName() << " | signable grade: " << obj.getSignableGrade() << " | executable grade: " << obj.getExecutableGrade() << " | is signed: " << obj.isSigned() << std::endl;
+	out << "Form: " << obj.getName() << " | signable grade: " << obj.getSignableGrade() << " | executable grade: " << obj.getExecutableGrade() << " | is signed: " << obj.isSigned() << std::endl;
 	return (out);
 }
