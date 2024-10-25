@@ -1,0 +1,85 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Intern.cpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/25 15:25:03 by emansoor          #+#    #+#             */
+/*   Updated: 2024/10/25 15:56:52 by emansoor         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Intern.hpp"
+
+Intern::Intern() {}
+
+Intern::Intern(const Intern &copy)
+{
+	*this = copy;
+}
+
+Intern::~Intern() {}
+
+Intern	&Intern::operator=(Intern const &other)
+{
+	if (this != &other)
+	{}
+	return (*this);
+}
+
+const char	*Intern::IncorrectForm::what() const throw()
+{
+	return ("Incorrect form type");
+}
+
+int	Intern::isValid(std::string formType)
+{
+	int			form;
+	std::string	types[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
+	
+	for (form = 0; form < 3; form++)
+	{
+		if (types[form].compare(formType) == 0)
+			return (form);
+	}
+	return (-1);
+}
+
+AForm	*Intern::makeForm(std::string formType, std::string formTarget)
+{
+	int	form;
+	
+	try
+	{
+		form = isValid(formType);
+		if (form > -1)
+		{
+			switch (form) {
+				
+				case 0:
+				{
+					std::cout << "Intern creates " << formType << std::endl;
+					return (new ShrubberyCreationForm(formTarget));
+				}
+				case 1:
+				{
+					std::cout << "Intern creates " << formType << std::endl;
+					return (new RobotomyRequestForm(formTarget));
+				}
+				case 2:
+				{
+					std::cout << "Intern creates " << formType << std::endl;
+					return (new PresidentialPardonForm(formTarget));
+				}
+			}
+		}
+		else
+			throw IncorrectForm();
+	}
+	catch (IncorrectForm form)
+	{
+		std::cout << form.what() << std::endl;
+	}
+	return (nullptr);
+}
