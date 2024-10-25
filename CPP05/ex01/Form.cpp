@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:30:22 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/24 12:16:59 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/25 14:44:28 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ const char	*Form::beSigned(Bureaucrat const &bureaucrat)
 {
 	try
 	{
-		if (bureaucrat.getGrade() >= getSignableGrade())
+		if (bureaucrat.getGrade() <= getSignableGrade())
 			this->_signed = true;
 		else
 			throw Form::GradeTooLowException();

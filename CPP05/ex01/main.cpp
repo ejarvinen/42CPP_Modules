@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 09:38:54 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/24 12:07:11 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/25 14:47:56 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,12 @@ int	main(void)
 
 	Aurora.signForm(MarriageLicense);
 	std::cout << MarriageLicense;
-	Cinderella.signForm(MarriageLicense);
-	std::cout << MarriageLicense;
 
 	std::cout << std::endl;
 
-	Aurora.signForm(BirthAffidavit);
-	std::cout << BirthAffidavit;
 	Cinderella.signForm(BirthAffidavit);
+	std::cout << BirthAffidavit;
+	Aurora.signForm(BirthAffidavit);
 	std::cout << BirthAffidavit;
 
 	std::cout << std::endl;
