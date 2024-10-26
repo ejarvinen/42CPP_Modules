@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 15:06:14 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/25 15:56:19 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/26 12:30:55 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Intern : public std::exception {
 
 	private:
 
-		int	isValid(std::string formType);
+		AForm *createForm(std::string formType, std::string formTarget);
 
 	public:
 
