@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 09:38:54 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/25 15:02:33 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/28 06:58:29 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,6 @@ int	main(void)
 	std::cout << BirthAffidavit;
 	std::cout << SeparationStatement;
 	std::cout << MarriageLicense;
-
-	BirthAffidavit.isSigned();
-	SeparationStatement.isSigned();
-	MarriageLicense.isSigned();
 
 	std::cout << std::endl;
 
