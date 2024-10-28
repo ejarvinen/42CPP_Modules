@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 09:38:54 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/25 15:00:37 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/28 07:22:21 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int	main(void)
 	std::cout << std::endl;
 	for (index = 25; index > 0; index--)
 		Aurora.increaseGrade();
+	std::cout << Aurora;
 	Aurora.signForm(pForm);
 	Aurora.executeForm(pForm);
 	

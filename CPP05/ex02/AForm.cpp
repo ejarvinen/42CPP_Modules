@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:30:22 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/25 14:57:13 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/28 07:23:06 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,11 @@ const char	*AForm::GradeTooLowException::what() const throw()
 	return ("Grade is too low");
 }
 
+const char	*AForm::NotSignedException::what() const throw()
+{
+	return ("Form is not signed");
+}
+
 std::string const	&AForm::getName() const
 {
 	return (_name);
@@ -101,10 +106,16 @@ const char	*AForm::execute(Bureaucrat const &executor) const
 {
 	try
 	{
-		if (this->isSigned() && executor.getGrade() <= this->getExecutableGrade())
+		if (!this->isSigned())
+			throw AForm::NotSignedException();
+		else if (executor.getGrade() <= this->getExecutableGrade())
 			this->action();
 		else
 			throw AForm::GradeTooLowException();
+	}
+	catch (NotSignedException notSigned)
+	{
+		return (notSigned.what());
 	}
 	catch(GradeTooLowException tooLow)
 	{
