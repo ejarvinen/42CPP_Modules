@@ -6,14 +6,10 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 09:38:54 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/25 16:00:56 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/28 07:31:06 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
-#include "PresidentialPardonForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "ShrubberyCreationForm.hpp"
 #include "Intern.hpp"
 
 int	main(void)

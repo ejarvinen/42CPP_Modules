@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:20:53 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/25 12:48:36 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/28 07:24:33 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,13 @@ class AForm : std::exception {
 		};
 
 		class GradeTooLowException : public std::exception {
+			
+			public:
+
+				const char *what() const throw();
+		};
+
+		class NotSignedException : public std::exception {
 			
 			public:
 
