@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 13:20:53 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/28 07:10:50 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/31 12:31:34 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,7 @@ class AForm : std::exception {
 		unsigned int		getExecutableGrade() const;
 		bool				isSigned() const;
 		const char			*beSigned(Bureaucrat const &bureaucrat);
-		virtual void		action() const = 0;
-		const char			*execute(Bureaucrat const &executor) const;
+		virtual const char	*execute(Bureaucrat const &executor) const = 0;
 		
 };
 

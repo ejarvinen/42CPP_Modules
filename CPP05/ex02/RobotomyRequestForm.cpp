@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:02:16 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/25 13:18:32 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/31 12:36:23 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ RobotomyRequestForm	&RobotomyRequestForm::operator=(RobotomyRequestForm const &o
 	return (*this);
 }
 
-void	RobotomyRequestForm::action() const
+void	RobotomyRequestForm::robotomy() const
 {
 	int	successRate;
 
@@ -48,4 +48,26 @@ void	RobotomyRequestForm::action() const
 		std::cout << _target << " has been robotomized successfully" << std::endl;
 	else
 		std::cout << "Robotomizing " << _target << " failed horribly" << std::endl;
+}
+
+const char	*RobotomyRequestForm::execute(Bureaucrat const &executor) const
+{
+	try
+	{
+		if (!this->isSigned())
+			throw AForm::NotSignedException();
+		else if (executor.getGrade() <= this->getExecutableGrade())
+			this->robotomy();
+		else
+			throw AForm::GradeTooLowException();
+	}
+	catch (NotSignedException notSigned)
+	{
+		return (notSigned.what());
+	}
+	catch(GradeTooLowException tooLow)
+	{
+		return (tooLow.what());
+	}
+	return ("0");
 }

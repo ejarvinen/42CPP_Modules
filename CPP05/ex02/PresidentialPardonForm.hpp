@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:14:50 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/25 13:18:03 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/31 12:37:21 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class PresidentialPardonForm : public AForm {
 		~PresidentialPardonForm();
 		PresidentialPardonForm	&operator=(PresidentialPardonForm const &other);
 
-		void	action() const override;
+		const char	*execute(Bureaucrat const &executor) const;
 };
 
 #endif

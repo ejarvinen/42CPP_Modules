@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 11:58:14 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/25 13:18:27 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/31 12:36:36 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ class RobotomyRequestForm: public AForm {
 	private:
 
 		std::string	_target;
+		void		robotomy() const;
 
 	public:
 
@@ -30,7 +31,7 @@ class RobotomyRequestForm: public AForm {
 		~RobotomyRequestForm();
 		RobotomyRequestForm	&operator=(RobotomyRequestForm const &other);
 
-		void	action() const override;
+		const char	*execute(Bureaucrat const &executor) const override;
 	
 };
 

@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:39:52 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/25 13:35:04 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/31 12:34:39 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	ShrubberyCreationForm::plantTrees(std::ofstream &outFile) const
 	outFile << std::endl;
 }
 
-void	ShrubberyCreationForm::action() const
+void	ShrubberyCreationForm::shrubbery() const
 {
 	int				trees;
 	int				index;
@@ -70,4 +70,26 @@ void	ShrubberyCreationForm::action() const
 			this->plantTrees(outFile);
 		outFile.close();
 	}
+}
+
+const char	*ShrubberyCreationForm::execute(Bureaucrat const &executor) const
+{
+	try
+	{
+		if (!this->isSigned())
+			throw AForm::NotSignedException();
+		else if (executor.getGrade() <= this->getExecutableGrade())
+			this->shrubbery();
+		else
+			throw AForm::GradeTooLowException();
+	}
+	catch (NotSignedException notSigned)
+	{
+		return (notSigned.what());
+	}
+	catch(GradeTooLowException tooLow)
+	{
+		return (tooLow.what());
+	}
+	return ("0");
 }

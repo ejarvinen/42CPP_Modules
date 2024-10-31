@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:33:13 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/25 13:19:14 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/10/31 12:34:31 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class ShrubberyCreationForm: public AForm {
 
 		std::string	_target;
 		void		plantTrees(std::ofstream &outFile) const;
+		void		shrubbery() const;
 
 	public:
 
@@ -32,7 +33,7 @@ class ShrubberyCreationForm: public AForm {
 		~ShrubberyCreationForm();
 		ShrubberyCreationForm &operator=(ShrubberyCreationForm const &other);
 
-		void	action() const override;
+		const char	*execute(Bureaucrat const &executor) const override;
 
 };
 
