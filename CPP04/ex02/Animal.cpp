@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 12:50:28 by emansoor          #+#    #+#             */
-/*   Updated: 2024/10/21 14:32:16 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/01 13:43:52 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ Animal	&Animal::operator=(const Animal &other)
 	}
 	return (*this);
 }
-
-void	Animal::makeSound() const {}
 
 std::string	Animal::getType() const
 {
