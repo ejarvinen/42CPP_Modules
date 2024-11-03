@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:34:13 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/02 15:54:17 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/03 12:39:05 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <string>
 # include <iostream>
+# include <iomanip> // remove before submitting
 # include <ctype.h>
 
 class ScalarConverter
@@ -29,9 +30,11 @@ class ScalarConverter
 		std::string	convertChr(std::string const literal);
 		std::string	convertInt(std::string literal);
 		std::string	convertFloat(std::string literal);
-		//std::string	convertDouble(std::string literal);
+		std::string	convertDouble(std::string literal);
 
 		std::string	floatDecimalHandler(std::string literal, std::string res, size_t pointIndex);
+		std::string	doubleDecimalHandler(std::string literal, std::string res, size_t pointIndex);
+		std::string	rounder(std::string res, size_t pointIndex, int decim);
 	
 	public:
 

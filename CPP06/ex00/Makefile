@@ -6,7 +6,11 @@ FLAGS := -Wall -Wextra -Werror
 
 HEADERS := ScalarConverter.hpp
 
-SOURCES := main.cpp ScalarConverter.cpp
+SOURCES := main.cpp\
+			ScalarConverter.cpp\
+			convertChr.cpp\
+			convertInt.cpp\
+			convertFnD.cpp
 
 OBJECTS := $(SOURCES:.cpp=.o)
 
