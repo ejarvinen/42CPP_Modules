@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 12:49:47 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/03 12:50:09 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/04 15:26:40 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ std::string	ScalarConverter::floatDecimalHandler(std::string literal, std::strin
 	index = pointIndex;
 	for (index++; std::isdigit(literal[index]) != 0; index++)
 		decim++;
+	if (decim < 2)
+		return ("impossible");
 	if (decim < 8)
 	{
 		res = rounder(res, pointIndex, decim);
@@ -67,7 +69,22 @@ std::string	ScalarConverter::floatDecimalHandler(std::string literal, std::strin
 	return (res);
 }
 
-std::string	ScalarConverter::convertFloat(std::string literal)
+int	ScalarConverter::convertFloat(double dble, float *flt)
+{
+	if (dble > std::numeric_limits<float>::max() || dble < std::numeric_limits<float>::min())
+		return (1);
+	try
+	{
+		*flt = static_cast<float>(dble);
+	}
+	catch (...)
+	{
+		return (1);
+	}
+	return (0);
+}
+
+/* std::string	ScalarConverter::convertFloat(std::string literal)
 {
 	float		nbrFloat;
 	size_t		pointIndex;
@@ -81,7 +98,10 @@ std::string	ScalarConverter::convertFloat(std::string literal)
 	{
 		return ("impossible");
 	}
+	std::cout << std::setprecision(15);
+	std::cout << nbrFloat << std::endl;
 	res = std::to_string(nbrFloat);
+	std::cout << res << std::endl;
 	pointIndex = literal.find(".");
 	if (pointIndex != std::string::npos)
 	{
@@ -92,9 +112,10 @@ std::string	ScalarConverter::convertFloat(std::string literal)
 		pointIndex = res.find('.');
 		res = res.erase(pointIndex + 2);
 	}
-	res = res + 'f';
+	if (res.compare("impossible") != 0)
+		res = res + 'f';
 	return (res);
-}
+} */
 
 std::string	ScalarConverter::doubleDecimalHandler(std::string literal, std::string res, size_t pointIndex)
 {
@@ -105,6 +126,8 @@ std::string	ScalarConverter::doubleDecimalHandler(std::string literal, std::stri
 	index = pointIndex;
 	for (index++; std::isdigit(literal[index]) != 0; index++)
 		decim++;
+	if (decim < 2)
+		return ("impossible");
 	if (decim < 8)
 	{
 		res = rounder(res, pointIndex, decim);
@@ -117,7 +140,20 @@ std::string	ScalarConverter::doubleDecimalHandler(std::string literal, std::stri
 	return (res);
 }
 
-std::string	ScalarConverter::convertDouble(std::string literal)
+int	ScalarConverter::convertDouble(std::string literal, double *dble)
+{
+	try
+	{
+		*dble = stod(literal);
+	}
+	catch (...)
+	{
+		return (1);
+	}
+	return (0);
+}
+
+/* std::string	ScalarConverter::convertDouble(std::string literal)
 {
 	double		nbrDouble;
 	size_t		pointIndex;
@@ -143,4 +179,4 @@ std::string	ScalarConverter::convertDouble(std::string literal)
 		res = res.erase(pointIndex + 2);
 	}
 	return (res);
-}
+} */
