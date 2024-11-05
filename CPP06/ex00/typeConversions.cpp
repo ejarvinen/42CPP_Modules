@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 12:49:47 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/05 11:52:20 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/05 12:23:05 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ScalarConverter::convertChr(int integer, char *chr)
 {
-	if (integer > 126 || integer < 0)
+	if (integer < 0)
 		return (1);
 	try
 	{
@@ -29,7 +29,7 @@ int	ScalarConverter::convertChr(int integer, char *chr)
 
 int	ScalarConverter::convertInt(float flt, int *integer)
 {
-	if (flt > (float)2147483647 || flt < std::numeric_limits<int>::min() || isnan(flt))
+	if (flt > (float)std::numeric_limits<int>::max() - 1.0 || flt < std::numeric_limits<int>::min() || isnan(flt))
 		return (1);
 	try
 	{
@@ -39,6 +39,8 @@ int	ScalarConverter::convertInt(float flt, int *integer)
 	{
 		return (1);
 	}
+	if (flt == (float)std::numeric_limits<int>::max())
+		*integer = std::numeric_limits<int>::max();
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:42:20 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/05 11:53:21 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/05 12:11:40 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ bool	ScalarConverter::inputChecker(std::string literal)
 	int	index;
 	int	points = 0;
 
-	if (!literal.compare("nan") || !literal.compare("nanf") || !literal.compare("+inf") || !literal.compare("+inff") || !literal.compare("-inf") || !literal.compare("-inff"))
+	if (!literal.compare("nan") || !literal.compare("nanf")
+		|| !literal.compare("+inf") || !literal.compare("+inff")
+		|| !literal.compare("-inf") || !literal.compare("-inff"))
 		return (true);
 	for (index = 0; literal[index]; index++)
 	{
@@ -56,14 +58,6 @@ bool	ScalarConverter::inputChecker(std::string literal)
 			return (false);
 	}
 	return (true);
-}
-
-void	ScalarConverter::print(std::string chr, std::string integer, std::string flt, std::string dble)
-{
-	std::cout << "char: " << chr << std::endl;
-	std::cout << "int: " << integer << std::endl;
-	std::cout << "float: " << flt << std::endl;
-	std::cout << "double: " << dble << std::endl;
 }
 
 int	ScalarConverter::decimals(std::string literal)
@@ -91,15 +85,14 @@ void	ScalarConverter::convert(std::string literal, ScalarConverter &obj)
 	int		integer;
 	float	flt;
 	double	dble;
-	int		precision;
 	
 	if (obj.inputChecker(literal) == false || obj.convertDouble(literal, &dble))
 	{
-		return (obj.print("impossible", "impossible", "impossible", "impossible"));
+		std::cout << "char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible" << std::endl;
+		return ;
 	}
-	precision = obj.decimals(literal);
 	std::cout << std::fixed;
-	std::cout << std::setprecision(precision);
+	std::cout << std::setprecision(obj.decimals(literal));
 	if (obj.convertFloat(dble, &flt))
 	{
 		std::cout << "char: impossible\nint: impossible\nfloat: impossible" << std::endl;
@@ -113,7 +106,7 @@ void	ScalarConverter::convert(std::string literal, ScalarConverter &obj)
 		std::cout << "double: " << dble << std::endl;
 		return ;
 	}
-	if (0 <= integer && integer < 32)
+	if ((0 <= integer && integer < 32) || integer > 126)
 	{
 		std::cout << "char: Non displayable" << std::endl;
 		std::cout << "int: " << integer << std::endl;
