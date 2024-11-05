@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:34:13 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/05 10:36:36 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/05 11:40:37 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <iomanip>
 # include <ctype.h>
 # include <limits>
+# include <math.h>
 
 class ScalarConverter
 {

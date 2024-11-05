@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:42:20 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/05 10:33:57 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/05 11:53:21 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ bool	ScalarConverter::inputChecker(std::string literal)
 	int	index;
 	int	points = 0;
 
+	if (!literal.compare("nan") || !literal.compare("nanf") || !literal.compare("+inf") || !literal.compare("+inff") || !literal.compare("-inf") || !literal.compare("-inff"))
+		return (true);
 	for (index = 0; literal[index]; index++)
 	{
 		if (isValidChr(literal[index]))
@@ -62,41 +64,6 @@ void	ScalarConverter::print(std::string chr, std::string integer, std::string fl
 	std::cout << "int: " << integer << std::endl;
 	std::cout << "float: " << flt << std::endl;
 	std::cout << "double: " << dble << std::endl;
-}
-
-int	ScalarConverter::handleSpecialCase(std::string literal)
-{
-	if (!literal.compare("nan"))
-	{
-		print("impossible", "impossible", "nanf", literal);
-		return (1);
-	}
-	if (!literal.compare("+inf"))
-	{
-		print("impossible", "impossible", "+inff", literal);
-		return (1);
-	}
-	if (!literal.compare("-inf"))
-	{
-		print("impossible", "impossible", "-inff", literal);
-		return (1);
-	}
-	if (!literal.compare("nanf"))
-	{
-		print("impossible", "impossible", literal, "nan");
-		return (1);
-	}
-	if (!literal.compare("+inff"))
-	{
-		print("impossible", "impossible", literal, "+inf");
-		return (1);
-	}
-	if (!literal.compare("-inff"))
-	{
-		print("impossible", "impossible", literal, "-inf");
-		return (1);
-	}
-	return (0);
 }
 
 int	ScalarConverter::decimals(std::string literal)
@@ -126,13 +93,7 @@ void	ScalarConverter::convert(std::string literal, ScalarConverter &obj)
 	double	dble;
 	int		precision;
 	
-	if (obj.inputChecker(literal) == false)
-	{
-		if (!obj.handleSpecialCase(literal))
-			return (obj.print("impossible", "impossible", "impossible", "impossible"));
-		return ;
-	}
-	if (obj.convertDouble(literal, &dble))
+	if (obj.inputChecker(literal) == false || obj.convertDouble(literal, &dble))
 	{
 		return (obj.print("impossible", "impossible", "impossible", "impossible"));
 	}
@@ -168,7 +129,7 @@ void	ScalarConverter::convert(std::string literal, ScalarConverter &obj)
 		std::cout << "double: " << dble << std::endl;
 		return ;
 	}
-	std::cout << "char: " << chr << std::endl;
+	std::cout << "char: " << "'" << chr << "'" << std::endl;
 	std::cout << "int: " << integer << std::endl;
 	std::cout << "float: " << flt << "f" << std::endl;
 	std::cout << "double: " << dble << std::endl;

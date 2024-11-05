@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 12:49:47 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/05 10:35:37 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/05 11:52:20 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ScalarConverter::convertChr(int integer, char *chr)
 
 int	ScalarConverter::convertInt(float flt, int *integer)
 {
-	if (flt > (float)2147483647 || flt < std::numeric_limits<int>::min())
+	if (flt > (float)2147483647 || flt < std::numeric_limits<int>::min() || isnan(flt))
 		return (1);
 	try
 	{
@@ -46,6 +46,14 @@ int	ScalarConverter::convertFloat(double dble, float *flt)
 {
 	if (dble > std::numeric_limits<float>::max() || dble < (-1) * std::numeric_limits<float>::max())
 	{
+		if (isinf(dble))
+		{
+			if (dble < 0)
+				*flt = (-1) * std::numeric_limits<float>::infinity();
+			else
+				*flt = std::numeric_limits<float>::infinity();
+			return (0);
+		}
 		return (1);
 	}
 	try
