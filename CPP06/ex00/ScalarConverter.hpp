@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:34:13 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/05 11:40:37 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/06 08:00:38 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class ScalarConverter
 		ScalarConverter	&operator=(ScalarConverter const &other);
 	
 		int	convertChr(int integer, char *chr);
-		int	convertInt(float flt, int *integer);
+		int	convertInt(double dble, float flt, int *integer);
 		int	convertFloat(double dble, float *flt);
 		int	convertDouble(std::string literal, double *dble);
 

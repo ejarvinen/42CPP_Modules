@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:42:20 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/05 12:11:40 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/06 08:07:40 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ bool	ScalarConverter::inputChecker(std::string literal)
 				|| (literal[index] == '+' && index > 0)
 				|| (literal[index] == '-' && index > 0)
 				|| points > 1)
-				return (false);
+					return (false);
 		}
 		else
 			return (false);
@@ -81,10 +81,10 @@ int	ScalarConverter::decimals(std::string literal)
 
 void	ScalarConverter::convert(std::string literal, ScalarConverter &obj)
 {
-	char	chr;
-	int		integer;
-	float	flt;
-	double	dble;
+	char	chr = 0;
+	int		integer = 0;
+	float	flt = 0;
+	double	dble = 0;
 	
 	if (obj.inputChecker(literal) == false || obj.convertDouble(literal, &dble))
 	{
@@ -99,7 +99,7 @@ void	ScalarConverter::convert(std::string literal, ScalarConverter &obj)
 		std::cout << "double: " << dble << std::endl;
 		return ;
 	}
-	if (obj.convertInt(flt, &integer))
+	if (obj.convertInt(dble, flt, &integer))
 	{
 		std::cout << "char: impossible\nint: impossible" << std::endl;
 		std::cout << "float: " << flt << "f" << std::endl;
