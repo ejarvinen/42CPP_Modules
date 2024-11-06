@@ -6,13 +6,13 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 12:49:47 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/06 10:23:40 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/06 11:55:14 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-int	ScalarConverter::convertChr(int integer, char *chr)
+int	convertChr(int integer, char *chr)
 {
 	if (integer < 0)
 		return (1);
@@ -20,7 +20,7 @@ int	ScalarConverter::convertChr(int integer, char *chr)
 	return (0);
 }
 
-int	ScalarConverter::convertInt(double dble, float flt, int *integer)
+int	convertInt(double dble, float flt, int *integer)
 {
 	if (flt > (float)std::numeric_limits<int>::max() - 1.0
 		|| flt <= (float)std::numeric_limits<int>::min()
@@ -39,7 +39,7 @@ int	ScalarConverter::convertInt(double dble, float flt, int *integer)
 	return (0);
 }
 
-int	ScalarConverter::convertFloat(double dble, float *flt)
+int	convertFloat(double dble, float *flt)
 {
 	if (dble > (double)std::numeric_limits<float>::max()
 		|| dble < (-1.0) * (double)std::numeric_limits<float>::max())
@@ -58,7 +58,7 @@ int	ScalarConverter::convertFloat(double dble, float *flt)
 	return (0);
 }
 
-int	ScalarConverter::convertDouble(std::string literal, double *dble)
+int	convertDouble(std::string literal, double *dble)
 {
 	try
 	{
