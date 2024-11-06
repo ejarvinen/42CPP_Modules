@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 12:49:47 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/06 10:01:48 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/06 10:23:40 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,6 @@ int	ScalarConverter::convertInt(double dble, float flt, int *integer)
 
 int	ScalarConverter::convertFloat(double dble, float *flt)
 {
-	std::cout << "float max: " << std::numeric_limits<float>::max() << std::endl;
-	std::cout << "double max: " << std::numeric_limits<double>::max() << std::endl;
-	std::cout << "double from stold: " << dble << std::endl;
 	if (dble > (double)std::numeric_limits<float>::max()
 		|| dble < (-1.0) * (double)std::numeric_limits<float>::max())
 	{
@@ -63,18 +60,13 @@ int	ScalarConverter::convertFloat(double dble, float *flt)
 
 int	ScalarConverter::convertDouble(std::string literal, double *dble)
 {
-	long double	temp;
-	
 	try
 	{
-		temp = stold(literal);
+		*dble = stod(literal);
 	}
 	catch (...)
 	{
 		return (1);
 	}
-	if (temp > std::numeric_limits<double>::max() || temp < std::numeric_limits<double>::min())
-		return (1);
-	*dble = static_cast<double>(temp);
 	return (0);
 }
