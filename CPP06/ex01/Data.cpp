@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AbstractClass.cpp                                  :+:      :+:    :+:   */
+/*   Data.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 12:11:43 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/06 12:15:44 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/07 11:51:03 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "AbstractClass.hpp"
+#include "Data.hpp"
 
-AbstractClass::AbstractClass() {}
+Data::Data() : _dataInt(0) {}
 
-AbstractClass::AbstractClass(AbstractClass const &copy)
+Data::Data(int dataInt) : _dataInt(dataInt) {}
+
+Data::Data(Data const &copy)
 {
 	*this = copy;
 }
 
-AbstractClass::~AbstractClass() {}
+Data::~Data() {}
 
-AbstractClass	&AbstractClass::operator=(AbstractClass const &other)
+Data	&Data::operator=(Data const &other)
 {
 	if (this != &other)
-	{}
+	{
+		_dataInt = other._dataInt;
+	}
 	return (*this);
+}
+
+int	Data::getInt()
+{
+	return (_dataInt);
 }

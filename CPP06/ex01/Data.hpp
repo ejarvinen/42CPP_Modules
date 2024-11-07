@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 12:11:27 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/06 12:21:51 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/07 12:16:45 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,19 @@
 
 class Data {
 
+	private:
+
+		int	_dataInt;
+
 	public:
 
 		Data();
+		Data(int dataInt);
 		Data(Data const &copy);
-		virtual ~Data();
+		~Data();
 		Data	&operator=(Data const &other);
 
-		virtual void	printAddress() = 0;
+		int	getInt();
 
 };
 

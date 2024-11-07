@@ -2,11 +2,11 @@ NAME := serialize
 
 CC := c++
 
-FLAGS := -Wall -Wextra -Werror
+FLAGS := -Wall -Wextra -Werror -g -fsanitize=address
 
 HEADERS := Serializer.hpp
 
-SOURCES := main.cpp Serializer.cpp
+SOURCES := main.cpp Serializer.cpp Data.cpp
 
 OBJECTS := $(SOURCES:.cpp=.o)
 
