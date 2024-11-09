@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 12:49:47 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/06 11:55:14 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/09 15:07:37 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	convertFloat(double dble, float *flt)
 		}
 		return (1);
 	}
+	
 	*flt = static_cast<float>(dble);
 	return (0);
 }

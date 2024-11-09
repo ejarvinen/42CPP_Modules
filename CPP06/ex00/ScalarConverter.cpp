@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:42:20 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/06 11:54:09 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/09 15:07:44 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,10 @@ void	ScalarConverter::convert(std::string literal)
 		return ;
 	}
 	std::cout << std::fixed;
-	std::cout << std::setprecision(decimals(literal));
+	if (decimals(literal) < 7)
+		std::cout << std::setprecision(decimals(literal));
+	else
+		std::cout << std::setprecision(6);
 	if (convertFloat(dble, &flt))
 	{
 		std::cout << "char: impossible\nint: impossible\nfloat: impossible" << std::endl;
