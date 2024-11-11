@@ -4,9 +4,9 @@ CC := c++
 
 FLAGS := -Wall -Wextra -Werror
 
-HEADERS := Serializer.hpp
+HEADERS := Serializer.hpp Data.hpp
 
-SOURCES := main.cpp Serializer.cpp Data.cpp
+SOURCES := main.cpp Serializer.cpp
 
 OBJECTS := $(SOURCES:.cpp=.o)
 
