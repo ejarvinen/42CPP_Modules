@@ -1,4 +1,4 @@
-NAME := few_functions
+NAME := whatever
 
 CC := c++
 
