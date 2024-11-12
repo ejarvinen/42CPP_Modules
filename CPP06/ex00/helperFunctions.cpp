@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:54:30 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/09 15:04:15 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/12 12:33:23 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ bool	inputChecker(std::string literal)
 			if (literal[index] == '.')
 				points++;
 			if ((literal[index] == 'f' && literal[index + 1])
+				|| (literal[index] == 'f' && index > 0 && literal[index - 1] == '.')
 				|| (literal[index] == '+' && index > 0)
 				|| (literal[index] == '-' && index > 0)
 				|| points > 1)

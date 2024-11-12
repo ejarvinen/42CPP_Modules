@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:42:20 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/09 15:07:44 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/12 16:25:24 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,9 @@ ScalarConverter	&ScalarConverter::operator=(ScalarConverter const &other)
 
 void	ScalarConverter::convert(std::string literal)
 {
-	char	chr = 0;
-	int		integer = 0;
-	float	flt = 0;
-	double	dble = 0;
+	int	status = -1;
 	
-	if (inputChecker(literal) == false || convertDouble(literal, &dble))
+	if (inputChecker(literal) == false)
 	{
 		std::cout << "char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible" << std::endl;
 		return ;
@@ -45,37 +42,26 @@ void	ScalarConverter::convert(std::string literal)
 		std::cout << std::setprecision(decimals(literal));
 	else
 		std::cout << std::setprecision(6);
-	if (convertFloat(dble, &flt))
+	if (literal.find("f") != std::string::npos)
 	{
-		std::cout << "char: impossible\nint: impossible\nfloat: impossible" << std::endl;
-		std::cout << "double: " << dble << std::endl;
-		return ;
+		status = convertFloat(literal);
+		if (status > 0)
+		{
+			status = convertDouble(literal);
+		}
 	}
-	if (convertInt(dble, flt, &integer))
+	if (status != 0 && literal.find(".") != std::string::npos)
 	{
-		std::cout << "char: impossible\nint: impossible" << std::endl;
-		std::cout << "float: " << flt << "f" << std::endl;
-		std::cout << "double: " << dble << std::endl;
-		return ;
+		status = convertDouble(literal);
 	}
-	if ((0 <= integer && integer < 32) || integer > 126)
+	if (status != 0 && (literal.length() < 4 && literal.find("-") == std::string::npos))
 	{
-		std::cout << "char: Non displayable" << std::endl;
-		std::cout << "int: " << integer << std::endl;
-		std::cout << "float: " << flt << "f" << std::endl;
-		std::cout << "double: " << dble << std::endl;
-		return ;
+		status = convertChr(literal);
 	}
-	if (convertChr(integer, &chr))
+	else
 	{
-		std::cout << "char: impossible" << std::endl;
-		std::cout << "int: " << integer << std::endl;
-		std::cout << "float: " << flt << "f" << std::endl;
-		std::cout << "double: " << dble << std::endl;
-		return ;
+		status = convertInt(literal);
 	}
-	std::cout << "char: " << "'" << chr << "'" << std::endl;
-	std::cout << "int: " << integer << std::endl;
-	std::cout << "float: " << flt << "f" << std::endl;
-	std::cout << "double: " << dble << std::endl;
+	if (status > 0)
+		std::cout << "char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible" << std::endl;
 }
