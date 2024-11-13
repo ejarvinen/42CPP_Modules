@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:54:30 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/12 12:33:23 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/13 11:48:55 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ bool	inputChecker(std::string literal)
 				|| (literal[index] == 'f' && index > 0 && literal[index - 1] == '.')
 				|| (literal[index] == '+' && index > 0)
 				|| (literal[index] == '-' && index > 0)
+				|| (literal[literal.length() - 1] == '.')
 				|| points > 1)
 					return (false);
 		}

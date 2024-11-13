@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:42:20 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/12 16:25:24 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/13 11:56:36 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ScalarConverter::convert(std::string literal)
 {
 	int	status = -1;
 	
-	if (inputChecker(literal) == false)
+	if (literal.empty() || inputChecker(literal) == false)
 	{
 		std::cout << "char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible" << std::endl;
 		return ;
@@ -45,10 +45,6 @@ void	ScalarConverter::convert(std::string literal)
 	if (literal.find("f") != std::string::npos)
 	{
 		status = convertFloat(literal);
-		if (status > 0)
-		{
-			status = convertDouble(literal);
-		}
 	}
 	if (status != 0 && literal.find(".") != std::string::npos)
 	{
@@ -58,10 +54,8 @@ void	ScalarConverter::convert(std::string literal)
 	{
 		status = convertChr(literal);
 	}
-	else
+	else if (status != 0)
 	{
 		status = convertInt(literal);
 	}
-	if (status > 0)
-		std::cout << "char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible" << std::endl;
 }

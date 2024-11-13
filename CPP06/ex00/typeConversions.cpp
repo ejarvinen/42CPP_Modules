@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 12:49:47 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/12 16:25:06 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/13 11:34:31 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,17 @@ int	convertChr(std::string literal)
 	{
 		chr = stoi(literal);
 	}
+	catch (std::invalid_argument const &ex)
+	{
+		return (convertFloat(literal));
+	}
 	catch (std::out_of_range const &ex)
 	{
-		return (1);
+		return (convertFloat(literal));
 	}
-	if ((0 <= chr && chr < 32) || chr > 126)
+	if (chr > 126)
+		std::cout << "char: impossible" << std::endl;
+	else if (0 <= chr && chr < 32)
 		std::cout << "char: Non displayable" << std::endl;
 	else
 		std::cout << "char: " << "'" << chr << "'" << std::endl;
@@ -51,13 +57,17 @@ int	convertInt(std::string literal)
 	{
 		integer = stoi(literal);
 	}
+	catch (std::invalid_argument const &ex)
+	{
+		return (convertFloat(literal));
+	}
 	catch (std::out_of_range const &ex)
 	{
-		return (1);
+		return (convertFloat(literal));
 	}
-	if (integer < 0)
+	if (integer < 0 || integer > 126)
 		std::cout << "char: impossible" << std::endl;
-	else if ((0 <= integer && integer < 32) || integer > 126)
+	else if (0 <= integer && integer < 32)
 		std::cout << "char: Non displayable" << std::endl;
 	else
 	{
@@ -85,41 +95,24 @@ int	convertFloat(std::string literal)
 	}
 	catch (std::out_of_range const &ex)
 	{
-		return (1);
+		return (convertDouble(literal));
 	}
 	if (flt > (float)std::numeric_limits<int>::max() - 1.0
 		|| flt <= (float)std::numeric_limits<int>::min()
 		|| isnan(flt))
 	{
 		dble = static_cast<double>(flt);
-		if (dble == (double)std::numeric_limits<int>::max()
-			|| dble == (double)std::numeric_limits<int>::min()
-			|| dble == (double)std::numeric_limits<int>::min() + 1)
-			{
-				integer = static_cast<int>(dble);
-				chr = static_cast<int>(dble);
-				if (chr < 0)
-					std::cout << "char: impossible" << std::endl;
-				else if ((0 <= chr && chr < 32) || chr > 126)
-					std::cout << "char: Non displayable" << std::endl;
-				else
-					std::cout << "char: " << "'" << chr << "'" << std::endl;
-				std::cout << "int: " << integer << std::endl;
-				std::cout << "float: " << flt << "f" << std::endl;
-				std::cout << "double: " << dble << std::endl;
-				return (0);
-			}
 		std::cout << "char: impossible\nint: impossible" << std::endl;
-		std::cout << "float: " << flt << std::endl;
+		std::cout << "float: " << flt << "f" << std::endl;
 		std::cout << "double: " << dble << std::endl;
 		return (0);
 	}
 	chr = static_cast<char>(flt);
 	integer = static_cast<int>(flt);
 	dble = static_cast<double>(flt);
-	if (chr < 0)
+	if (chr < 0 || chr > 126)
 		std::cout << "char: impossible" << std::endl;
-	else if ((0 <= chr && chr < 32) || chr > 126)
+	else if (0 <= chr && chr < 32)
 		std::cout << "char: Non displayable" << std::endl;
 	else
 		std::cout << "char: " << "'" << chr << "'" << std::endl;
@@ -174,9 +167,9 @@ int	convertDouble(std::string literal)
 	}
 	integer = static_cast<int>(dble);
 	chr = static_cast<char>(dble);
-	if (chr < 0)
+	if (chr < 0 || chr > 126)
 		std::cout << "char: impossible" << std::endl;
-	else if ((0 <= chr && chr < 32) || chr > 126)
+	else if (0 <= chr && chr < 32)
 		std::cout << "char: Non displayable" << std::endl;
 	else
 		std::cout << "char: " << "'" << chr << "'" << std::endl;
