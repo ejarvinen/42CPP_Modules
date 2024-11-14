@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 12:33:50 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/13 12:29:36 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/14 14:35:10 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,19 +89,19 @@ void	identify(Base &p)
 {	
 	try
 	{
-		A &a = dynamic_cast<A&>(p);
+		(void)dynamic_cast<A&>(p);
 	}
 	catch (std::bad_cast const &ex)
 	{
 		try
 		{
-			B &b = dynamic_cast<B&>(p);
+			(void)dynamic_cast<B&>(p);
 		}
 		catch (std::bad_cast const &ex)
 		{
 			try
 			{
-				C &c = dynamic_cast<C&>(p);
+				(void)dynamic_cast<C&>(p);
 			}
 			catch (std::bad_cast const &ex)
 			{
