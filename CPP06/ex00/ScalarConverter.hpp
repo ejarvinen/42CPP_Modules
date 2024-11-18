@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:34:13 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/12 15:45:38 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/16 12:58:05 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	convertDouble(std::string literal);
 
 bool	inputChecker(std::string literal);
 bool	isValidChr(int c);
+bool	charCheck(std::string literal);
 int		decimals(std::string literal);
 
 #endif

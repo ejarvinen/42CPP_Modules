@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 12:49:47 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/13 11:34:31 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/18 11:45:12 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,10 @@ int	convertChr(std::string literal)
 	float	flt;
 	double	dble;
 
-	try
-	{
-		chr = stoi(literal);
-	}
-	catch (std::invalid_argument const &ex)
-	{
-		return (convertFloat(literal));
-	}
-	catch (std::out_of_range const &ex)
-	{
-		return (convertFloat(literal));
-	}
+	if (literal.length() == 1)
+		chr = static_cast<char>(literal[0]);
+	else
+		chr = static_cast<char>(literal[1]);
 	if (chr > 126)
 		std::cout << "char: impossible" << std::endl;
 	else if (0 <= chr && chr < 32)

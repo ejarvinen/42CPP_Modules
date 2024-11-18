@@ -6,11 +6,20 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:54:30 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/13 11:48:55 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/16 12:57:08 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+
+bool	charCheck(std::string literal)
+{
+	if (literal.length() == 1 && !isdigit(literal[0]))
+		return (true);
+	if (literal.length() == 3 && literal[0] == '\'' && literal[0] == literal[2])
+		return (true);
+	return (false);
+}
 
 bool	isValidChr(int c)
 {

@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:42:20 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/13 11:56:36 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/18 11:49:01 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,11 @@ ScalarConverter	&ScalarConverter::operator=(ScalarConverter const &other)
 
 void	ScalarConverter::convert(std::string literal)
 {
-	int	status = -1;
+	int		status = -1;
+	bool	charType = false;
 	
-	if (literal.empty() || inputChecker(literal) == false)
+	charType = charCheck(literal);
+	if (literal.empty() || (!inputChecker(literal) && !charType))
 	{
 		std::cout << "char: impossible\nint: impossible\nfloat: impossible\ndouble: impossible" << std::endl;
 		return ;
@@ -42,17 +44,17 @@ void	ScalarConverter::convert(std::string literal)
 		std::cout << std::setprecision(decimals(literal));
 	else
 		std::cout << std::setprecision(6);
-	if (literal.find("f") != std::string::npos)
+	if (charType)
+	{
+		status = convertChr(literal);
+	}
+	else if (status != 0 && literal.find("f") != std::string::npos)
 	{
 		status = convertFloat(literal);
 	}
-	if (status != 0 && literal.find(".") != std::string::npos)
+	else if (status != 0 && literal.find(".") != std::string::npos)
 	{
 		status = convertDouble(literal);
-	}
-	if (status != 0 && (literal.length() < 4 && literal.find("-") == std::string::npos))
-	{
-		status = convertChr(literal);
 	}
 	else if (status != 0)
 	{
