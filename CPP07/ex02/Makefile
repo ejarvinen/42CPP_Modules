@@ -4,9 +4,9 @@ CC := c++
 
 FLAGS := -Wall -Wextra -Werror
 
-HEADERS := Array.hpp
+HEADERS := Array.hpp Array.tpp
 
-SOURCES := main.cpp Array.tpp
+SOURCES := main.cpp
 
 OBJECTS := $(SOURCES:.cpp=.o)
 

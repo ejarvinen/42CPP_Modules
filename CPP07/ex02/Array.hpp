@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:42:59 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/19 12:08:37 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/19 13:11:25 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define ARRAY_H
 
 # include <iostream>
-//# include "Array.tpp"
 
 template <class T>
 class Array {
@@ -35,5 +34,5 @@ class Array {
 	
 };
 
-
+# include "Array.tpp"
 #endif

@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 11:29:04 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/19 12:19:32 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/19 13:58:08 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ Array<T>	&Array<T>::operator=(Array const &other)
 	return (*this);
 }
 
+
 template <class T>
 unsigned int	Array<T>::size()
 {
@@ -105,17 +106,15 @@ unsigned int	Array<T>::size()
 
 	if (a)
 	{
-		while (true)
+		std::cout << sizeof(*a) << std::endl;
+		std::cout << sizeof(a[0]) << std::endl;
+		try
 		{
-			try
-			{
-				a[size];
-			}
-			catch (...)
-			{
-				break ;
-			}
-			size++;
+			size = sizeof(*a) / sizeof(a[0]);
+		}
+		catch (const std::exception& e)
+		{
+			std::cout << "Cannot determine size" << std::endl;
 		}
 	}
 	return (size);
