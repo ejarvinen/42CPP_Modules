@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:59:32 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/19 10:27:24 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/19 10:40:24 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 #include <iostream>
 #include <string>
 
-// template <typename T, typename W>
-// void    iter(T *address, unsigned int len, W (*func)(T &param))
 template <typename T>
 void    iter(T *address, unsigned int len, void (*func)(T &param))
 {
@@ -42,27 +40,17 @@ void	printMember(T &member)
 
 int	main(void)
 {
-	{
-		int	*nums = new int[10];
-		
-		for (int index = 0; index < 10; index++)
-			nums[index] = index;
-		iter(nums, 10, printMember);
-		for (int index = 0; index < 10; index++)
-			std::cout << "nums[" << index << "] = " << nums[index] << std::endl;
-		iter(nums, 10, increment);
-		std::cout << std::endl;
-		for (int index = 0; index < 10; index++)
-			std::cout << "nums[" << index << "] = " << nums[index] << std::endl;
-		delete[] nums;
-	}
+	int	nums[] = {1, 2, 3, 4, 5};
+	std::string	fruits[] = {"apple", "banana", "coconut", "durian", "elderberry"};
+	
+	iter(nums, 5, printMember);
+	iter(nums, 5, increment);
 	std::cout << std::endl;
-	{
-		std::string	fruits[5] = {"apple", "banana", "coconut", "durian", "elderberry"};
-		std::string	*fruitPtr = &fruits[5];
-		
-		iter(fruitPtr, 5, printMember);
-		iter(fruitPtr, 5, increment);
-	}
+	iter(nums, 5, printMember);
+	
+	std::cout << std::endl;
+	
+	iter(fruits, 5, printMember);
+
 	return (0);
 }
