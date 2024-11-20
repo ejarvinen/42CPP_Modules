@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:42:56 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/20 15:56:02 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/20 16:03:07 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,11 @@ int main(void)
 	{
 		std::cout << e.what() << std::endl;
 	}
+
+	Array<std::string>	copyStrA(strA);
+	std::cout << copyStrA[0] << std::endl;
+	copyStrA[0] = "coconut";
+	std::cout << copyStrA[0] << std::endl;
+	std::cout << strA[0] << std::endl;
 	return (0);
 }
