@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:42:59 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/19 13:11:25 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/20 12:38:13 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ class Array {
 	
 	private:
 
-		T *a;
+		T 				*_a;
+		unsigned int	_size;
+		
 
 	public:
 	
@@ -30,6 +32,7 @@ class Array {
 		~Array();
 		Array &operator=(Array const &other);
 		
+		T				&operator[](unsigned int index);
 		unsigned int	size();
 	
 };
