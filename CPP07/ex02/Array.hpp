@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:42:59 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/22 10:23:28 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:35:58 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ class Array {
 		Array &operator=(Array const &other);
 		
 		T				&operator[](unsigned int index);
+		T				&operator[](unsigned int index) const;
+		unsigned int	size();
 		unsigned int	size() const;
 	
 };

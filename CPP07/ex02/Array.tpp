@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 11:29:04 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/22 11:07:32 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/22 16:35:40 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,19 @@ T	&Array<T>::operator[](unsigned int index)
 	return (_a[index]);
 }
 
+template <class T>
+T	&Array<T>::operator[](unsigned int index) const
+{
+	if (index >= _size)
+		throw std::out_of_range("Index out of range");
+	return (_a[index]);
+}
+
+template <class T>
+unsigned int	Array<T>::size()
+{
+	return (_size);
+}
 
 template <class T>
 unsigned int	Array<T>::size() const
