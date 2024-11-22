@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 11:29:04 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/20 15:55:39 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/11/22 11:07:32 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,29 +39,21 @@ Array<T>::Array(unsigned int n) : _size(n)
 }
 
 template <class T>
-Array<T>::Array(Array const &copy)
-{
-	unsigned int	index;
-	
-	if (_a)
+Array<T>::Array(Array const &copy) : _size(copy.size())
+{	
+	try
 	{
-		if (copy._a)
-			delete[] copy._a;
-		try
+		_a = new T[_size];
+		if (_a)
 		{
-			copy._a = new T[_size];
-			if (copy._a)
-			{
-				for (index = 0; index < _size; index++)
-					copy._a[index] = _a[index];
-			}
-		}
-		catch (std::bad_alloc &ba)
-		{
-			std::cout << "Failed to allocate memory for size " << _size << " array" << std::endl;
+			for (unsigned int index = 0; index < _size; index++)
+				_a[index] = copy._a[index];
 		}
 	}
-	*this = copy;
+	catch (std::bad_alloc &ba)
+	{
+		std::cout << "Failed to allocate memory for size " << _size << " array" << std::endl;
+	}
 }
 
 template <class T>
@@ -76,27 +68,21 @@ Array<T>::~Array()
 template <class T>
 Array<T>	&Array<T>::operator=(Array const &other)
 {
-	unsigned int	index;
-	
 	if (this != &other)
 	{
-		if (_a)
+		_size = other.size();
+		try
 		{
-			if (other._a)
-				delete[] other._a;
-			try
+			_a = new T[_size];
+			if (_a)
 			{
-				other._a = new T[_size];
-				if (other._a)
-				{
-					for (index = 0; index < _size; index++)
-						other._a[index] = _a[index];
-				}
+				for (unsigned int index = 0; index < _size; index++)
+					_a[index] = other._a[index];
 			}
-			catch (std::bad_alloc &ba)
-			{
-				std::cout << "Failed to allocate memory for size " << _size << " array" << std::endl;
-			}
+		}
+		catch (std::bad_alloc &ba)
+		{
+			std::cout << "Failed to allocate memory for size " << _size << " array" << std::endl;
 		}
 	}
 	return (*this);
@@ -112,7 +98,7 @@ T	&Array<T>::operator[](unsigned int index)
 
 
 template <class T>
-unsigned int	Array<T>::size()
+unsigned int	Array<T>::size() const
 {
 	return (_size);
 }
