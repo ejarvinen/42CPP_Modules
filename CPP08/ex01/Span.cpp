@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 14:26:04 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/26 18:15:40 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/05 14:38:42 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ unsigned int	Span::shortestSpan()
 	std::sort(_nums.begin(), _nums.end());
 	std::vector<int> spans;
 	for (std::vector<int>::iterator nbr = std::next(_nums.begin(), 1); nbr != _nums.end(); nbr++)
-		spans.push_back(abs(*nbr - *(nbr - 1)));
+		spans.push_back(std::abs(*nbr - *(nbr - 1)));
 	unsigned int sspan = static_cast<unsigned int>(*std::min_element(spans.begin(), spans.end()));
 	return (sspan);
 }
@@ -62,12 +62,12 @@ unsigned int	Span::longestSpan()
 		throw std::out_of_range("Can't find longest span");
 	std::vector<int>::iterator min = std::min_element(_nums.begin(), _nums.end());
 	std::vector<int>::iterator max = std::max_element(_nums.begin(), _nums.end());
-	return (abs(*max - *min));
+	return (std::abs(*max - *min));
 }
 
 void	Span::addNumbers(std::vector<int>::iterator start, std::vector<int>::iterator end)
 {
-	unsigned int range = abs(std::distance(start, end));
+	unsigned int range = std::abs(std::distance(start, end));
 	
 	if (range > _N - _nums.size())
 		throw std::out_of_range("Not enough space");

@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 14:26:00 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/26 18:16:32 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/05 14:44:12 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int main(void)
 		std::cout << sp0.longestSpan() << std::endl;
 	}
 	{
-		unsigned int size = 1000000;
+		unsigned int size = 500;
 		std::vector<int> add(size);
 
 		srand(time(NULL));

@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 14:12:47 by emansoor          #+#    #+#             */
-/*   Updated: 2024/11/26 17:44:29 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/05 14:40:34 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <vector>
 # include <iostream>
 # include <algorithm>
-# include <cmath>
 
 class Span {
 
