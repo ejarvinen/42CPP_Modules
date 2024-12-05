@@ -4,7 +4,7 @@ CC := c++
 
 FLAGS := -Wall -Wextra -Werror
 
-HEADERS := MutantStack.hpp
+HEADERS := MutantStack.hpp MutantStack.tpp
 
 SOURCES := main.cpp
 

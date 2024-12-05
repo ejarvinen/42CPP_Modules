@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 09:10:27 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/04 15:25:25 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/05 14:27:02 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,25 @@ MutantStack<T, container>	&MutantStack<T, container>::operator=(MutantStack cons
 }
 
 template <class T, class container>
-MutantStack<T, container>iterator	MutantStack<T, container>::begin()
+typename MutantStack<T, container>::iterator	MutantStack<T, container>::begin()
 {
-	return (c.begin());
+	return (this->c.begin());
 }
 
-/* template <class T, class container>
-MutantStack<T, container>iterator	MutantStack<T, container>::begin()
+template <class T, class container>
+typename MutantStack<T, container>::iterator	MutantStack<T, container>::begin() const
 {
-	return (c.begin());
-} */
+	return (this->c.begin());
+}
 
+template <class T, class container>
+typename MutantStack<T, container>::iterator	MutantStack<T, container>::end()
+{
+	return (this->c.end());
+}
+
+template <class T, class container>
+typename MutantStack<T, container>::iterator	MutantStack<T, container>::end() const
+{
+	return (this->c.end());
+}
