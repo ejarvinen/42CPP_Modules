@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:36:31 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/09 14:59:17 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/10 18:31:21 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <map>
 # include <fstream>
 # include <filesystem>
+# include <regex>
 
 class BitcoinExchange {
 
@@ -25,8 +26,13 @@ class BitcoinExchange {
 	
 		std::map<std::string, float> _rates;
 
-		int	initRates();
-		int	validateFile(std::string fileName);
+		int		initRates();
+		int		validateFile(std::string fileName);
+		void	processInputFile(std::string inputFile);
+		int		isValidLine(std::string line, std::string *date, std::string *value);
+		bool	isValidDate(std::string *date);
+		bool	isValidValue(std::string *value);
+		bool	checkIntValue(std::string *value);
 
 	public:
 

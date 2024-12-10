@@ -2,7 +2,7 @@ NAME := btc
 
 CC := c++
 
-FLAGS := -Wall -Wextra -Werror
+FLAGS := -Wall -Wextra -Werror -std=c++17
 
 HEADERS := BitcoinExchange.hpp
 
