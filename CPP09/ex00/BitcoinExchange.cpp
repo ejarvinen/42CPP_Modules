@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 13:12:18 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/11 14:09:26 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/11 16:13:13 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	BitcoinExchange::initRates()
 		}
 		catch (const std::exception& e)
 		{
-			_rates[line.substr(0, sep)] = 0;
+			_rates[line.substr(0, sep)] = -1;
 		}
 	}
 	dataBase.close();

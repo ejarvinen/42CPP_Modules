@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 14:05:02 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/11 14:58:51 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/11 15:59:32 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ bool	BitcoinExchange::isValidDate(std::string *date)
 	}
 	if ((d == 1 && m == 1 && y == 2009) || isFuture(date))
 	{
-		std::cout << "Error: invalid date" << std::endl;
+		std::cout << "Error: invalid date." << std::endl;
 		return (false);
 	}
 	return (true);

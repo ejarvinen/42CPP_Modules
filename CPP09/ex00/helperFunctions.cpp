@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 14:00:47 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/11 15:10:02 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/11 15:49:35 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ bool	BitcoinExchange::isFuture(std::string *date)
 	if (strftime(timeStamp, 11, "%F", timeInfo) != 0)
 	{
 		tstamp = timeStamp;
-		
+		if (tstamp.compare(*date) >= 0)
+			return (false);
 	}
 	return (true);
 }
