@@ -6,7 +6,7 @@ FLAGS := -Wall -Wextra -Werror -std=c++17
 
 HEADERS := BitcoinExchange.hpp
 
-SOURCES := main.cpp BitcoinExchange.cpp
+SOURCES := main.cpp BitcoinExchange.cpp findRate.cpp inputValidation.cpp helperFunctions.cpp
 
 OBJECTS := $(SOURCES:.cpp=.o)
 
