@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:10:38 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/15 16:29:15 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/16 14:43:58 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <cctype>
 # include <algorithm>
 # include <cmath>
+# include <iterator>
 
 class PmergeMe {
 
@@ -34,7 +35,7 @@ class PmergeMe {
 
 		int		checkArgs(char **argv);
 		bool	isAllDigits(std::string);
-		void	sortVec(int level);
+		void	sortVec(int level, int pairs);
 
 	public:
 
