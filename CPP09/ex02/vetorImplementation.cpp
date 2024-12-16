@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   vetorImplementation.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/12 16:09:26 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/15 14:50:25 by emansoor         ###   ########.fr       */
+/*   Created: 2024/12/15 15:57:50 by emansoor          #+#    #+#             */
+/*   Updated: 2024/12/15 16:27:41 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-int	main(int argc, char *argv[])
+void	PmergeMe::sortVec(int level)
 {
-	if (argc < 2)
+	std::vector<int>::iterator	current;
+	std::vector<int>::iterator	prev;
+	std::vector<int>::iterator	end;
+	double N = 2 ^ level;
+
+	prev = _sortedVec.begin();
+	current = prev++;
+	end = _sortedVec.end();
+
+	while (current != end)
 	{
-		std::cout << "Error: no enough arguments" << std::endl;
-		return (1);
+		if (*prev > *current)
+		{
+			std::iter_swap(prev, current);
+		}
+		current = current + std::floor(N / 2);
+		prev = current - 1;
 	}
-	PmergeMe	pmergeMe;
-	pmergeMe.sortNums(argv);
-	return (0);
+
 }
