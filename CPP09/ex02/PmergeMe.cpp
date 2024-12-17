@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:10:26 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/15 16:32:51 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/17 15:21:16 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	PmergeMe::checkArgs(char **argv)
 		else
 			return (1);
 	}
-	_size = index;
+	_size = index - 1;
 	return (0);
 }
 
@@ -82,6 +82,7 @@ void	PmergeMe::sortNums(char **argv)
 		std::cout << "Error: invalid arguments" << std::endl;
 		return ;
 	}
+	// if (is_sorted()) > return
 	std::vector<int>::iterator last = _sortedVec.end();
 	last--;
 	if (_size % 2 != 0)
@@ -89,7 +90,8 @@ void	PmergeMe::sortNums(char **argv)
 		_even = false;
 		_straggler = *last;
 	}
-	sortVec(1);
-	sortList();
-	printStats();
+	_unsorted = argv;
+	sortVec(1, _size / 2);
+	//sortList();
+	//printStats();
 }

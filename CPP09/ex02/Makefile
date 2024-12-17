@@ -6,7 +6,7 @@ FLAGS := -Wall -Wextra -Werror
 
 HEADERS := PmergeMe.hpp
 
-SOURCES := main.cpp PmergeMe.cpp vectorImplementation.cpp
+SOURCES := main.cpp PmergeMe.cpp vector.cpp
 
 OBJECTS := $(SOURCES:.cpp=.o)
 

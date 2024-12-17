@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:09:26 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/15 14:50:25 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/17 14:50:20 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,3 +23,4 @@ int	main(int argc, char *argv[])
 	pmergeMe.sortNums(argv);
 	return (0);
 }
+
