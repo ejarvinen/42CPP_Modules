@@ -6,11 +6,55 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 11:45:29 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/18 14:22:28 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/18 18:06:49 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+
+void	PmergeMe::clearPend(std::vector<int> &main, std::vector<int> &pend, std::vector<int> &pendIndexes, double N)
+{
+	int	pendElem;
+	int	elem;
+	int	index;
+	int	i;
+
+	if (pendIndexes.size() > 2)
+	{
+		// jacobstahl;
+		return ;
+	}
+	std::vector<int>::iterator it = pendIndexes.begin();
+	std::vector<int>::iterator end = pendIndexes.end();
+	std::vector<int>::iterator m = main.begin();
+	std::vector<int>::iterator p = pend.begin();
+	pendElem = N / 2 - 1;
+	while (it != end)
+	{
+		index = *it;
+		elem = 1;
+		std::advance(p, pendElem);
+		while (pendElem < index)
+		{
+			std::advance(m, N / 2 - 1);
+			if (*m > *p)
+			{
+				std::advance(m, (-1) * (N / 2 - 1));
+				std::advance(p, (-1) * (N / 2 - 1));
+				main.insert(m, p, p + (N / 2 - 1)); // is this safe
+				index = -1;
+			}
+			elem++;
+			pendElem = pendElem * elem;
+		}
+		if (index > 0)
+		{
+			std::advance(p, (-1) * (N / 2 - 1));
+			main.insert(m, p, p + (N / 2 - 1)); // is this safe
+		}
+		std::advance(it, 1);
+	}
+}
 
 void	PmergeMe::insertVec(int level, int pairs)
 {
@@ -76,32 +120,40 @@ void	PmergeMe::insertVec(int level, int pairs)
 			i++;
 		}
 	}
+	
+	clearPend(main, pend, pendIndexes, N);
+	// insert odd element
 
 	std::cout << "og: ";
-	for (int j = 0; _sortedVec[j]; j++)
-		std::cout << _sortedVec[j] << " ";
+	std::vector<int>::iterator end = _sortedVec.end();
+	for (std::vector<int>::iterator it = _sortedVec.begin(); it != end; std::advance(it, 1))
+		std::cout << *it << " ";
 	std::cout << std::endl;
 	
 	std::cout << "main: ";
-	for (int j = 0; main[j]; j++)
-		std::cout << main[j] << " ";
+	end = main.end();
+	for (std::vector<int>::iterator it = main.begin(); it != end; std::advance(it, 1))
+		std::cout << *it << " ";
 	std::cout << std::endl;
 
 	std::cout << "pend: ";
-	for (int j = 0; pend[j]; j++)
-		std::cout << pend[j] << " ";
+	end = pend.end();
+	for (std::vector<int>::iterator it = pend.begin(); it != end; std::advance(it, 1))
+		std::cout << *it << " ";
 	std::cout << std::endl;
 	
 	std::cout << "indexes: ";
-	for (int j = 0; pendIndexes[j]; j++)
-		std::cout << pendIndexes[j] << " ";
+	end = pendIndexes.end();
+	for (std::vector<int>::iterator it = pendIndexes.begin(); it != end; std::advance(it, 1))
+		std::cout << *it << " ";
 	std::cout << std::endl;
 
 	if (odd)
 	{
 		std::cout << "odd: ";
-		for (int j = 0; oddb[j]; j++)
-			std::cout << oddb[j] << " ";
+		end = oddb.end();
+		for (std::vector<int>::iterator it = oddb.begin(); it != end; std::advance(it, 1))
+			std::cout << *it << " ";
 		std::cout << std::endl;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:10:38 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/18 11:46:42 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/18 17:26:29 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ class PmergeMe {
 		void	mergeVec(int level, int pairs);
 		void	insertVec(int level, int pairs);
 		void	arrangePairs(int elem1, int elem2, int N);
+		void	clearPend(std::vector<int> &main, std::vector<int> &pend, std::vector<int> &pendIndexes, double N);
 
 	public:
 
