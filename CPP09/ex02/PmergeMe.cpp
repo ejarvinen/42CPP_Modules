@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:10:26 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/17 15:21:16 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/18 11:38:36 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	PmergeMe::sortNums(char **argv)
 		_straggler = *last;
 	}
 	_unsorted = argv;
-	sortVec(1, _size / 2);
+	mergeVec(1, _size / 2);
 	//sortList();
 	//printStats();
 }
