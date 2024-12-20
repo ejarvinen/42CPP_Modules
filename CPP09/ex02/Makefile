@@ -2,7 +2,7 @@ NAME := PmergeMe
 
 CC := c++
 
-FLAGS := -Wall -Wextra -Werror
+FLAGS := -Wall -Wextra -Werror #-g -fsanitize=address
 
 HEADERS := PmergeMe.hpp
 
