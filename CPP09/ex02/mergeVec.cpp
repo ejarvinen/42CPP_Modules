@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 15:57:50 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/18 13:47:02 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/22 17:29:02 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,24 +74,17 @@ void	PmergeMe::mergeVec(int level, int pairs)
 		mergeVec(++level, pairs / 2);
 		if (pairs > 2)
 		{
-			std::cout << "level: " << level << std::endl;
-			std::cout << "pairs: " << pairs << std::endl;
 			insertVec(level, pairs);
 		}
 	}
-	else
+	level--;
+	if (level == 1)
 	{
-		std::cout << "og sequence: " << std::endl;
-		for (int i = 1; _unsorted[i]; i++)
-			std::cout << _unsorted[i] << " ";
-		std::cout << std::endl;
-		std::cout << "sorted sequence: " << std::endl;
-		int i = 0;
-		while (i < _size)
-		{
-			std::cout << _sortedVec[i] << " ";
-			i++;
-		}
+		insertSingles(_size);
+		std::cout << "og: ";
+		std::vector<int>::iterator end = _sortedVec.end();
+		for (std::vector<int>::iterator it = _sortedVec.begin(); it != end; std::advance(it, 1))
+			std::cout << *it << " ";
 		std::cout << std::endl;
 	}
 }
@@ -110,6 +103,27 @@ void	PmergeMe::mergeVec(int level, int pairs)
 
 // after level 4:
 // 2 6 0 9 11 12 4 13 5 10 7 14 1 3 8 15
+
+// insert part
+// level 3:
+// main: 2 6 0 9 11 12 4 13 1 3 8 15
+// pend: 5 10 7 14
+// odd: N/A
+// after level 3: 2 6 0 9 11 12 4 13 5 10 7 14 1 3 8 15 // FINE
+
+// level 2:
+// main: 2 6 0 9 4 13 7 14 8 15
+// pend: 11 12 5 10 1 3
+// odd: N/A
+// after level 2: 1 3 2 6 0 9 5 10 11 12 4 13 7 14 8 15
+
+// level 1:
+// main: 1 3 6 9 10 12 13 14 15
+// pend: 2 0 5 11 4 7 8
+// odd: N/A
+// after level 1: sorted
+
+//*******************************************
 
 // even but not enough:
 // ./PmergeMe 19 10 1 17 12 13 3 21 8 15 4 18 0 9 11 6 7 14 5 16 2 20
@@ -139,3 +153,17 @@ void	PmergeMe::mergeVec(int level, int pairs)
 // 0 2 1 8 4 5 9 14 3 6 7 10 11 13 12
 
 // 42 example: ./PmergeMe 11 2 17 0 16 8 6 15 10 3 21 1 18 9 14 19 12 5 4 20 13 7
+
+
+/* std::cout << "og sequence: " << std::endl;
+		for (int i = 1; _unsorted[i]; i++)
+			std::cout << _unsorted[i] << " ";
+		std::cout << std::endl;
+		std::cout << "sorted sequence: " << std::endl;
+		int i = 0;
+		while (i < _size)
+		{
+			std::cout << _sortedVec[i] << " ";
+			i++;
+		}
+		std::cout << std::endl; */

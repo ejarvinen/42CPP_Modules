@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:10:26 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/18 11:38:36 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/22 17:33:56 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 PmergeMe::PmergeMe() : _unsorted(NULL), _size(0), _even(true), _straggler(-1) {}
 
-PmergeMe::PmergeMe(PmergeMe const &copy) : _sortedVec(copy._sortedVec), _sortedList(copy._sortedList)
+PmergeMe::PmergeMe(PmergeMe const &copy) : _sortedVec(copy._sortedVec), _sortedList(copy._sortedList), _jNums(copy._jNums)
 {
 	_unsorted = copy._unsorted;
 	_size = copy._size;
@@ -34,6 +34,7 @@ PmergeMe	&PmergeMe::operator=(PmergeMe const &other)
 		_even = other._even;
 		_straggler = other._straggler;
 		_size = other._size;
+		_jNums = other._jNums;
 	}
 	return (*this);
 }
@@ -88,9 +89,10 @@ void	PmergeMe::sortNums(char **argv)
 	if (_size % 2 != 0)
 	{
 		_even = false;
-		_straggler = *last;
+		_straggler = *last; // save and pop from vector?
 	}
 	_unsorted = argv;
+	initJacobstahl();
 	mergeVec(1, _size / 2);
 	//sortList();
 	//printStats();

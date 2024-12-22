@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:10:38 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/20 19:54:26 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/22 15:50:39 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <string>
 # include <vector>
 # include <list>
+# include <deque>
 # include <iostream>
 # include <cctype>
 # include <algorithm>
@@ -29,6 +30,7 @@ class PmergeMe {
 		char				**_unsorted;
 		std::vector<int>	_sortedVec;
 		std::list<int>		_sortedList;
+		std::deque<double>	_jNums;
 		int					_size;
 		bool				_even;
 		int					_straggler;
@@ -45,6 +47,13 @@ class PmergeMe {
 		void	fillPend(std::vector<int> &pend, std::vector<int> &pendIndexes, double N, int pair);
 		void	fillMain(std::vector<int> &main, double N, int pair);
 		void	saveOdd(std::vector<int> &oddb, int pairs, double N);
+		void	initJacobstahl(void);
+		double	jacobstahl(double n);
+		void	jacobstahlInsert(std::vector<int> &main, std::vector<int> &pend, std::vector<int> &pendIndexes, double N);
+		int		getjNumIndex(double pendSize);
+		void	insertSingles(int nums);
+		void	updateJIndexes(std::vector<int> &pendIndexes, int index, double increment);
+		void	jacobstahlInsertSingles(std::vector<int> &main, std::vector<int> &pend, std::vector<int> &pendIndexes);
 
 	public:
 

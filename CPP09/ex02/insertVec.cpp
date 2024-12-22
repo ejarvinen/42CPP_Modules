@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 11:45:29 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/20 19:57:00 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/22 17:28:37 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,10 +117,10 @@ void	PmergeMe::fillPend(std::vector<int> &pend, std::vector<int> &pendIndexes, d
 	int	elem;
 	int	i;
 
-	elem = (pair - 1) * N / 2;
+	elem = (pair - 1) * (N / 2);
 	pendIndexes.push_back(elem);
 	i = 0;
-	while (i < N / 2)
+	while (i < (N / 2))
 	{
 		pend.push_back(_sortedVec[elem + i]);
 		i++;
@@ -137,7 +137,7 @@ void	PmergeMe::fillMain(std::vector<int>	&main, double N, int pair)
 		i = 0;
 		while (i < N)
 		{
-			main.push_back(_sortedVec[i]);
+			main.push_back(_sortedVec.at(i));
 			i++;
 		}
 	}
@@ -147,7 +147,7 @@ void	PmergeMe::fillMain(std::vector<int>	&main, double N, int pair)
 		i = 0;
 		while (i < N / 2)
 		{
-			main.push_back(_sortedVec[elem + i]);
+			main.push_back(_sortedVec.at(elem + i));
 			i++;
 		}
 	}
@@ -199,15 +199,17 @@ void	PmergeMe::insertVec(int level, int pairs)
 		saveOdd(oddb, pairs, N);
 	}
 	if (pendIndexes.size() > 2)
-	{
-		// jacobstahl;
+	{	
+		jacobstahlInsert(main, pend, pendIndexes, N);
 	}
 	else
 		clearPend(main, pend, pendIndexes, N);
 	if (odd)
 		insertOdd(main, oddb, N);
 	saveMain(main);
-	std::cout << "og: ";
+}
+
+/* std::cout << "og: ";
 	std::vector<int>::iterator end = _sortedVec.end();
 	for (std::vector<int>::iterator it = _sortedVec.begin(); it != end; std::advance(it, 1))
 		std::cout << *it << " ";
@@ -238,5 +240,4 @@ void	PmergeMe::insertVec(int level, int pairs)
 		for (std::vector<int>::iterator it = oddb.begin(); it != end; std::advance(it, 1))
 			std::cout << *it << " ";
 		std::cout << std::endl;
-	}
-}
+	} */
