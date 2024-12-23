@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:20:47 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/22 17:26:31 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/23 16:19:38 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,57 +17,50 @@ void	PmergeMe::jacobstahlInsertSingles(std::vector<int> &main, std::vector<int> 
 	double	jNum;
 	double	prevjNum;
 	int		startIndex = 3;
-	int		elem;
+	int		pendIndex;
 	int		index;
-	int		round = 0;
 	int		maxIndex = getjNumIndex(pend.size());
 
 	std::vector<int>::iterator m;
 	std::vector<int>::iterator p = pend.begin();
 
-	while (startIndex + round <= maxIndex)
+	while (startIndex <= maxIndex)
 	{
-		jNum = _jNums.at(startIndex + round);
-		prevjNum = _jNums.at(startIndex + round - 1);
-		if (round == 0)
-			std::advance(p, 1);
-		else if (jNum - 2 >= pend.size() - 1)
+		jNum = _jNums.at(startIndex);
+		prevjNum = _jNums.at(startIndex - 1);
+		if ((jNum - 2) > pend.size() - 1)
 		{
-			p = pend.end();
-			std::advance(p, -1);
 			jNum = pend.size() + 1;
 		}
-		else
-			std::advance(p, jNum - 2);
 		while (jNum > prevjNum)
 		{
-			elem = 0;
-			index = pendIndexes.at(jNum - 2);
-			if ((std::size_t)index > main.size() - 1)
-				index = main.size() - 1;
+			pendIndex = jNum - 2; // index for pend elements
 			m = main.begin();
-			while (elem < index)
+			p = pend.begin();
+			index = 0;
+			while (index < pendIndexes.at(pendIndex) && (std::size_t)index < main.size() && index != -1)
 			{
-				if (*m > *p)
+				if (main.at(index) > pend.at(pendIndex))
 				{
+					if (index != 0)
+					{
+						std::advance(m, index);
+					}
+					std::advance(p, pendIndex); // do these need to be protected?
 					main.insert(m, *p);
-					updateJIndexes(pendIndexes, index, 1);
-					index = -1;
+					updateJIndexes(pendIndexes, pendIndex, 1);
+					index = -2;
 				}
-				std::advance(m, 1);
-				elem++;
+				index++;
 			}
 			if (index > 0)
 			{
-				std::advance(m, 1);
+				std::advance(m, pendIndexes.at(pendIndex)); // does this need to be protected
 				main.insert(m, *p);
-				updateJIndexes(pendIndexes, index, 1);
 			}
-			if (p != pend.begin())
-				std::advance(p, -1);
 			jNum--;
 		}
-		round++;
+		startIndex++;
 	}
 }
 
@@ -76,23 +69,31 @@ void	PmergeMe::insertSingles(int nums)
 	std::vector<int>	pend;
 	std::vector<int>	main;
 	std::vector<int>	pendIndexes;
-	int					num = 1;
+	int					num = 0;
 
-	while (num <= nums)
+	while (num < 2)
 	{
-		if (num != 1 && num % 2 != 0)
+		main.push_back(_sortedVec.at(num));
+		num++;
+	}
+	while (num < nums)
+	{
+		if (num % 2 == 0)
 		{
-			pendIndexes.push_back(num - 1);
-			pend.push_back(_sortedVec.at(num - 1));
+			pendIndexes.push_back(num);
+			pend.push_back(_sortedVec.at(num));
 		}
 		else
 		{
-			main.push_back(_sortedVec.at(num - 1));
+			main.push_back(_sortedVec.at(num));
 		}
 		num++;
 	}
-	jacobstahlInsertSingles(main, pend, pendIndexes);
-	saveMain(main);
+	if (pendIndexes.size() > 1)
+		jacobstahlInsertSingles(main, pend, pendIndexes);
+	else
+		insertPend(main, pend, pendIndexes.at(0));
+	_sortedVec.assign(main.begin(), main.end());
 }
 
 /* std::cout << "main: ";

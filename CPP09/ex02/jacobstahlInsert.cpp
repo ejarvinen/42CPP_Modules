@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:03:27 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/22 17:27:18 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/23 16:20:14 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,61 +66,52 @@ void	PmergeMe::jacobstahlInsert(std::vector<int> &main, std::vector<int> &pend, 
 {
 	double	jNum;
 	double	prevjNum;
-	int		startIndex = 3;
-	int		pendElem;
+	int		startLevel = 3;
+	int		elemSize = N / 2;
+	int		pendIndex;
 	int		index;
-	int		round = 0;
-	int		maxIndex = getjNumIndex(pend.size() / (N / 2));
+	int		maxIndex = getjNumIndex(pendIndexes.size());
 
 	std::vector<int>::iterator m;
-	std::vector<int>::iterator p = pend.begin();
+	std::vector<int>::iterator p;
 
-	while (startIndex + round <= maxIndex)
+	while (startLevel <= maxIndex)
 	{
-		jNum = _jNums.at(startIndex + round);
-		prevjNum = _jNums.at(startIndex + round - 1);
-		if (round == 0)
-			std::advance(p, (N / 2 - 1) * jNum);
-		else if ((N / 2 - 1) * jNum + (jNum - prevjNum) > pend.size())
+		jNum = _jNums.at(startLevel);
+		prevjNum = _jNums.at(startLevel - 1);
+		if (((jNum - 1) * elemSize - 1) > pend.size() - 1)
 		{
-			p = pend.end();
-			std::advance(p, -1);
-			jNum = pend.size() / (N / 2) + 1; // use jNum = maxIndex?
+			jNum = pend.size() / elemSize + 1;
 		}
-		else
-			std::advance(p, (N / 2 - 1) * jNum + (jNum - prevjNum));
 		while (jNum > prevjNum)
 		{
-			pendElem = N / 2 - 1;
-			index = pendIndexes.at(jNum - 2);
+			pendIndex = (jNum - 1) * elemSize - 1; // index for pend elements
 			m = main.begin();
-			std::advance(m, (N / 2 - 1));
-			while (pendElem < index)
+			p = pend.begin();
+			index = elemSize - 1;
+			while (index < pendIndexes.at(jNum - 2) && (std::size_t)index < main.size() && index != -1)
 			{
-				if (*m > *p)
+				if (main.at(index) > pend.at(pendIndex))
 				{
-					std::advance(m, (-1) * (N / 2 - 1));
-					std::advance(p, (-1) * (N / 2 - 1));
-					main.insert(m, p, p + (N / 2)); // is this safe
-					updateJIndexes(pendIndexes, index, N / 2);
-					index = -1;
+					if (index != (elemSize - 1))
+					{
+						std::advance(m, index - (elemSize - 1));
+					}
+					std::advance(p, pendIndex - (elemSize - 1)); // do these need to be protected?
+					main.insert(m, p, p + elemSize);
+					updateJIndexes(pendIndexes, pendIndex, elemSize);
+					index = -1 - (index + elemSize);
 				}
-				pendElem = pendElem + (N / 2);
-				std::advance(m, N / 2);
+				index = index + elemSize;
 			}
 			if (index > 0)
 			{
-				std::advance(m, -1);
-				std::advance(p, (-1) * (N / 2 - 1));
-				main.insert(m, p, p + (N / 2)); // is this safe
-				updateJIndexes(pendIndexes, index, N / 2);
+				std::advance(m, pendIndexes.at(jNum - 2)); // does this need to be protected
+				main.insert(m, p, p + elemSize);
 			}
-			if (p != pend.begin())
-				std::advance(p, -1);
 			jNum--;
 		}
-		//p = pend.begin();
-		round++;
+		startLevel++;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 15:57:50 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/22 17:29:02 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/23 16:15:19 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,9 @@ void	PmergeMe::mergeVec(int level, int pairs)
 		}
 	}
 	level--;
-	if (level == 1)
+	if (level == 1 && !std::is_sorted(_sortedVec.begin(), _sortedVec.end()))
 	{
 		insertSingles(_size);
-		std::cout << "og: ";
-		std::vector<int>::iterator end = _sortedVec.end();
-		for (std::vector<int>::iterator it = _sortedVec.begin(); it != end; std::advance(it, 1))
-			std::cout << *it << " ";
-		std::cout << std::endl;
 	}
 }
 
@@ -140,20 +135,41 @@ void	PmergeMe::mergeVec(int level, int pairs)
 // after level 4:
 // 0 9 6 11 8 15 4 18 1 17 10 19 12 13 3 21 7 14 5 16 2 20
 
+//*******************************************
+
 // odd number:
 // ./PmergeMe 0 2 1 8 5 4 14 9 10 7 3 6 13 11 12
+// straggler = 12
 
 // after level 1:
-// 0 2 1 8 4 5 9 14 7 10 3 6 11 13 12
+// 0 2 1 8 4 5 9 14 7 10 3 6 11 13
 
 // after level 2:
-// 0 2 1 8 4 5 9 14 3 6 7 10 11 13 12
+// 0 2 1 8 4 5 9 14 3 6 7 10 11 13
 
 // after level 3:
-// 0 2 1 8 4 5 9 14 3 6 7 10 11 13 12
+// 0 2 1 8 4 5 9 14 3 6 7 10 11 13
+
+// insert part
+// level 3:
+// main: 0 2 1 8 4 5 9 14
+// pend: 3 6 7 10
+// odd: N / A
+// after level 3: 0 2 1 8 3 6 7 10 4 5 9 14 11 13
+
+// level 2:
+// main: 0 2 1 8 7 10 9 14 
+// pend: 3 6 4 5
+// odd: 11 13
+// after level 2: 
+
+
+
+//*******************************************
 
 // 42 example: ./PmergeMe 11 2 17 0 16 8 6 15 10 3 21 1 18 9 14 19 12 5 4 20 13 7
 
+// ./PmergeMe 6 30 10 16 4 22 12 8 9 18 23 27 25 19 26 7 29 3 13 5 1 2 15 20 14 28 21 17 11 24
 
 /* std::cout << "og sequence: " << std::endl;
 		for (int i = 1; _unsorted[i]; i++)

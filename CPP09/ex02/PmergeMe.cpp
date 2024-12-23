@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:10:26 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/22 17:33:56 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/23 16:14:46 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,22 @@ int	PmergeMe::checkArgs(char **argv)
 	return (0);
 }
 
+void	PmergeMe::addOdd(void)
+{
+	std::vector<int>::iterator begin = _sortedVec.begin();
+	std::vector<int>::iterator end = _sortedVec.end();
+
+	while (begin != end)
+	{
+		if (*begin > _straggler)
+		{
+			_sortedVec.insert(begin, _straggler);
+			return ;
+		}
+		std::advance(begin, 1);
+	}
+}
+
 void	PmergeMe::sortNums(char **argv)
 {
 	if (checkArgs(argv))
@@ -83,17 +99,29 @@ void	PmergeMe::sortNums(char **argv)
 		std::cout << "Error: invalid arguments" << std::endl;
 		return ;
 	}
-	// if (is_sorted()) > return
-	std::vector<int>::iterator last = _sortedVec.end();
-	last--;
-	if (_size % 2 != 0)
-	{
-		_even = false;
-		_straggler = *last; // save and pop from vector?
-	}
 	_unsorted = argv;
-	initJacobstahl();
-	mergeVec(1, _size / 2);
+	std::vector<int>::iterator last = _sortedVec.end();
+	if (!std::is_sorted(_sortedVec.begin(), last))
+	{
+		if (_size % 2 != 0)
+		{
+			_even = false;
+			std::advance(last, -1);
+			_straggler = *last;
+			_sortedVec.pop_back();
+			_size--;
+			
+		}
+		initJacobstahl();
+		mergeVec(1, _size / 2);
+		if (!_even)
+			addOdd();
+	}
+	std::cout << "og: ";
+	std::vector<int>::iterator end = _sortedVec.end();
+	for (std::vector<int>::iterator it = _sortedVec.begin(); it != end; std::advance(it, 1))
+		std::cout << *it << " ";
+	std::cout << std::endl;
 	//sortList();
 	//printStats();
 }

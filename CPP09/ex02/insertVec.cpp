@@ -6,25 +6,11 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 11:45:29 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/22 17:28:37 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/23 16:20:56 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-
-void	PmergeMe::saveMain(std::vector<int> &main)
-{
-	std::vector<int>::iterator m = main.begin();
-	std::vector<int>::iterator end = main.end();
-	std::vector<int>::iterator v = _sortedVec.begin();
-
-	while (m != end)
-	{
-		*v = *m;
-		std::advance(v, 1);
-		std::advance(m, 1);
-	}
-}
 
 void	PmergeMe::insertOdd(std::vector<int> &main, std::vector<int> &oddb, double N)
 {
@@ -68,51 +54,33 @@ void	PmergeMe::updateIndexes(std::vector<int> &pendIndexes, int index, double in
 	}
 }
 
-void	PmergeMe::clearPend(std::vector<int> &main, std::vector<int> &pend, std::vector<int> &pendIndexes, double N)
+void	PmergeMe::insertPend(std::vector<int> &main, std::vector<int> &pend, int pendIndex)
 {
-	int	pendElem;
-	int	elem;
-	int	index;
-
-	std::vector<int>::iterator it = pendIndexes.begin();
-	std::vector<int>::iterator end = pendIndexes.end();
-	std::vector<int>::iterator m = main.begin();
+	std::size_t	elemSize = pend.size();
+	int	index = (elemSize - 1);
 	std::vector<int>::iterator p = pend.begin();
-	pendElem = N / 2 - 1;
-	while (it != end)
+	std::vector<int>::iterator m = main.begin();
+
+	while (index < pendIndex && (std::size_t)index < main.size())
 	{
-		index = *it;
-		elem = 1;
-		std::advance(p, pendElem);
-		while (pendElem < index)
+		if (main.at(index) > pend.at(elemSize - 1))
 		{
-			if (elem == 1)
-				std::advance(m, (N / 2 - 1));
-			else
-				std::advance(m, N / 2);
-			if (*m > *p)
-			{
-				std::advance(m, (-1) * (N / 2 - 1));
-				std::advance(p, (-1) * (N / 2 - 1));
-				main.insert(m, p, p + (N / 2)); // is this safe
-				updateIndexes(pendIndexes, index, N / 2);
-				index = -1;
-			}
-			elem++;
-			pendElem = pendElem * elem;
+			if (index != (int)elemSize - 1)
+				std::advance(m, index - (elemSize - 1));
+			main.insert(m, p, p + elemSize);
+			index = -1;
+			break ;
 		}
-		if (index > 0)
-		{
-			std::advance(m, 1);
-			std::advance(p, (-1) * (N / 2 - 1));
-			main.insert(m, p, p + (N / 2)); // is this safe
-			updateIndexes(pendIndexes, index, N / 2);
-		}
-		std::advance(it, 1);
+		index = index + (elemSize - 1);
+	}
+	if (index > 0)
+	{
+		std::advance(m, pendIndex);
+		main.insert(m, p, p + elemSize);
 	}
 }
 
-void	PmergeMe::fillPend(std::vector<int> &pend, std::vector<int> &pendIndexes, double N, int pair)
+void	PmergeMe::initPend(std::vector<int> &pend, std::vector<int> &pendIndexes, double N, int pair)
 {
 	int	elem;
 	int	i;
@@ -127,7 +95,7 @@ void	PmergeMe::fillPend(std::vector<int> &pend, std::vector<int> &pendIndexes, d
 	}
 }
 
-void	PmergeMe::fillMain(std::vector<int>	&main, double N, int pair)
+void	PmergeMe::initMain(std::vector<int>	&main, double N, int pair)
 {
 	int	elem;
 	int	i;
@@ -186,11 +154,11 @@ void	PmergeMe::insertVec(int level, int pairs)
 	{
 		if (pair != 1 && pair % 2 != 0)
 		{
-			fillPend(pend, pendIndexes, N, pair);
+			initPend(pend, pendIndexes, N, pair);
 		}
 		else
 		{
-			fillMain(main, N, pair);
+			initMain(main, N, pair);
 		}
 		pair++;
 	}
@@ -198,15 +166,15 @@ void	PmergeMe::insertVec(int level, int pairs)
 	{
 		saveOdd(oddb, pairs, N);
 	}
-	if (pendIndexes.size() > 2)
-	{	
+	if (pendIndexes.size() > 1)
+	{
 		jacobstahlInsert(main, pend, pendIndexes, N);
 	}
 	else
-		clearPend(main, pend, pendIndexes, N);
+		insertPend(main, pend, pendIndexes.at(0));
 	if (odd)
 		insertOdd(main, oddb, N);
-	saveMain(main);
+	_sortedVec.assign(main.begin(), main.end());
 }
 
 /* std::cout << "og: ";
