@@ -6,35 +6,11 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:03:27 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/25 17:39:36 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/25 18:38:35 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PmergeMe.hpp"
-
-double PmergeMe::jacobstahl(double n)
-{
-    if (n == 0)
-        return (0);
-    if (n == 1)
-        return (1);
-    return (jacobstahl(n - 1) + 2 * jacobstahl(n - 2));
-}
-
-void	PmergeMe::initJacobstahl(void)
-{
-	int		index = 0;
-	double	jNum = 0;
-
-	jNum = jacobstahl(index);
-	while (jNum <= (double)_size)
-	{
-		_jNums.push_back(jNum);
-		index++;
-		jNum = jacobstahl(index);
-	}
-	_jNums.push_back(jNum);
-}
+#include "../PmergeMe.hpp"
 
 int	PmergeMe::getjNumIndex(double pendSize)
 {
@@ -50,7 +26,8 @@ int	PmergeMe::getjNumIndex(double pendSize)
 	return (index);
 }
 
-void	PmergeMe::jacobstahlInsert(std::vector<int> &main, std::vector<int> &pend, std::vector<int> &pendIndexes, double N)
+void	PmergeMe::jacobstahlInsert(std::vector<int> &main, std::vector<int> &pend,
+std::vector<int> &pendIndexes, double N)
 {
 	double	jNum;
 	double	prevjNum;
@@ -77,7 +54,8 @@ void	PmergeMe::jacobstahlInsert(std::vector<int> &main, std::vector<int> &pend, 
 			m = main.begin();
 			p = pend.begin();
 			index = elemSize - 1;
-			while (index > -1 && index <= pendIndexes.at(jNum - 2) && (std::size_t)index < main.size())
+			while (index > -1 && index <= pendIndexes.at(jNum - 2)
+				&& (std::size_t)index < main.size())
 			{
 				if (main.at(index) > pend.at(pendIndex))
 				{
@@ -94,8 +72,8 @@ void	PmergeMe::jacobstahlInsert(std::vector<int> &main, std::vector<int> &pend, 
 			}
 			if (index > 0)
 			{
-				std::advance(p, pendIndex - (elemSize - 1));
 				std::advance(m, pendIndexes.at(jNum - 2));
+				std::advance(p, pendIndex - (elemSize - 1));
 				main.insert(m, p, p + elemSize);
 				updateIndexes(pendIndexes, pendIndexes.at(jNum - 2), elemSize, index);
 			}

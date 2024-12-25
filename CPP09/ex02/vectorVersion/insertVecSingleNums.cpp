@@ -6,13 +6,37 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:20:47 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/25 17:39:13 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/25 18:37:19 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PmergeMe.hpp"
+#include "../PmergeMe.hpp"
 
-void	PmergeMe::jacobstahlInsertSingles(std::vector<int> &main, std::vector<int> &pend, std::vector<int> &pendIndexes)
+int	PmergeMe::insertNum(std::vector<int> &main, std::vector<int> &pend,
+std::vector<int> &pendIndexes, int pendIndex)
+{
+	int	index = 0;
+	std::vector<int>::iterator m = main.begin();
+
+	while (index > -1 && index <= pendIndexes.at(pendIndex) && (std::size_t)index < main.size())
+	{
+		if (main.at(index) > pend.at(pendIndex))
+		{
+			if (index != 0)
+			{
+				std::advance(m, index);
+			}
+			main.insert(m, pend.at(pendIndex));
+			updateIndexes(pendIndexes, pendIndexes.at(pendIndex), 1, index);
+			return (-1);
+		}
+		index++;
+	}
+	return (index);
+}
+
+void	PmergeMe::jacobstahlInsertSingles(std::vector<int> &main, std::vector<int> &pend,
+std::vector<int> &pendIndexes)
 {
 	double	jNum;
 	double	prevjNum;
@@ -20,7 +44,7 @@ void	PmergeMe::jacobstahlInsertSingles(std::vector<int> &main, std::vector<int> 
 	int		pendIndex;
 	int		index;
 	int		maxIndex = getjNumIndex(pend.size());
-
+	
 	std::vector<int>::iterator m;
 
 	while (startIndex <= maxIndex)
@@ -35,21 +59,7 @@ void	PmergeMe::jacobstahlInsertSingles(std::vector<int> &main, std::vector<int> 
 		{
 			pendIndex = jNum - 2;
 			m = main.begin();
-			index = 0;
-			while (index > -1 && index <= pendIndexes.at(pendIndex) && (std::size_t)index < main.size())
-			{
-				if (main.at(index) > pend.at(pendIndex))
-				{
-					if (index != 0)
-					{
-						std::advance(m, index);
-					}
-					main.insert(m, pend.at(pendIndex));
-					updateIndexes(pendIndexes, pendIndexes.at(pendIndex), 1, index);
-					index = -2;
-				}
-				index++;
-			}
+			index = insertNum(main, pend, pendIndexes, pendIndex);
 			if (index > 0)
 			{
 				std::advance(m, pendIndexes.at(pendIndex));
@@ -111,9 +121,7 @@ void	PmergeMe::insertSingles(int nums)
 			indexAdjust++;
 		}
 		else
-		{
 			main.push_back(_sortedVec.at(num));
-		}
 		num++;
 	}
 	if (pendIndexes.size() > 1)

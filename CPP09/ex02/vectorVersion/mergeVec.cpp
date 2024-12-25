@@ -6,11 +6,11 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 15:57:50 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/25 17:41:38 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/25 18:23:55 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PmergeMe.hpp"
+#include "../PmergeMe.hpp"
 
 void	PmergeMe::arrangePairs(int elem1, int elem2, int N)
 {
@@ -38,14 +38,13 @@ void	PmergeMe::arrangePairs(int elem1, int elem2, int N)
 	}
 }
 
-void	PmergeMe::mergeVec(int level, int pairs)
+void	PmergeMe::sortElements(int pairs, int level, double N)
 {
 	int		elem1;
 	int		elem2;
 	int		pair = 1;
 	int		temp;
-	double	N = pow(2, level);
-	
+
 	elem2 = N - 1;
 	elem1 = 0;
 	if (level != 1)
@@ -69,6 +68,13 @@ void	PmergeMe::mergeVec(int level, int pairs)
 		elem1 = elem2 - N / 2;
 		pair++;
 	}
+}
+
+void	PmergeMe::mergeVec(int level, int pairs)
+{
+	double	N = pow(2, level);
+	
+	sortElements(pairs, level, N);
 	if (pairs / 2 >= 1)
 	{
 		mergeVec(++level, pairs / 2);

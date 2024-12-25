@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:10:38 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/25 17:40:47 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/25 18:35:06 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,20 @@ class PmergeMe {
 		bool				_even;
 		int					_straggler;
 
+		/*		INPUT VALIDATION		*/
+
 		int		checkArgs(char **argv);
 		bool	isAllDigits(std::string);
+
+		/*		VECTOR FUNCTIONS		*/
+
+		void	runVectorVersion(void);
+		void	sortElements(int pairs, int level, double N);
+		void	splitElements(std::vector<int> &main, std::vector<int> &pend, std::vector<int> &pendIndexes, int pairs, double N);
 		void	mergeVec(int level, int pairs);
 		void	insertVec(int level, int pairs);
 		void	arrangePairs(int elem1, int elem2, int N);
-		void	insertPend(std::vector<int> &main, std::vector<int> &pend, int pendIndex);
+		void	insertElem(std::vector<int> &main, std::vector<int> &pend, int pendIndex);
 		void	updateIndexes(std::vector<int> &pendIndexes, int pendIndex, double increment, int mainIndex);
 		void	initPend(std::vector<int> &pend, double N, int pair);
 		void	initMain(std::vector<int> &main, double N, int pair);
@@ -54,6 +62,7 @@ class PmergeMe {
 		void	addPend(std::vector<int> &main, int pend, int pendIndex);
 		void	saveMain(std::vector<int> &main);
 		void	initPendIndexes(std::vector<int> &pendIndexes, double N, int pair);
+		int		insertNum(std::vector<int> &main, std::vector<int> &pend, std::vector<int> &pendIndexes, int pendIndex);
 		void	jacobstahlInsertSingles(std::vector<int> &main, std::vector<int> &pend, std::vector<int> &pendIndexes);
 
 	public:

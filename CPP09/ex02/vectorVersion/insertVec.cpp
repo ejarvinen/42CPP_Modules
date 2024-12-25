@@ -6,11 +6,11 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 11:45:29 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/25 17:40:43 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/25 18:25:03 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PmergeMe.hpp"
+#include "../PmergeMe.hpp"
 
 void	PmergeMe::saveMain(std::vector<int> &main)
 {
@@ -54,7 +54,7 @@ void	PmergeMe::updateIndexes(std::vector<int> &pendIndexes, int pendIndex, doubl
 	}
 }
 
-void	PmergeMe::insertPend(std::vector<int> &main, std::vector<int> &pend, int pendIndex)
+void	PmergeMe::insertElem(std::vector<int> &main, std::vector<int> &pend, int pendIndex)
 {
 	std::size_t	elemSize = pend.size();
 	int	index = (elemSize - 1);
@@ -134,21 +134,10 @@ void	PmergeMe::saveOdd(std::vector<int> &oddb, int pairs, double N)
 	}
 }
 
-void	PmergeMe::insertVec(int level, int pairs)
+void	PmergeMe::splitElements(std::vector<int> &main, std::vector<int> &pend, std::vector<int> &pendIndexes, int pairs, double N)
 {
-	std::vector<int>	pend;
-	std::vector<int>	main;
-	std::vector<int>	pendIndexes;
-	std::vector<int>	oddb;
-	int					pair = 0;
-	bool				odd = false;
-	double				N = pow(2, level);
+	int	pair = 0;
 
-	if (pairs % 2 != 0)
-	{
-		odd = true;
-		pairs--;
-	}
 	while (pair < 2)
 	{
 		initMain(main, N, pair);
@@ -167,20 +156,31 @@ void	PmergeMe::insertVec(int level, int pairs)
 		}
 		pair++;
 	}
-	if (odd)
+}
+
+void	PmergeMe::insertVec(int level, int pairs)
+{
+	std::vector<int>	pend;
+	std::vector<int>	main;
+	std::vector<int>	pendIndexes;
+	std::vector<int>	odd;
+	bool				oddElement = false;
+	double				N = pow(2, level);
+
+	if (pairs % 2 != 0)
 	{
-		saveOdd(oddb, pairs, N);
+		oddElement = true;
+		pairs--;
 	}
+	splitElements(main, pend, pendIndexes, pairs, N);
+	if (oddElement)
+		saveOdd(odd, pairs, N);
 	if (pendIndexes.size() > 1)
-	{
 		jacobstahlInsert(main, pend, pendIndexes, N);
-	}
 	else if (!pend.empty())
-		insertPend(main, pend, pendIndexes.at(0));
-	if (odd)
-	{
-		insertPend(main, oddb, main.size() - 1);
-	}
+		insertElem(main, pend, pendIndexes.at(0));
+	if (oddElement)
+		insertElem(main, odd, main.size() - 1);
 	saveMain(main);
 }
 
