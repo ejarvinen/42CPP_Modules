@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 20:03:27 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/23 16:20:14 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/25 17:39:36 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,18 +50,6 @@ int	PmergeMe::getjNumIndex(double pendSize)
 	return (index);
 }
 
-void	PmergeMe::updateJIndexes(std::vector<int> &pendIndexes, int index, double increment)
-{
-	std::vector<int>::iterator it = pendIndexes.begin();
-	std::vector<int>::iterator end = pendIndexes.end();
-
-	while (it != end && *it != index)
-	{
-		*it = (double)*it + increment;
-		std::advance(it, 1);
-	}
-}
-
 void	PmergeMe::jacobstahlInsert(std::vector<int> &main, std::vector<int> &pend, std::vector<int> &pendIndexes, double N)
 {
 	double	jNum;
@@ -85,11 +73,11 @@ void	PmergeMe::jacobstahlInsert(std::vector<int> &main, std::vector<int> &pend, 
 		}
 		while (jNum > prevjNum)
 		{
-			pendIndex = (jNum - 1) * elemSize - 1; // index for pend elements
+			pendIndex = (jNum - 1) * elemSize - 1;
 			m = main.begin();
 			p = pend.begin();
 			index = elemSize - 1;
-			while (index < pendIndexes.at(jNum - 2) && (std::size_t)index < main.size() && index != -1)
+			while (index > -1 && index <= pendIndexes.at(jNum - 2) && (std::size_t)index < main.size())
 			{
 				if (main.at(index) > pend.at(pendIndex))
 				{
@@ -97,17 +85,19 @@ void	PmergeMe::jacobstahlInsert(std::vector<int> &main, std::vector<int> &pend, 
 					{
 						std::advance(m, index - (elemSize - 1));
 					}
-					std::advance(p, pendIndex - (elemSize - 1)); // do these need to be protected?
+					std::advance(p, pendIndex - (elemSize - 1));
 					main.insert(m, p, p + elemSize);
-					updateJIndexes(pendIndexes, pendIndex, elemSize);
+					updateIndexes(pendIndexes, pendIndexes.at(jNum - 2), elemSize, index);
 					index = -1 - (index + elemSize);
 				}
 				index = index + elemSize;
 			}
 			if (index > 0)
 			{
-				std::advance(m, pendIndexes.at(jNum - 2)); // does this need to be protected
+				std::advance(p, pendIndex - (elemSize - 1));
+				std::advance(m, pendIndexes.at(jNum - 2));
 				main.insert(m, p, p + elemSize);
+				updateIndexes(pendIndexes, pendIndexes.at(jNum - 2), elemSize, index);
 			}
 			jNum--;
 		}

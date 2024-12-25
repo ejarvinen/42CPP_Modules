@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:10:38 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/23 16:19:49 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/25 17:40:47 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,8 @@ class PmergeMe {
 		void	insertVec(int level, int pairs);
 		void	arrangePairs(int elem1, int elem2, int N);
 		void	insertPend(std::vector<int> &main, std::vector<int> &pend, int pendIndex);
-		void	updateIndexes(std::vector<int> &pendIndexes, int index, double increment);
-		void	insertOdd(std::vector<int> &main, std::vector<int> &oddb, double N);
-		void	initPend(std::vector<int> &pend, std::vector<int> &pendIndexes, double N, int pair);
+		void	updateIndexes(std::vector<int> &pendIndexes, int pendIndex, double increment, int mainIndex);
+		void	initPend(std::vector<int> &pend, double N, int pair);
 		void	initMain(std::vector<int> &main, double N, int pair);
 		void	saveOdd(std::vector<int> &oddb, int pairs, double N);
 		void	initJacobstahl(void);
@@ -52,7 +51,9 @@ class PmergeMe {
 		int		getjNumIndex(double pendSize);
 		void	insertSingles(int nums);
 		void	addOdd(void);
-		void	updateJIndexes(std::vector<int> &pendIndexes, int index, double increment);
+		void	addPend(std::vector<int> &main, int pend, int pendIndex);
+		void	saveMain(std::vector<int> &main);
+		void	initPendIndexes(std::vector<int> &pendIndexes, double N, int pair);
 		void	jacobstahlInsertSingles(std::vector<int> &main, std::vector<int> &pend, std::vector<int> &pendIndexes);
 
 	public:

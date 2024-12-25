@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:10:26 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/23 16:14:46 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/25 15:43:36 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void	PmergeMe::addOdd(void)
 		}
 		std::advance(begin, 1);
 	}
+	_sortedVec.push_back(_straggler);
 }
 
 void	PmergeMe::sortNums(char **argv)
@@ -110,10 +111,11 @@ void	PmergeMe::sortNums(char **argv)
 			_straggler = *last;
 			_sortedVec.pop_back();
 			_size--;
-			
 		}
 		initJacobstahl();
 		mergeVec(1, _size / 2);
+		if (!std::is_sorted(_sortedVec.begin(), _sortedVec.end()))
+			insertSingles(_size);
 		if (!_even)
 			addOdd();
 	}

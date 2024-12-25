@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 15:57:50 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/23 16:15:19 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/25 17:41:38 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ void	PmergeMe::mergeVec(int level, int pairs)
 		elem1 = N - 1 - std::floor(N / 2);
 	while (pair <= pairs)
 	{
-		if (_sortedVec[elem1] > _sortedVec[elem2])
+		if (_sortedVec.at(elem1) > _sortedVec.at(elem2))
 		{
 			if (level == 1)
 			{
-				temp = _sortedVec[elem1];
+				temp = _sortedVec.at(elem1);
 				_sortedVec[elem1] = _sortedVec[elem2];
 				_sortedVec[elem2] = temp;
 			}
@@ -75,13 +75,14 @@ void	PmergeMe::mergeVec(int level, int pairs)
 		if (pairs > 2)
 		{
 			insertVec(level, pairs);
+			level--;
 		}
 	}
-	level--;
 	if (level == 1 && !std::is_sorted(_sortedVec.begin(), _sortedVec.end()))
 	{
 		insertSingles(_size);
 	}
+	level--;
 }
 
 // even number:
