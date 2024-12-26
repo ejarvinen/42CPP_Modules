@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insertVec.cpp                                      :+:      :+:    :+:   */
+/*   insertList.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 11:45:29 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/26 19:37:16 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/26 19:31:52 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../PmergeMe.hpp"
 
-void	PmergeMe::saveMain(std::vector<int> &main)
+void	PmergeMe::saveMain(std::list<int> &main)
 {
-	std::vector<int>::iterator m = main.begin();
-	std::vector<int>::iterator end = main.end();
-	std::vector<int>::iterator v = _sortedVec.begin();
+	std::list<int>::iterator m = main.begin();
+	std::list<int>::iterator end = main.end();
+	std::list<int>::iterator l = _sortedList.begin();
 
 	while (m != end)
 	{
-		*v = *m;
+		*l = *m;
 		std::advance(m, 1);
-		std::advance(v, 1);
+		std::advance(l, 1);
 	}
 }
 
-void	PmergeMe::updateIndexes(std::vector<int> &pendIndexes, int pendIndex,
+void	PmergeMe::updateIndexes(std::list<int> &pendIndexes, int pendIndex,
 double increment, int mainIndex)
 {
-	std::vector<int>::iterator it = pendIndexes.begin();
-	std::vector<int>::iterator end = pendIndexes.end();
+	std::list<int>::iterator it = pendIndexes.begin();
+	std::list<int>::iterator end = pendIndexes.end();
 
 	if (mainIndex < pendIndex)
 	{
@@ -55,59 +55,73 @@ double increment, int mainIndex)
 	}
 }
 
-void	PmergeMe::insertElem(std::vector<int> &main, std::vector<int> &pend, int pendIndex)
+void	PmergeMe::insertElem(std::list<int> &main, std::list<int> &pend, int pendIndex)
 {
 	std::size_t	elemSize = pend.size();
 	int	index = (elemSize - 1);
-	std::vector<int>::iterator p = pend.begin();
-	std::vector<int>::iterator m = main.begin();
+	std::list<int>::iterator p = pend.begin();
+	std::list<int>::iterator m = main.begin();
+	std::list<int>::iterator pBegin = pend.begin();
+	std::list<int>::iterator mLast = main.end();
 
+	std::advance(m, index);
+	std::advance(p, elemSize - 1);
 	while (index > -1 && index <= pendIndex && (std::size_t)index < main.size())
 	{
-		if (main.at(index) > pend.at(elemSize - 1))
+		if (*m > *p)
 		{
-			if (index != (int)elemSize - 1)
-				std::advance(m, index - (elemSize - 1));
-			main.insert(m, p, p + elemSize);
+			std::advance(m, -1 * (elemSize - 1));
+			std::advance(p, 1);
+			main.insert(m, pBegin, p);
 			index = -1 - (index + elemSize);
 		}
+		std::advance(m, elemSize);
 		index = index + elemSize;
 	}
 	if (index > 0)
 	{
+		m = main.begin();
 		std::advance(m, pendIndex);
-		if (*m == main.at(main.size() - 1) && *m < pend.at(elemSize - 1))
+		std::advance(mLast, -1);
+		if (*m == *mLast && *m < *p)
 			std::advance(m, 1);
-		main.insert(m, p, p + elemSize);
+		std::advance(p, 1);
+		main.insert(m, pBegin, p);
 	}
 }
 
-void	PmergeMe::initPendIndexes(std::vector<int> &pendIndexes, double N, int pair)
+void	PmergeMe::initPendIndexes(std::list<int> &pendIndexes, double N, int pair)
 {
 	int	index;
-
+	std::list<int>::iterator elem = pendIndexes.begin();
+	
 	if (pair / 2 == 1)
 		index = pair * (N / 2);
 	else
-		index = pendIndexes.at((pair / 2) - 2) + (N / 2);
+	{
+		if (pair / 2 != 2)
+			std::advance(elem, (pair / 2) - 2);
+		index = *elem + N / 2;
+	}
 	pendIndexes.push_back(index);
 }
 
-void	PmergeMe::initElem(std::vector<int>	&main, double N, int pair)
+void	PmergeMe::initElem(std::list<int> &main, double N, int pair)
 {
-	int	elem;
-	int	i;
+	int	i = 0;
+	std::list<int>::iterator elem = _sortedList.begin();
 
-	elem = pair * (N / 2);
-	i = 0;
+	std::advance(elem, pair * (N / 2));
 	while (i < N / 2)
 	{
-		main.push_back(_sortedVec.at(elem + i));
+		main.push_back(*elem);
+		std::advance(elem, 1);
 		i++;
 	}
 }
 
-void	PmergeMe::splitElements(std::vector<int> &main, std::vector<int> &pend, std::vector<int> &pendIndexes, int pairs, double N)
+void	PmergeMe::splitElems(std::list<int> &main, std::list<int> &pend,
+std::list<int> &pendIndexes, int pairs, double N)
 {
 	int	pair = 0;
 
@@ -131,27 +145,27 @@ void	PmergeMe::splitElements(std::vector<int> &main, std::vector<int> &pend, std
 	}
 }
 
-void	PmergeMe::insertVec(int level, int pairs)
+void	PmergeMe::insertList(int level, int pairs)
 {
-	std::vector<int>	pend;
-	std::vector<int>	main;
-	std::vector<int>	pendIndexes;
-	std::vector<int>	odd;
-	bool				oddElement = false;
-	double				N = pow(2, level);
+	std::list<int>	pend;
+	std::list<int>	main;
+	std::list<int>	pendIndexes;
+	std::list<int>	odd;
+	bool			oddElement = false;
+	double			N = pow(2, level);
 
 	if (pairs % 2 != 0)
 	{
 		oddElement = true;
 		pairs--;
 	}
-	splitElements(main, pend, pendIndexes, pairs, N);
+	splitElems(main, pend, pendIndexes, pairs, N);
 	if (oddElement)
 		initElem(odd, N, pairs);
 	if (pendIndexes.size() > 1)
-		jacobstahlInsert(main, pend, pendIndexes, N);
+		jstahlInsert(main, pend, pendIndexes, N);
 	else if (!pend.empty())
-		insertElem(main, pend, pendIndexes.at(0));
+		insertElem(main, pend, *(pendIndexes.begin()));
 	if (oddElement)
 		insertElem(main, odd, main.size() - 1);
 	saveMain(main);

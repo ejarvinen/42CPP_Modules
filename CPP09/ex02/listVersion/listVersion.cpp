@@ -1,59 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vectorVersion.cpp                                  :+:      :+:    :+:   */
+/*   listVersion.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 17:44:13 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/26 19:24:39 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/26 19:21:58 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../PmergeMe.hpp"
 
-void	PmergeMe::addOdd(void)
+void	PmergeMe::insertOdd(void)
 {
-	std::vector<int>::iterator begin = _sortedVec.begin();
-	std::vector<int>::iterator end = _sortedVec.end();
+	std::list<int>::iterator begin = _sortedList.begin();
+	std::list<int>::iterator end = _sortedList.end();
 
 	while (begin != end)
 	{
 		if (*begin > _straggler)
 		{
-			_sortedVec.insert(begin, _straggler);
+			_sortedList.insert(begin, _straggler);
 			return ;
 		}
 		std::advance(begin, 1);
 	}
-	_sortedVec.push_back(_straggler);
+	_sortedList.push_back(_straggler);
 }
 
-void	PmergeMe::runVectorVersion(void)
+void	PmergeMe::runListVersion(void)
 {
 	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 
-	std::vector<int>::iterator last = _sortedVec.end();
-	if (!std::is_sorted(_sortedVec.begin(), last))
+	std::list<int>::iterator last = _sortedList.end();
+	if (!std::is_sorted(_sortedList.begin(), last))
 	{
 		if (_size % 2 != 0)
 		{
 			_even = false;
 			std::advance(last, -1);
 			_straggler = *last;
-			_sortedVec.pop_back();
+			_sortedList.pop_back();
 			_size--;
 		}
 		initJacobstahl();
-		mergeVec(1, _size / 2);
-		if (!std::is_sorted(_sortedVec.begin(), _sortedVec.end()))
-			insertSingles(_size);
+		mergeList(1, _size / 2);
+		if (!std::is_sorted(_sortedList.begin(), _sortedList.end()))
+			insertSingleElems(_size);
 		if (!_even)
 		{
-			addOdd();
+			insertOdd();
 			_size++;
 		}
 	}
 	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-	_vecTime = std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count();
+	_listTime = std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count();
 }

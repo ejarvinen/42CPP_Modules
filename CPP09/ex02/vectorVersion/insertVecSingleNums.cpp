@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:20:47 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/25 18:37:19 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/26 19:37:56 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,21 +130,3 @@ void	PmergeMe::insertSingles(int nums)
 		addPend(main, pend.at(0), pendIndexes.at(0));
 	saveMain(main);
 }
-
-/* std::cout << "main: ";
-	std::vector<int>::iterator end = main.end();
-	for (std::vector<int>::iterator it = main.begin(); it != end; std::advance(it, 1))
-		std::cout << *it << " ";
-	std::cout << std::endl;
-
-	std::cout << "pend: ";
-	end = pend.end();
-	for (std::vector<int>::iterator it = pend.begin(); it != end; std::advance(it, 1))
-		std::cout << *it << " ";
-	std::cout << std::endl;
-	
-	std::cout << "indexes: ";
-	end = pendIndexes.end();
-	for (std::vector<int>::iterator it = pendIndexes.begin(); it != end; std::advance(it, 1))
-		std::cout << *it << " ";
-	std::cout << std::endl; */

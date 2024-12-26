@@ -2,7 +2,7 @@ NAME := PmergeMe
 
 CC := c++
 
-FLAGS := -Wall -Wextra -Werror #-g -fsanitize=address
+FLAGS := -Wall -Wextra -Werror
 
 HEADERS := PmergeMe.hpp
 
@@ -15,6 +15,11 @@ SOURCES := main.cpp\
 			vectorVersion/jacobstahlInsert.cpp\
 			vectorVersion/insertVecSingleNums.cpp\
 			vectorVersion/vectorVersion.cpp\
+			listVersion/insertList.cpp\
+			listVersion/insertListSingleNums.cpp\
+			listVersion/jstahlInsert.cpp\
+			listVersion/listVersion.cpp\
+			listVersion/mergeList.cpp
 
 OBJECTS := $(SOURCES:.cpp=.o)
 
