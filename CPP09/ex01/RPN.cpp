@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 16:24:29 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/12 15:51:39 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/27 09:18:58 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ bool	RPN::isOperand(std::string arg)
 	}
 	catch (const std::exception& e)
 	{
-		std::cout << "Error: number out of range" << std::endl;
+		std::cerr << "Error: number out of range" << std::endl;
 		return (false);
 	}
 	if (value > 9 || value < 0)
 	{
-		std::cout << "Error: number out of range" << std::endl;
+		std::cerr << "Error: number out of range" << std::endl;
 		return (false);
 	}
 	return (true);
@@ -93,7 +93,7 @@ int	RPN::performOperation(std::string arg)
 	{
 		if (first == 0)
 		{
-			std::cout << "Error: division by zero" << std::endl;
+			std::cerr << "Error: division by zero" << std::endl;
 			return (1);
 		}
 		res = scnd / first;
@@ -119,20 +119,20 @@ void	RPN::processExpression(std::string args)
 		{
 			if (argCount == 0 || performOperation(arg))
 			{
-				std::cout << "Error: faulty input logic" << std::endl;
+				std::cerr << "Error: faulty input logic" << std::endl;
 				return ;
 			}
 		}
 		else
 		{
-			std::cout << "Error: suspicious input" << std::endl;
+			std::cerr << "Error: suspicious input" << std::endl;
 			return ;
 		}
 		argCount++;
 	}
 	if (_stack.size() != 1)
 	{
-		std::cout << "Error: faulty input logic" << std::endl;
+		std::cerr << "Error: faulty input logic" << std::endl;
 		return ;
 	}
 	std::cout << _stack.top() << std::endl;
