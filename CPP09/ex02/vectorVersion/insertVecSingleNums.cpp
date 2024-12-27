@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:20:47 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/26 19:37:56 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/27 15:16:01 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ std::vector<int> &pendIndexes, int pendIndex)
 	int	index = 0;
 	std::vector<int>::iterator m = main.begin();
 
-	while (index > -1 && index <= pendIndexes.at(pendIndex) && (std::size_t)index < main.size())
+	while (index <= pendIndexes.at(pendIndex) && (std::size_t)index < main.size())
 	{
 		if (main.at(index) > pend.at(pendIndex))
 		{

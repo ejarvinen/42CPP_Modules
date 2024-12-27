@@ -6,13 +6,13 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 15:57:50 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/26 19:38:35 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/27 09:32:51 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../PmergeMe.hpp"
 
-void	PmergeMe::arrangePairs(int elem1, int elem2, int N)
+void	PmergeMe::swapPairs(int elem1, int elem2, int N)
 {
 	std::vector<int>	temp;
 	int					index = 0;
@@ -61,7 +61,7 @@ void	PmergeMe::sortElements(int pairs, int level, double N)
 			}
 			else
 			{
-				arrangePairs(elem1, elem2, N);
+				swapPairs(elem1, elem2, N);
 			}
 		}
 		elem2 = elem2 + N;

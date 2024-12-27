@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:20:47 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/26 19:32:50 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/27 15:16:14 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ std::list<int> &pendIndexes, int pendIndex)
 
 	std::advance(pIndex, pendIndex);
 	std::advance(p, pendIndex);
-	while (index > -1 && index <= *pIndex && (std::size_t)index < main.size())
+	while (index <= *pIndex && (std::size_t)index < main.size())
 	{
 		if (*m > *p)
 		{

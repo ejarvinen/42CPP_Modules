@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:10:26 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/26 19:29:14 by emansoor         ###   ########.fr       */
+/*   Updated: 2024/12/27 15:15:48 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	PmergeMe::printStats(void)
 	std::cout << "Before:   ";
 	for (index = 1; index < _size; index++)
 	{
-		if (index > 10)
+		if (index == 5 && _size > 5)
 		{
 			std::cout << "[...]";
 			break ;
@@ -62,7 +62,7 @@ void	PmergeMe::printStats(void)
 	index = 0;
 	for (std::vector<int>::iterator begin = _sortedVec.begin(); begin != _sortedVec.end(); std::advance(begin, 1))
 	{
-		if (index > 9)
+		if (index == 4 && _size > 5)
 		{
 			std::cout << "[...]";
 			break ;
