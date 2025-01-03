@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 13:12:18 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/11 16:13:13 by emansoor         ###   ########.fr       */
+/*   Updated: 2025/01/03 14:49:58 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ void	BitcoinExchange::processInputFile(std::string inputFile)
 		lineCount++;
 	}
 	inFile.close();
+	if (lineCount == 1)
+		std::cout << "Error: faulty input file." << std::endl;
 }
 
 void	BitcoinExchange::printRates(std::string inputFile)

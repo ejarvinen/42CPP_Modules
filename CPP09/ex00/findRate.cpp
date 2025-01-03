@@ -6,11 +6,39 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 14:08:40 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/11 14:25:15 by emansoor         ###   ########.fr       */
+/*   Updated: 2025/01/03 14:58:01 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
+
+void	BitcoinExchange::adjustDate(int *y, int *m, int *d, std::string dt)
+{
+	if (*d == 1)
+	{
+		*d = 31;
+		if (*m == 1)
+		{
+			(*y)--;
+			*m = 12;
+		}
+		else
+		{
+			(*m)--;
+			if ((*m < 7 && *m % 2 == 0) || (*m < 8 && *m % 2 != 0))
+			{
+				if (*m == 2 && isLeapYear(dt))
+					*d = 29;
+				else if (*m == 2 && !isLeapYear(dt))
+					*d = 28;
+				else
+					*d = 30;
+			}
+		}
+	}
+	else
+		(*d)--;
+}
 
 std::string	BitcoinExchange::getYesterday(std::string dt)
 {
@@ -22,30 +50,8 @@ std::string	BitcoinExchange::getYesterday(std::string dt)
 	y = std::stoi(dt);
 	m = std::stoi(dt.substr(5, 7));
 	d = std::stoi(dt.substr(8, std::string::npos));
-	if (d == 1)
-	{
-		d = 31;
-		if (m == 1)
-		{
-			y--;
-			m = 12;
-		}
-		else
-		{
-			m--;
-			if ((m < 7 && m % 2 == 0) || (m < 8 && m % 2 != 0))
-			{
-				if (m == 2 && isLeapYear(dt))
-					d = 29;
-				else if (m == 2 && !isLeapYear(dt))
-					d = 28;
-				else
-					d = 30;
-			}
-		}
-	}
-	else
-		d--;
+	
+	adjustDate(&y, &m, &d, dt);
 	yesterday = std::to_string(y) + "-";
 	if (m < 10)
 		yesterday.append("0");

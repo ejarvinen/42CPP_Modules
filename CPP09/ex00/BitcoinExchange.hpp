@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 12:36:31 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/11 14:59:11 by emansoor         ###   ########.fr       */
+/*   Updated: 2025/01/03 14:27:09 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ class BitcoinExchange {
 		std::string	getYesterday(std::string dt);
 		bool		isLeapYear(std::string date);
 		bool		isFuture(std::string *date);
+		void		adjustDate(int *y, int *m, int *d, std::string dt);
 
 	public:
 
