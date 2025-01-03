@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:10:26 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/27 15:15:48 by emansoor         ###   ########.fr       */
+/*   Updated: 2025/01/03 16:00:27 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,8 @@ void	PmergeMe::printStats(void)
 	int	index;
 
 	std::cout << "Before:   ";
-	for (index = 1; index < _size; index++)
+	for (index = 1; index <= _size; index++)
 	{
-		if (index == 5 && _size > 5)
-		{
-			std::cout << "[...]";
-			break ;
-		}
 		std::cout << _unsorted[index] << " ";
 	}
 	std::cout << std::endl;
@@ -62,17 +57,13 @@ void	PmergeMe::printStats(void)
 	index = 0;
 	for (std::vector<int>::iterator begin = _sortedVec.begin(); begin != _sortedVec.end(); std::advance(begin, 1))
 	{
-		if (index == 4 && _size > 5)
-		{
-			std::cout << "[...]";
-			break ;
-		}
 		std::cout << *begin << " ";
 		index++;
 	}
 	std::cout << std::endl;
-	std::cout << "Time to process a range of " << _size << " elements with std::vector : " << _vecTime << " us" << std::endl;
-	std::cout << "Time to process a range of " << _size << " elements with std::list : " << _listTime << " us" << std::endl;
+	std::cout << std::fixed;
+	std::cout << "Time to process a range of " << _size << " elements with std::vector : " << _vecTime << " s" << std::endl;
+	std::cout << "Time to process a range of " << _size << " elements with std::list : " << _listTime << " s" << std::endl;
 }
 
 void	PmergeMe::sortNums(char **argv)

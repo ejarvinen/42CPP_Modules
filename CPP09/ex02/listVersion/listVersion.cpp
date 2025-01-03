@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 17:44:13 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/26 19:21:58 by emansoor         ###   ########.fr       */
+/*   Updated: 2025/01/03 15:51:54 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,5 @@ void	PmergeMe::runListVersion(void)
 		}
 	}
 	std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-	_listTime = std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count();
+	_listTime = std::chrono::duration<double>(end - begin).count();
 }
