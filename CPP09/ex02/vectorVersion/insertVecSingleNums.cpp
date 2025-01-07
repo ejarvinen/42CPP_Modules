@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:20:47 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/27 15:16:01 by emansoor         ###   ########.fr       */
+/*   Updated: 2025/01/07 15:35:41 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,30 +75,6 @@ std::vector<int> &pendIndexes)
 	}
 }
 
-void	PmergeMe::addPend(std::vector<int> &main, int pend, int pendIndex)
-{
-	int	index = 0;
-	std::vector<int>::iterator m = main.begin();
-
-	while (index < pendIndex && (std::size_t)index < main.size())
-	{
-		if (main.at(index) > pend)
-		{
-			if (index != 0)
-				std::advance(m, index);
-			main.insert(m, pend);
-			index = -2;
-			break ;
-		}
-		index++;
-	}
-	if (index > 0)
-	{
-		std::advance(m, pendIndex);
-		main.insert(m, pend);
-	}
-}
-
 void	PmergeMe::insertSingles(int nums)
 {
 	std::vector<int>	pend;
@@ -127,6 +103,6 @@ void	PmergeMe::insertSingles(int nums)
 	if (pendIndexes.size() > 1)
 		jacobstahlInsertSingles(main, pend, pendIndexes);
 	else if (!pend.empty())
-		addPend(main, pend.at(0), pendIndexes.at(0));
+		binaryInsert(main, pend.at(0), pendIndexes.at(0));
 	saveMain(main);
 }

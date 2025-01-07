@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:10:38 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/27 09:33:10 by emansoor         ###   ########.fr       */
+/*   Updated: 2025/01/07 15:37:53 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ class PmergeMe {
 		int		getjNumIndex(double pendSize);
 		void	insertSingles(int nums);
 		void	addOdd(void);
-		void	addPend(std::vector<int> &main, int pend, int pendIndex);
+		void	binaryInsert(std::vector<int> &main, int pend, int pendIndex);
+		void	binaryInsert(std::vector<int> &main, std::vector<int> &pend, int pendIndex);
 		void	saveMain(std::vector<int> &main);
 		void	initPendIndexes(std::vector<int> &pendIndexes, double N, int pair);
 		int		insertNum(std::vector<int> &main, std::vector<int> &pend, std::vector<int> &pendIndexes, int pendIndex);
