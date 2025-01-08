@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 11:45:29 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/26 19:37:16 by emansoor         ###   ########.fr       */
+/*   Updated: 2025/01/08 12:16:58 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,33 +52,6 @@ double increment, int mainIndex)
 	{
 		*it = (double)*it + increment;
 		std::advance(it, 1);
-	}
-}
-
-void	PmergeMe::insertElem(std::vector<int> &main, std::vector<int> &pend, int pendIndex)
-{
-	std::size_t	elemSize = pend.size();
-	int	index = (elemSize - 1);
-	std::vector<int>::iterator p = pend.begin();
-	std::vector<int>::iterator m = main.begin();
-
-	while (index > -1 && index <= pendIndex && (std::size_t)index < main.size())
-	{
-		if (main.at(index) > pend.at(elemSize - 1))
-		{
-			if (index != (int)elemSize - 1)
-				std::advance(m, index - (elemSize - 1));
-			main.insert(m, p, p + elemSize);
-			index = -1 - (index + elemSize);
-		}
-		index = index + elemSize;
-	}
-	if (index > 0)
-	{
-		std::advance(m, pendIndex);
-		if (*m == main.at(main.size() - 1) && *m < pend.at(elemSize - 1))
-			std::advance(m, 1);
-		main.insert(m, p, p + elemSize);
 	}
 }
 
@@ -151,8 +124,8 @@ void	PmergeMe::insertVec(int level, int pairs)
 	if (pendIndexes.size() > 1)
 		jacobstahlInsert(main, pend, pendIndexes, N);
 	else if (!pend.empty())
-		insertElem(main, pend, pendIndexes.at(0));
+		binaryInsertElems(main, pend, pendIndexes.at(0));
 	if (oddElement)
-		insertElem(main, odd, main.size() - 1);
+		binaryInsertElems(main, odd, main.size() - 1);
 	saveMain(main);
 }

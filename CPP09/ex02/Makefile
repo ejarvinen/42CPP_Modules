@@ -11,11 +11,11 @@ SOURCES := main.cpp\
 			inputValidation.cpp\
 			initJacobstahl.cpp\
 			vectorVersion/mergeVec.cpp\
+			vectorVersion/binaryInsertVec.cpp\
 			vectorVersion/insertVec.cpp\
 			vectorVersion/jacobstahlInsert.cpp\
 			vectorVersion/insertVecSingleNums.cpp\
 			vectorVersion/vectorVersion.cpp\
-			vectorVersion/binaryInsertVec.cpp\
 			listVersion/insertList.cpp\
 			listVersion/insertListSingleNums.cpp\
 			listVersion/jstahlInsert.cpp\

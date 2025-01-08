@@ -6,28 +6,11 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 17:44:13 by emansoor          #+#    #+#             */
-/*   Updated: 2025/01/03 15:51:49 by emansoor         ###   ########.fr       */
+/*   Updated: 2025/01/08 10:23:29 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../PmergeMe.hpp"
-
-void	PmergeMe::addOdd(void)
-{
-	std::vector<int>::iterator begin = _sortedVec.begin();
-	std::vector<int>::iterator end = _sortedVec.end();
-
-	while (begin != end)
-	{
-		if (*begin > _straggler)
-		{
-			_sortedVec.insert(begin, _straggler);
-			return ;
-		}
-		std::advance(begin, 1);
-	}
-	_sortedVec.push_back(_straggler);
-}
 
 void	PmergeMe::runVectorVersion(void)
 {
@@ -46,11 +29,11 @@ void	PmergeMe::runVectorVersion(void)
 		}
 		initJacobstahl();
 		mergeVec(1, _size / 2);
-		if (!std::is_sorted(_sortedVec.begin(), _sortedVec.end()))
+		while (!std::is_sorted(_sortedVec.begin(), _sortedVec.end()))
 			insertSingles(_size);
 		if (!_even)
 		{
-			addOdd();
+			binaryInsert(_sortedVec, _straggler, _size);
 			_size++;
 		}
 	}

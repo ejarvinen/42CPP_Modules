@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:10:38 by emansoor          #+#    #+#             */
-/*   Updated: 2025/01/07 15:37:53 by emansoor         ###   ########.fr       */
+/*   Updated: 2025/01/08 12:17:54 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ class PmergeMe {
 		void	mergeVec(int level, int pairs);
 		void	insertVec(int level, int pairs);
 		void	swapPairs(int elem1, int elem2, int N);
-		void	insertElem(std::vector<int> &main, std::vector<int> &pend, int pendIndex);
 		void	updateIndexes(std::vector<int> &pendIndexes, int pendIndex, double increment, int mainIndex);
 		void	initElem(std::vector<int> &main, double N, int pair);
 		void	initJacobstahl(void);
@@ -59,9 +58,8 @@ class PmergeMe {
 		void	jacobstahlInsert(std::vector<int> &main, std::vector<int> &pend, std::vector<int> &pendIndexes, double N);
 		int		getjNumIndex(double pendSize);
 		void	insertSingles(int nums);
-		void	addOdd(void);
 		void	binaryInsert(std::vector<int> &main, int pend, int pendIndex);
-		void	binaryInsert(std::vector<int> &main, std::vector<int> &pend, int pendIndex);
+		void	binaryInsertElems(std::vector<int> &main, std::vector<int> &pend, int pendIndex);
 		void	saveMain(std::vector<int> &main);
 		void	initPendIndexes(std::vector<int> &pendIndexes, double N, int pair);
 		int		insertNum(std::vector<int> &main, std::vector<int> &pend, std::vector<int> &pendIndexes, int pendIndex);

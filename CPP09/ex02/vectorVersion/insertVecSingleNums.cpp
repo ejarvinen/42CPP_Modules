@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:20:47 by emansoor          #+#    #+#             */
-/*   Updated: 2025/01/07 15:35:41 by emansoor         ###   ########.fr       */
+/*   Updated: 2025/01/08 12:16:32 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ std::vector<int> &pendIndexes)
 			if (index > 0)
 			{
 				std::advance(m, pendIndexes.at(pendIndex));
-				if (m == main.end())
+				if (m == main.end() || *m < pend.at(pendIndex))
 					main.push_back(pend.at(pendIndex));
 				else
 					main.insert(m, pend.at(pendIndex));
