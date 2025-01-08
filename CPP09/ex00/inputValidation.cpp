@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 14:05:02 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/11 15:59:32 by emansoor         ###   ########.fr       */
+/*   Updated: 2025/01/08 14:33:04 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,8 +130,13 @@ int	BitcoinExchange::isValidLine(std::string line, std::string *date, std::strin
 	{
 		if (isValidDate(date))
 		{
-			if (std::regex_match(*value, v) && isValidValue(value))
-				return (0);
+			if (std::regex_match(*value, v))
+			{
+				if (isValidValue(value))
+					return (0);
+				return (1);
+			}
+			std::cout << "Error: invalid value." << std::endl;
 		}
 		return (1);
 	}
