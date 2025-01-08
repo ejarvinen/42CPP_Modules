@@ -16,6 +16,7 @@ SOURCES := main.cpp\
 			vectorVersion/jacobstahlInsert.cpp\
 			vectorVersion/insertVecSingleNums.cpp\
 			vectorVersion/vectorVersion.cpp\
+			listVersion/binaryInsertList.cpp\
 			listVersion/insertList.cpp\
 			listVersion/insertListSingleNums.cpp\
 			listVersion/jstahlInsert.cpp\

@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:10:38 by emansoor          #+#    #+#             */
-/*   Updated: 2025/01/08 12:17:54 by emansoor         ###   ########.fr       */
+/*   Updated: 2025/01/08 15:27:46 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,11 @@ class PmergeMe {
 		void	mergeList(int level, int pairs);
 		void	insertSingleElems(int nums);
 		void	sortElems(int pairs, int level, double N);
-		void	addPend(std::list<int> &main, int pend, int pendIndex);
+		void	binaryInsertElems(std::list<int> &main, std::list<int> &pend, int pendIndex);
+		void	binaryInsert(std::list<int> &main, int pend, int pendIndex);
 		void	initElem(std::list<int> &main, double N, int pair);
 		int		insertNum(std::list<int> &main, std::list<int> &pend, std::list<int> &pendIndexes, int pendIndex);
 		void	initPendIndexes(std::list<int> &pendIndexes, double N, int pair);
-		void	insertElem(std::list<int> &main, std::list<int> &pend, int pendIndex);
 		void	updateIndexes(std::list<int> &pendIndexes, int pendIndex, double increment, int mainIndex);
 		void	swapPairs(std::list<int>::iterator elem, std::list<int>::iterator prev, int N);
 		void	jstahlInsert(std::list<int> &main, std::list<int> &pend, std::list<int> &pendIndexes, double N);

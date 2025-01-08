@@ -117,8 +117,8 @@
 	} */
 
 /* std::cout << "og: ";
-	std::list<int>::iterator end = _sortedVec.end();
-	for (std::list<int>::iterator it = _sortedVec.begin(); it != end; std::advance(it, 1))
+	std::list<int>::iterator end = _sortedList.end();
+	for (std::list<int>::iterator it = _sortedList.begin(); it != end; std::advance(it, 1))
 		std::cout << *it << " ";
 	std::cout << std::endl;
 	

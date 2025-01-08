@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 17:44:13 by emansoor          #+#    #+#             */
-/*   Updated: 2025/01/03 15:51:54 by emansoor         ###   ########.fr       */
+/*   Updated: 2025/01/08 15:26:05 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	PmergeMe::runListVersion(void)
 			insertSingleElems(_size);
 		if (!_even)
 		{
-			insertOdd();
+			binaryInsert(_sortedList, _straggler, _size);
 			_size++;
 		}
 	}

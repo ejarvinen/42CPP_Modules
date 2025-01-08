@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 11:45:29 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/26 19:31:52 by emansoor         ###   ########.fr       */
+/*   Updated: 2025/01/08 15:25:40 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,41 +52,6 @@ double increment, int mainIndex)
 	{
 		*it = (double)*it + increment;
 		std::advance(it, 1);
-	}
-}
-
-void	PmergeMe::insertElem(std::list<int> &main, std::list<int> &pend, int pendIndex)
-{
-	std::size_t	elemSize = pend.size();
-	int	index = (elemSize - 1);
-	std::list<int>::iterator p = pend.begin();
-	std::list<int>::iterator m = main.begin();
-	std::list<int>::iterator pBegin = pend.begin();
-	std::list<int>::iterator mLast = main.end();
-
-	std::advance(m, index);
-	std::advance(p, elemSize - 1);
-	while (index > -1 && index <= pendIndex && (std::size_t)index < main.size())
-	{
-		if (*m > *p)
-		{
-			std::advance(m, -1 * (elemSize - 1));
-			std::advance(p, 1);
-			main.insert(m, pBegin, p);
-			index = -1 - (index + elemSize);
-		}
-		std::advance(m, elemSize);
-		index = index + elemSize;
-	}
-	if (index > 0)
-	{
-		m = main.begin();
-		std::advance(m, pendIndex);
-		std::advance(mLast, -1);
-		if (*m == *mLast && *m < *p)
-			std::advance(m, 1);
-		std::advance(p, 1);
-		main.insert(m, pBegin, p);
 	}
 }
 
@@ -153,7 +118,7 @@ void	PmergeMe::insertList(int level, int pairs)
 	std::list<int>	odd;
 	bool			oddElement = false;
 	double			N = pow(2, level);
-
+	
 	if (pairs % 2 != 0)
 	{
 		oddElement = true;
@@ -165,8 +130,8 @@ void	PmergeMe::insertList(int level, int pairs)
 	if (pendIndexes.size() > 1)
 		jstahlInsert(main, pend, pendIndexes, N);
 	else if (!pend.empty())
-		insertElem(main, pend, *(pendIndexes.begin()));
+		binaryInsertElems(main, pend, *(pendIndexes.begin()));
 	if (oddElement)
-		insertElem(main, odd, main.size() - 1);
+		binaryInsertElems(main, odd, main.size() - 1);
 	saveMain(main);
 }

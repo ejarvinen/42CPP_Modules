@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/22 13:20:47 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/27 15:16:14 by emansoor         ###   ########.fr       */
+/*   Updated: 2025/01/08 15:25:52 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,29 +82,6 @@ std::list<int> &pendIndexes)
 	}
 }
 
-void	PmergeMe::addPend(std::list<int> &main, int pend, int pendIndex)
-{
-	int	index = 0;
-	std::list<int>::iterator m = main.begin();
-
-	while (index < pendIndex && (std::size_t)index < main.size() && m != main.end())
-	{
-		if (*m > pend)
-		{
-			main.insert(m, pend);
-			index = -2;
-			break ;
-		}
-		index++;
-		std::advance(m, 1);
-	}
-	if (index > 0)
-	{
-		std::advance(m, pendIndex);
-		main.insert(m, pend);
-	}
-}
-
 void	PmergeMe::insertSingleElems(int nums)
 {
 	std::list<int>	pend;
@@ -137,6 +114,6 @@ void	PmergeMe::insertSingleElems(int nums)
 	if (pendIndexes.size() > 1)
 		jstahlInsertSingles(main, pend, pendIndexes);
 	else if (!pend.empty())
-		addPend(main, *(pend.begin()), *(pendIndexes.begin()));
+		binaryInsert(main, *(pend.begin()), *(pendIndexes.begin()));
 	saveMain(main);
 }
