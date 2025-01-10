@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:10:38 by emansoor          #+#    #+#             */
-/*   Updated: 2025/01/08 15:27:46 by emansoor         ###   ########.fr       */
+/*   Updated: 2025/01/10 09:21:18 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ class PmergeMe {
 		/*		LIST FUNCTIONS			*/
 
 		void	runListVersion(void);
-		void	insertOdd(void);
 		void	insertList(int level, int pairs);
 		void	saveMain(std::list<int> &main);
 		void	mergeList(int level, int pairs);

@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 12:21:06 by emansoor          #+#    #+#             */
-/*   Updated: 2025/01/08 15:26:32 by emansoor         ###   ########.fr       */
+/*   Updated: 2025/01/10 10:56:16 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ void	PmergeMe::binaryInsertElems(std::list<int> &main, std::list<int> &pend, int
 	int mid;
 	std::list<int>::iterator p = pend.begin();
 	std::list<int>::iterator m = main.begin();
+	std::list<int>::iterator mLast = main.end();
 	std::list<int>::iterator pStart = pend.begin();
 
 	std::advance(p, elemSize - 1);
+	std::advance(mLast, -1);
 	while (low < high)
 	{
 		if (main.size() / elemSize == 2)
@@ -39,15 +41,26 @@ void	PmergeMe::binaryInsertElems(std::list<int> &main, std::list<int> &pend, int
 	}
 	if (high > 0)
 	{
-		if (_size == 6 && _even)
-			std::advance(m, high);
-		else
-			std::advance(m, high - elemSize);
+		std::advance(m, high);
+		if (*m > *p)
+			std::advance(m, -elemSize);
 	}
-	if (*m < *p && m != main.end())
-		std::advance(m, 1);
-	std::advance(p, 1);
-	main.insert(m, pStart, p);
+	if (*m < *p && m != main.end() && *m == *mLast && high > 0)
+	{
+		std::advance(p, 1);
+		while (pStart != p)
+		{
+			main.push_back(*pStart);
+			std::advance(pStart, 1);
+		}
+	}
+	else
+	{
+		if (*m < *p && m != main.begin())
+			std::advance(m, 1);
+		std::advance(p, 1);
+		main.insert(m, pStart, p);
+	}
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:30:12 by emansoor          #+#    #+#             */
-/*   Updated: 2025/01/08 12:17:31 by emansoor         ###   ########.fr       */
+/*   Updated: 2025/01/10 09:18:06 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ void	PmergeMe::binaryInsertElems(std::vector<int> &main, std::vector<int> &pend,
 			mid = low;
 		else
 			mid = ((high - low) / (elemSize)) + low;
-
-
+			
 		if (main.at(mid) < pend.at(elemSize - 1))
 			low = mid + elemSize;
 		else

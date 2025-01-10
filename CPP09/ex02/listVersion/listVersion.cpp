@@ -6,28 +6,11 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/25 17:44:13 by emansoor          #+#    #+#             */
-/*   Updated: 2025/01/08 15:26:05 by emansoor         ###   ########.fr       */
+/*   Updated: 2025/01/10 09:30:42 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../PmergeMe.hpp"
-
-void	PmergeMe::insertOdd(void)
-{
-	std::list<int>::iterator begin = _sortedList.begin();
-	std::list<int>::iterator end = _sortedList.end();
-
-	while (begin != end)
-	{
-		if (*begin > _straggler)
-		{
-			_sortedList.insert(begin, _straggler);
-			return ;
-		}
-		std::advance(begin, 1);
-	}
-	_sortedList.push_back(_straggler);
-}
 
 void	PmergeMe::runListVersion(void)
 {
@@ -46,7 +29,7 @@ void	PmergeMe::runListVersion(void)
 		}
 		initJacobstahl();
 		mergeList(1, _size / 2);
-		if (!std::is_sorted(_sortedList.begin(), _sortedList.end()))
+		while (!std::is_sorted(_sortedList.begin(), _sortedList.end()))
 			insertSingleElems(_size);
 		if (!_even)
 		{

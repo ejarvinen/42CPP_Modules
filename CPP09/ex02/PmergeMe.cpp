@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:10:26 by emansoor          #+#    #+#             */
-/*   Updated: 2025/01/08 13:28:06 by emansoor         ###   ########.fr       */
+/*   Updated: 2025/01/10 10:57:17 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,18 +55,11 @@ void	PmergeMe::printStats(void)
 	std::cout << std::endl;
 	std::cout << "After:    ";
 	index = 0;
-	for (std::list<int>::iterator begin = _sortedList.begin(); begin != _sortedList.end(); std::advance(begin, 1))
-	{
-		std::cout << *begin << " ";
-		index++;
-	}
-	/* std::cout << "After:    ";
-	index = 0;
 	for (std::vector<int>::iterator begin = _sortedVec.begin(); begin != _sortedVec.end(); std::advance(begin, 1))
 	{
 		std::cout << *begin << " ";
 		index++;
-	} */
+	}
 	std::cout << std::endl;
 	std::cout << std::fixed;
 	std::cout << "Time to process a range of " << _size << " elements with std::vector : " << _vecTime << " s" << std::endl;
