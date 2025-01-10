@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 16:24:34 by emansoor          #+#    #+#             */
-/*   Updated: 2024/12/12 15:24:55 by emansoor         ###   ########.fr       */
+/*   Updated: 2025/01/09 18:58:08 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,11 @@ class RPN {
 
 		std::stack<int>	_stack;
 		
-		bool	isOperand(std::string arg);
+		int		isOperand(std::string arg);
 		bool	isOperator(std::string arg);
 		void	pushOntoStack(std::string arg);
 		int		performOperation(std::string arg);
+		bool	overflowCheck(int *res, int first, int scnd, int operation);
 
 	public:
 
