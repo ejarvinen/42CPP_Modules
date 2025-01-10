@@ -6,7 +6,7 @@
 /*   By: emansoor <emansoor@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 16:24:29 by emansoor          #+#    #+#             */
-/*   Updated: 2025/01/09 18:59:35 by emansoor         ###   ########.fr       */
+/*   Updated: 2025/01/10 09:11:34 by emansoor         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	RPN::isOperand(std::string arg)
 		std::cerr << "Error: element not representable as int" << std::endl;
 		return (1);
 	}
-	if (value > 9 || value < 0)
+	if (value > 9)
 	{
 		std::cerr << "Error: number out of range" << std::endl;
 		return (1);
@@ -155,7 +155,7 @@ void	RPN::processExpression(std::string args)
 		{
 			pushOntoStack(arg);
 		}
-		else if (isOperator(arg) && operandType != 0) // check this condition
+		else if (isOperator(arg))
 		{
 			if (argCount == 0)
 			{
@@ -165,7 +165,7 @@ void	RPN::processExpression(std::string args)
 			if (performOperation(arg))
 				return ;
 		}
-		else if (operandType > 1) // and this
+		else
 		{
 			std::cerr << "Error: suspicious input" << std::endl;
 			return ;
