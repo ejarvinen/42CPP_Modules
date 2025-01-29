@@ -16,7 +16,7 @@ To set up and run the project, follow these steps:
 git clone https://github.com/ejarvinen/42CPP_Modules.git
 cd CPP01
 ```
-2. Navigate to an exercise directory (e.g., `ex00`/).
+2. Navigate to an exercise directory (e.g., `ex00/`).
 3. Compile using the provided Makefile:
 ```
 make
