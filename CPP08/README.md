@@ -33,7 +33,7 @@ make
 **Objective**: Implement a `Span` class that stores a collection of integers and provides methods to find the shortest and longest span between them. Optimize by utilizing iterators.
 
 ### Exercise 02: Mutated abomination
-**Objective**: Implement a `MutantStack` class that extends std::stack and provides iterators to allow traversal.
+**Objective**: Implement a `MutantStack` class that extends `std::stack` and provides iterators to allow traversal.
 
 ## Compilation & Formatting
 - Code should follow the C++11 standard or later and be formatted for readability.
